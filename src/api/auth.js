@@ -7,8 +7,11 @@ import config from '../config'
 
 const auth = Router()
 
-auth.get('/test', passport.authenticate('jwt') , (req, res) => {
-  res.status(200).json({ message: 'Hello sweetie', auth: req.isAuthenticated() })
+auth.get('/info', passport.authenticate('jwt') , (req, res) => {
+	jwt.verify(req.headers['authorization'], config.jwtSecret, (err, decoded) => {
+		if (err) return res.status(401).json({ message: 'Not found' })
+		else return res.status(200).json({ message: 'Ok', user: decoded })
+	})
 })
 
 

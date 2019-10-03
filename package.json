@@ -1,7 +1,7 @@
 {
-  "name": "express-es6-rest-api-auth",
-  "version": "0.3.0",
-  "description": "Starter project for an ES6 RESTful Express API with JWT auth",
+  "name": "store",
+  "version": "0.0.1",
+  "description": "store",
   "main": "dist",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src\"",
@@ -28,8 +28,8 @@
       "no-unused-vars": 0
     }
   },
-  "repository": "damianmarek/express-es6-rest-api-auth",
-  "author": "Damian Marek <mail@damianmarek.me>",
+  "repository": "einfachIOTA/store",
+  "author": "huhn <huhn@einfachIOTA.de>",
   "license": "MIT",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
