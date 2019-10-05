@@ -29,9 +29,8 @@ export default ({ config, db }) => resource({
 	create({ body }, response) {
 		console.log('body', body)
 		var order = new orderModel(body)
+		order.final_price = order.amount * 10.00
 		order.save().then(result => {
-			console.log('result', result)
-			
 			response.send(result)
 		}).catch(err => {
 			console.log('err', err)
