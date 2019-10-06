@@ -35,6 +35,10 @@ const orderSchema = new Schema({
   final_price: {
     type: Number, required: true
   },
+  status: {
+    type: String,
+    required: true,
+  }
 })
 
 orderSchema.pre('save', function (next) {

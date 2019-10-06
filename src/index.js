@@ -11,19 +11,50 @@ import api from './api';
 import config from './config';
 import passport from 'passport'
 import User from './models/userModel'
+import Order from './models/orderModel'
 
 let app = express();
-app.server = http.createServer(app);
+var paymentModule = require('iota-payment')
+
+paymentModule.on('paymentSuccess', Order.setPayed);
+
+var iota_pay_options = {
+	mount: '/api/iota_payments',
+	websockets: true
+}
+
+
+app.server = paymentModule.createServer(app, iota_pay_options);
 
 // logger
 if(process.env.NODE_ENV !== 'test') {
 	app.use(morgan('dev'));
 }
 
-// 3rd party middleware
+
+
+var allowedOrigins = ['http://localhost:3000', 'http://localhost:9080',
+	'http://yourapp.com'];
 app.use(cors({
-	exposedHeaders: config.corsHeaders
+	credentials: true,
+	origin: function (origin, callback) {
+		// allow requests with no origin 
+		// (like mobile apps or curl requests)
+		if (!origin) return callback(null, true);
+		if (allowedOrigins.indexOf(origin) === -1) {
+			var msg = 'The CORS policy for this site does not ' +
+				'allow access from the specified Origin.';
+			return callback(new Error(msg), false);
+		}
+		return callback(null, true);
+	}
 }));
+
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
 
 app.use(bodyParser.urlencoded({
   extended: true

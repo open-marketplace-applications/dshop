@@ -10,11 +10,14 @@ export default ({ config, db }) => resource({
 	 *  Errors terminate the request, success sets `req[id] = data`.
 	 */
 	load(req, id, callback) {
-		let facet = facets.find(facet => facet.id === id),
-			err = facet ? null : 'Not found';
-		callback(err, facet);
+		console.log('load::', id)
+		orderModel.findOne({ _id: id }, function (error, order) {
+			callback(error, order);
+		});
+
 	},
 
+	
 	/** GET / - List all entities */
 	index({ params }, response) {
 
@@ -30,6 +33,7 @@ export default ({ config, db }) => resource({
 		console.log('body', body)
 		var order = new orderModel(body)
 		order.final_price = order.amount * 10.00
+		order.status = 'ordered'
 		order.save().then(result => {
 			response.send(result)
 		}).catch(err => {
@@ -39,23 +43,24 @@ export default ({ config, db }) => resource({
 	},
 
 	/** GET /:id - Return a given entity */
-	read({ facet }, res) {
-		res.json(facet);
+	read({ order }, res) {
+		console.log(' GET /:id', order)
+		res.json(order);
 	},
 
 	/** PUT /:id - Update a given entity */
-	update({ facet, body }, res) {
+	update({ order, body }, res) {
 		for (let key in body) {
 			if (key !== 'id') {
-				facet[key] = body[key];
+				order[key] = body[key];
 			}
 		}
 		res.sendStatus(204);
 	},
 
 	/** DELETE /:id - Delete a given entity */
-	delete({ facet }, res) {
-		facets.splice(facets.indexOf(facet), 1);
+	delete({ order }, res) {
+		orderModel.splice(orderModel.indexOf(order), 1);
 		res.sendStatus(204);
 	}
 });

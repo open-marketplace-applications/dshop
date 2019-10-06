@@ -2,6 +2,8 @@ import { version } from '../../package.json';
 import { Router } from 'express';
 import orders from './orders';
 import auth from './auth'
+import app from '../index.js';
+import payment from './payment.js'
 
 export default ({ config, db }) => {
 	let api = Router();
@@ -14,6 +16,7 @@ export default ({ config, db }) => {
 		console.log("tst")
 		res.json({ version });
 	});
+	api.use(payment)
 
 	return api;
 }
