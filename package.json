@@ -44,6 +44,7 @@
     "morgan": "^1.8.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
+    "paypal-rest-sdk": "^1.8.1",
     "resource-router-middleware": "^0.6.0"
   },
   "devDependencies": {
