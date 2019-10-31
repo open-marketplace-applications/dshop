@@ -32,7 +32,14 @@ export default ({ config, db }) => resource({
 	create({ body }, response) {
 		console.log('body', body)
 		var order = new orderModel(body)
-		order.final_price = order.amount * 10.00
+		let shipping_cost = 3.7;
+		let magazin_cost = 8.0;
+		if (order.country === 'de') {
+			shipping_cost = 1.55
+		}
+		console.log("shipping_cost", shipping_cost, order.country);
+		order.final_price = order.amount * magazin_cost + shipping_cost
+		console.log("order.final_price", order.final_price);
 		order.status = 'ordered'
 		order.save().then(result => {
 			response.send(result)
