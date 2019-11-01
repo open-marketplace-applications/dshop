@@ -28,7 +28,12 @@ api.post('/pay_with_iota', (req, response) => {
                     console.log('final_price', final_price)
                     console.log('iota_price', iota_price)
                     console.log('live_price', live_price)
-                    paymentModule.payments.createPayment(iota_price, order).then(payment => {
+                    let obj = {}
+                    obj.order = order
+                    obj.info = {}
+                    obj.info.live_price = live_price
+                    obj.info.timestamp = Date.now() / 1000 | 0
+                    paymentModule.payments.createPayment(iota_price, obj).then(payment => {
                         const obj = {
                             order,
                             payment: {
