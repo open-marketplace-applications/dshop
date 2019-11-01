@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine:3.10.3
 
 # File Author / Maintainer
 LABEL authors="huhn <huhn@einfachiota.de>"
