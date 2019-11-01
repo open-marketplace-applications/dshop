@@ -35,6 +35,10 @@ const orderSchema = new Schema({
   final_price: {
     type: Number, required: true
   },
+  print_name: {
+    type: String,
+    required: false, maxlength: [30, 'print_name must be shorter than 30 character']
+  },
   status: {
     type: String,
     required: true,
