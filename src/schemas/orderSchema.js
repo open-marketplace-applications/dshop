@@ -39,6 +39,9 @@ const orderSchema = new Schema({
     type: String,
     required: false, maxlength: [30, 'print_name must be shorter than 30 character']
   },
+  newsletter: {
+    type: Boolean
+  },
   status: {
     type: String,
     required: true,
