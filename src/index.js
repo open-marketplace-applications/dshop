@@ -33,8 +33,7 @@ if(process.env.NODE_ENV !== 'test') {
 
 
 
-var allowedOrigins = ['http://localhost:3000', 'http://localhost:9080',
-	'http://yourapp.com'];
+var allowedOrigins = ['https://eimag.einfachiota.de'];
 app.use(cors({
 	credentials: true,
 	origin: function (origin, callback) {
