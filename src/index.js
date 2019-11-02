@@ -32,7 +32,7 @@ if(process.env.NODE_ENV !== 'test') {
 
 
 
-var allowedOrigins = ["https://store.einfachiota.de", "https://eimag.einfachiota.de", "http://localhost:8080"];
+var allowedOrigins = ["https://store.einfachiota.de", "https://eimag.einfachiota.de", "http://localhost:8080", "http://localhost:3000"];
 
 app.use(cors({
 
