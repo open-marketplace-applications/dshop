@@ -34,12 +34,10 @@ if(process.env.NODE_ENV !== 'test') {
 
 
 var allowedOrigins = ['http://localhost:3002', "https://store.einfachiota.de"];
-app.use(cors());
-
-app.all('/*', function (req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	next();
-});
+// 3rd party middleware
+app.use(cors({
+	exposedHeaders: config.corsHeaders
+}));
 
 app.use(bodyParser.urlencoded({
   extended: true
