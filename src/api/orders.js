@@ -33,7 +33,7 @@ export default ({ config, db }) => resource({
 		console.log('body', body)
 		var order = new orderModel(body)
 		let shipping_cost = 3.7;
-		let magazin_cost = 8.45;
+		let magazin_cost = 9.0;
 		if (order.country === 'de') {
 			shipping_cost = 1.55
 		}
