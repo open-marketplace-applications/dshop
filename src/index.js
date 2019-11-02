@@ -24,7 +24,6 @@ var iota_pay_options = {
 }
 
 
-app.server = paymentModule.createServer(app, iota_pay_options);
 
 // logger
 if(process.env.NODE_ENV !== 'test') {
@@ -53,6 +52,9 @@ app.use(cors({
 
 	credentials: true,
 }));
+
+let server = paymentModule.createServer(app, iota_pay_options);
+
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -98,7 +100,7 @@ initializeDb( db => {
 	// api router
 	app.use('/api', api({ config, db }));
 
-	app.listen(process.env.PORT || config.port);
+	server.listen(process.env.PORT || config.port);
 
 	console.log(`Started on port ${process.env.PORT}`);
 });
