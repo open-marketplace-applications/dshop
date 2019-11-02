@@ -98,9 +98,9 @@ initializeDb( db => {
 	// api router
 	app.use('/api', api({ config, db }));
 
-	http.listen(process.env.PORT || config.port);
+	app.listen(process.env.PORT || config.port);
 
-	console.log(`Started on port ${app.server.address().port}`);
+	console.log(`Started on port ${process.env.PORT}`);
 });
 
 export default app;
