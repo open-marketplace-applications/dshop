@@ -33,7 +33,7 @@ if(process.env.NODE_ENV !== 'test') {
 
 
 
-var allowedOrigins = ['http://localhost:3002'];
+var allowedOrigins = ['http://localhost:3002', "https://store.einfachiota.de"];
 app.use(cors({
 	credentials: true,
 	origin: function (origin, callback) {
