@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt'
+var path = require('path');
 
 import initializeDb from './db';
 import middleware from './middleware';
@@ -96,8 +97,10 @@ initializeDb( db => {
 	// internal middleware
 	app.use(middleware({ config, db })); 
 	
-	app.use('/', express.static(__dirname + 'frontend/dist'));
-
+	app.use('/', express.static(__dirname + '/../frontend/dist'));
+	app.get('/', function (req, res) {
+		res.sendFile(path.join(__dirname + '/../frontend/dist/index.html'));
+	});
 	// api router
 	app.use('/api', api({ config, db }));
 
