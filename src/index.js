@@ -53,7 +53,6 @@ app.use(cors({
 	credentials: true,
 }));
 
-let server = paymentModule.createServer(app, iota_pay_options);
 
 
 app.use(bodyParser.urlencoded({
@@ -101,6 +100,8 @@ initializeDb( db => {
 
 	// api router
 	app.use('/api', api({ config, db }));
+
+	let server = paymentModule.createServer(app, iota_pay_options);
 
 	server.listen(process.env.PORT || config.port);
 
