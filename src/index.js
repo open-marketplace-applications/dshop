@@ -77,7 +77,7 @@ initializeDb( db => {
 
 	let server = paymentModule.createServer(app, iota_pay_options);
 
-	server.listen(process.env.PORT || config.port);
+	app.listen(process.env.PORT || config.port);
 
 	console.log(`Started on port ${process.env.PORT}`);
 });
