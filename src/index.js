@@ -24,8 +24,6 @@ var iota_pay_options = {
 	websockets: true
 }
 
-
-
 // logger
 if(process.env.NODE_ENV !== 'test') {
 	app.use(morgan('dev'));
@@ -72,6 +70,10 @@ initializeDb( db => {
 	// internal middleware
 	app.use(middleware({ config, db })); 
 	
+	app.use('/', express.static(__dirname + '/../frontend/dist'));
+	app.get('/', function (req, res) {
+		res.sendFile(path.join(__dirname + '/../frontend/dist/index.html'));
+	});
 	// api router
 	app.use('/api', api({ config, db }));
 
