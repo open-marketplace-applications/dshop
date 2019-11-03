@@ -96,8 +96,6 @@ initializeDb( db => {
 	// internal middleware
 	app.use(middleware({ config, db }));
 
-	app.use('/', express.static('frontent/dist'));
-
 	// api router
 	app.use('/api', api({ config, db }));
 
