@@ -31,31 +31,6 @@ if(process.env.NODE_ENV !== 'test') {
 	app.use(morgan('dev'));
 }
 
-
-
-var allowedOrigins = ["https://store.einfachiota.de", "https://eimag.einfachiota.de", "http://localhost:8080", "http://localhost:3000"];
-
-app.use(cors({
-
-	origin: function (origin, callback) {
-		// allow requests with no origin
-		// (like mobile apps or curl requests)
-		if (!origin) return callback(null, true);
-		if (allowedOrigins.indexOf(origin) === -1) {
-			var msg = 'The CORS policy for this site does not ' +
-				'allow access from the specified Origin.';
-			return callback(new Error(msg), false);
-		}
-		return callback(null, true);
-	},
-
-	exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
-
-	credentials: true,
-}));
-
-
-
 app.use(bodyParser.urlencoded({
   extended: true
 }))
@@ -97,10 +72,6 @@ initializeDb( db => {
 	// internal middleware
 	app.use(middleware({ config, db })); 
 	
-	app.use('/', express.static(__dirname + '/../frontend/dist'));
-	app.get('/', function (req, res) {
-		res.sendFile(path.join(__dirname + '/../frontend/dist/index.html'));
-	});
 	// api router
 	app.use('/api', api({ config, db }));
 
