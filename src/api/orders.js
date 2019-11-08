@@ -1,5 +1,6 @@
 import resource from 'resource-router-middleware';
 import orderModel from '../models/orderModel';
+import jwt from 'jsonwebtoken'
 
 export default ({ config, db }) => resource({
 
@@ -17,15 +18,20 @@ export default ({ config, db }) => resource({
 
 	},
 
-	
-	/** GET / - List all entities */
-	index({ params }, response) {
 
-		orderModel.find().exec().then(result => {
-			response.send(result)
-		}).then(err => {
-			response.status(500).send(err)
-		});
+	/** GET / - List all entities */
+	index(request, response) {
+		jwt.verify(request.headers['authorization'], config.jwtSecret, (err, decoded) => {
+			if (err) return response.status(401).json({ message: 'Not found' })
+			else {
+
+				orderModel.find().exec().then(result => {
+					response.send(result)
+				}).then(err => {
+					response.status(500).send(err)
+				});
+			}
+		})
 	},
 
 	/** POST / - Create a new entity */
@@ -50,24 +56,39 @@ export default ({ config, db }) => resource({
 	},
 
 	/** GET /:id - Return a given entity */
-	read({ order }, res) {
-		console.log(' GET /:id', order)
-		res.json(order);
+	read(request, response) {
+		jwt.verify(request.headers['authorization'], config.jwtSecret, (err, decoded) => {
+			if (err) return response.status(401).json({ message: 'Not found' })
+			else {
+				console.log(' GET /:id', request.order)
+				response.json(request.order);
+			}
+		})
 	},
 
 	/** PUT /:id - Update a given entity */
-	update({ order, body }, res) {
-		for (let key in body) {
-			if (key !== 'id') {
-				order[key] = body[key];
+	update({ order, body, headers }, response) {
+		jwt.verify(headers['authorization'], config.jwtSecret, (err, decoded) => {
+			if (err) return response.status(401).json({ message: 'Not found' })
+			else {
+				for (let key in body) {
+					if (key !== 'id') {
+						order[key] = body[key];
+					}
+				}
+				response.sendStatus(204);
 			}
-		}
-		res.sendStatus(204);
+		})
 	},
 
 	/** DELETE /:id - Delete a given entity */
-	delete({ order }, res) {
-		orderModel.splice(orderModel.indexOf(order), 1);
-		res.sendStatus(204);
+	delete({ order, headers }, response) {
+		jwt.verify(headers['authorization'], config.jwtSecret, (err, decoded) => {
+			if (err) return response.status(401).json({ message: 'Not found' })
+			else {
+				orderModel.splice(orderModel.indexOf(order), 1);
+				response.sendStatus(204);
+			}
+		})
 	}
 });

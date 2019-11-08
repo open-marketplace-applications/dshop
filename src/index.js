@@ -44,7 +44,7 @@ var allowedOrigins = [];
 if (process.env.NODE_ENV == 'prod') {
 	allowedOrigins = ['https://magazin.einfachiota.de'];
 } else {
-	allowedOrigins = ['http://localhost:3000', 'http://localhost:5000', 'https://magazin.einfachiota.de'];
+	allowedOrigins = ['http://localhost:3000', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080'];
 }
 
 console.log("allowedOrigins");
