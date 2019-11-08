@@ -105,7 +105,7 @@ api.post('/pay_with_paypal', (req, response) => {
 
 
 const getLivePrice = function () {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(function(resolve, reject) {
         fetch('https://api.coingecko.com/api/v3/coins/iota')
             .then(res => res.json())
             .then(json => {
