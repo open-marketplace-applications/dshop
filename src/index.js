@@ -92,7 +92,7 @@ passport.use('jwt', new JwtStrategy(jwtOptions, (jwt_payload, done) => {
 initializeDb( db => {
 
 	// internal middleware
-	app.use(middleware({ config, db })); 
+	app.use('/api', middleware({ config, db })); 
 	
 	app.use('/', express.static(__dirname + '/../frontend/dist'));
 	app.get('/', function (req, res) {

@@ -21,7 +21,7 @@ Order.setPayed = function (payment) {
                 // there is no order with this id
                 console.log('setOrderPayed no order found.')
             } else {
-                order.status = 'payed42';
+                order.status = 'payed';
                 order.save(function(err) {
                     if(!err) {
                         console.log("order payed ", order._id);
@@ -40,6 +40,35 @@ Order.setPayed = function (payment) {
 
         } else {
             console.log('setOrderPayed error: ', err)
+        }
+    });
+
+}
+
+
+
+Order.setSent = function (order) {
+    console.log('setOrderSent', order)
+ 
+    Order.findOne({ _id: order._id }, function(err, order) {
+        if(!err) {
+            if(!order) {
+                // there is no order with this id
+                console.log('setOrderSent no order found.')
+            } else {
+                order.status = 'sent';
+                order.save(function(err) {
+                    if(!err) {
+                        console.log("order sent", order);
+                    }
+                    else {
+                        console.log("Error: could not save order " + order._id);
+                    }
+                });
+            }
+
+        } else {
+            console.log('setOrderSent error: ', err)
         }
     });
 
