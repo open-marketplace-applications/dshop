@@ -44,7 +44,7 @@ export default ({ config, db }) => resource({
 			shipping_cost = 1.55
 		}
 		console.log("shipping_cost", shipping_cost, order.country);
-		order.final_price = order.amount * magazin_cost + shipping_cost
+		order.final_price = order.amount * magazin_cost + order.amount * shipping_cost
 		console.log("order.final_price", order.final_price);
 		order.status = 'ordered'
 		order.save().then(result => {
