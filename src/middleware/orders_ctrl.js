@@ -37,4 +37,10 @@ orders.get('/sendOrders', passport.authenticate('jwt') , (req, res) => {
 	})
 })
 
+orders.get('/amount', (req, res) => {	
+	orderModel.count({status: ['payed', 'sent']}, function(err, count) {
+			res.json({ amount:  config.maxAmount - count });
+	});
+})
+
 export default orders
