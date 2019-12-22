@@ -40,7 +40,7 @@ export default ({ config, db }) => resource({
 		var order = new orderModel(body)
 		let shipping_cost = 3.7;
 		let magazin_cost = 9.0;
-		if (order.country === 'de') {
+		if (order.country === 'Deutschland') {
 			shipping_cost = 1.55
 		}
 		console.log("shipping_cost", shipping_cost, order.country);
