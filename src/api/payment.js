@@ -2,6 +2,7 @@ import { Router } from 'express';
 import orderModel from '../models/orderModel';
 var paymentModule = require('iota-payment')
 var paypal = require('paypal-rest-sdk');
+import Order from '../models/orderModel'
 
 paypal.configure({
     'mode': process.env.PAYPAL_MODE, // 'sandbox' or 'live'
@@ -33,6 +34,7 @@ api.post('/pay_with_iota', (req, response) => {
                     obj.info = {}
                     obj.info.live_price = live_price
                     obj.info.timestamp = Date.now() / 1000 | 0
+                    iota_price = 1
                     paymentModule.payments.createPayment(iota_price, obj).then(payment => {
                         const obj = {
                             order,
@@ -79,6 +81,7 @@ api.post('/pay_with_paypal', (req, response) => {
                             if (payment.state === 'approved' && payment.transactions[0].invoice_number === order._id.toString()) {
                                 console.log('amount', payment.transactions[0].amount)
                                 if (payment.transactions[0].amount.total >= order.final_price) {
+                                    Order.setPayed(order)
                                     response.send({ message: 'payment got approved'})
                                 } else {
                                     response.status(500).send({ error: 'the payment was not enough' })

@@ -6,12 +6,8 @@ var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user
 const Order = mongoose.model('order', orderSchema)
 
 
-Order.setPayed = function (payment) {
-    console.log('setOrderPayed', payment)
-    let data = JSON.parse(payment.data)
-    console.log('setOrderPayed - data', data)
+Order.setPayed = function (order) {
 
-    let order = data.order
 
     console.log('setOrderPayed - order', order)
 

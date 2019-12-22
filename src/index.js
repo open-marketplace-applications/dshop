@@ -17,7 +17,18 @@ import Order from './models/orderModel'
 let app = express();
 var paymentModule = require('iota-payment')
 
-paymentModule.on('paymentSuccess', Order.setPayed);
+
+var onPaymentSuccess = function (payment) {
+	console.log('payment created!', payment)
+	console.log('setOrderPayed', payment)
+	let data = JSON.parse(payment.data)
+	console.log('setOrderPayed - data', data)
+	
+	let order = data.order
+	Order.setPayed(order)
+}
+
+paymentModule.on('paymentSuccess', onPaymentSuccess);
 
 var iota_pay_options = {
 	mount: '/api/iota_payments',
