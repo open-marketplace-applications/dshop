@@ -45,7 +45,11 @@ const orderSchema = new Schema({
   status: {
     type: String,
     required: true,
-  }
+  },
+  ref_address: {
+    type: String,
+    required: false
+  },
 })
 
 orderSchema.pre('save', function (next) {
