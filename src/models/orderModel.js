@@ -22,7 +22,8 @@ Order.setPayed = function (order) {
                     if(!err) {
                         console.log("order payed ", order._id);
                         console.log('order - item', order)
-                        var mailOptions = { from: 'no-reply@einfachIOTA.de', to: order.email, subject: 'Das einfachIOTA Magazin hat Deine Zahlung erhalten.', text: 'Hallo ' + order.first_name + ',\n\n' + 'vielen Dank für den Kauf. Wir wünschen dir viel Spaß beim Lesen,' + '\n' + 'Dein einfachIOTA Team.' };
+                        // TODO: Add i18n 
+                        var mailOptions = { from: 'no-reply@einfachIOTA.de', to: order.email, subject: 'The einfachIOTA team has received your payment.', text: 'Hello ' + order.first_name + ',\n\n' + 'Thank you for the purchase. We hope you enjoy reading it,' + '\n' + 'Your einfachIOTA Team.' };
                         transporter.sendMail(mailOptions, function(err) {
                             if (err) { console.log("Error sending mail.", err) }
                             console.log("Paymend success message sent to: ", order.email)
