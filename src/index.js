@@ -19,13 +19,8 @@ var paymentModule = require('iota-payment')
 
 
 var onPaymentSuccess = function (payment) {
-	console.log('payment created!', payment)
-	console.log('setOrderPayed', payment)
-	let data = JSON.parse(payment.data)
-	console.log('setOrderPayed - data', data)
-	
-	let order = data.order
-	Order.setPayed(order)
+	console.log('onPaymentSuccess', payment)
+	Order.setPayed(payment.data.order)
 }
 
 paymentModule.on('paymentSuccess', onPaymentSuccess);
@@ -55,7 +50,7 @@ var allowedOrigins = [];
 if (process.env.NODE_ENV == 'prod') {
 	allowedOrigins = ['https://shop.einfachiota.de'];
 } else {
-	allowedOrigins = ['http://localhost:3000', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080'];
+	allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080'];
 }
 
 console.log("allowedOrigins");

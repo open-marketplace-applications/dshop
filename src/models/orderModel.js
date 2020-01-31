@@ -1,6 +1,7 @@
 import orderSchema from '../schemas/orderSchema'
 import mongoose from 'mongoose'
 import nodemailer from 'nodemailer'
+import axios from 'axios'
 var paymentModule = require('iota-payment')
 
 var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
@@ -25,12 +26,32 @@ Order.setPayed = function (order) {
                         console.log("order payed ", order._id);
                         console.log('order - item', order)
 
-                        // TODO: Add i18n 
-                        var mailOptions = { from: 'no-reply@einfachIOTA.de', to: order.email, subject: 'The einfachIOTA team has received your payment.', text: 'Hello ' + order.first_name + ',\n\n' + 'Thank you for the purchase. We hope you enjoy reading it,' + '\n' + 'Your einfachIOTA Team.' };
-                        transporter.sendMail(mailOptions, function(err) {
-                            if (err) { console.log("Error sending mail.", err) }
-                            console.log("Paymend success message sent to: ", order.email)
-                        });
+                        if(process.env.NODE_ENV == 'prod') {
+                            // TODO: Add i18n 
+                            var mailOptions = { from: 'no-reply@einfachIOTA.de', to: order.email, subject: 'The einfachIOTA team has received your payment.', text: 'Hello ' + order.first_name + ',\n\n' + 'Thank you for the purchase. We hope you enjoy reading it,' + '\n' + 'Your einfachIOTA Team.' };
+                            transporter.sendMail(mailOptions, function(err) {
+                                if (err) { console.log("Error sending mail.", err) }
+                                console.log("Paymend success message sent to: ", order.email)
+                            });
+                        }
+
+                        let hock_name = 'eiMAG'
+                        if(process.env.NODE_ENV == 'dev') {
+                            hock_name = 'eiMAG_dev'   
+                        }
+                        let hock_content = 'Verkauft! Menge: ' + order.amount
+
+                        // Send Webhook notification
+                        axios.post(process.env.WEBHOOK_URL, {
+                            content: hock_content,
+                            username: hock_name
+                          })
+                          .then(function (response) {
+                            console.log('Webhock response', response);
+                          })
+                          .catch(function (error) {
+                            console.log(error);
+                          });
 
                         // handle ref link payout
                         if(order.ref_address) {
