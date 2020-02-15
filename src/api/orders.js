@@ -43,6 +43,7 @@ export default ({ config, db }) => resource({
 		if (order.country === 'Deutschland') {
 			shipping_cost = 1.55
 		}
+		order.shipping_cost = shipping_cost
 		console.log("shipping_cost", shipping_cost, order.country);
 		order.final_price = order.amount * magazin_cost + order.amount * shipping_cost
 		console.log("order.final_price", order.final_price);

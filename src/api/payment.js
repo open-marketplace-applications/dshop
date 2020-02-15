@@ -86,7 +86,11 @@ api.post('/pay_with_paypal', (req, response) => {
                             if (payment.state === 'approved' && payment.transactions[0].invoice_number === order._id.toString()) {
                                 console.log('amount', payment.transactions[0].amount)
                                 if (payment.transactions[0].amount.total >= order.final_price) {
-                                    Order.setPayed(order)
+                                    let payment_object = {
+                                        method: "paypal",
+                                        data: payment
+                                    }
+                                    Order.setPayed(order, payment_object)
                                     response.send({ message: 'payment got approved'})
                                 } else {
                                     response.status(500).send({ error: 'the payment was not enough' })

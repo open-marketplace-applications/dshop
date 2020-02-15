@@ -20,7 +20,11 @@ var paymentModule = require('iota-payment')
 
 var onPaymentSuccess = function (payment) {
 	console.log('onPaymentSuccess', payment)
-	Order.setPayed(payment.data.order)
+	let payment_object = {
+		method: "iota",
+		data: payment
+	}
+	Order.setPayed(payment.data.order, payment_object)
 }
 
 paymentModule.on('paymentSuccess', onPaymentSuccess);

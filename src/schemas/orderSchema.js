@@ -50,6 +50,10 @@ const orderSchema = new Schema({
     type: String,
     required: false
   },
+  shipping_cost: {
+    type: Number,
+    required: true
+  },
 })
 
 orderSchema.pre('save', function (next) {

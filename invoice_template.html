@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>einfachIOTA Magazine Invoice</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <style>
+    .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 12px;
+        line-height: 18px;
+        font-family: 'Open Sans', sans-serif;
+        color: #555;
+    }
+    
+    .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+    
+    .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
+    }
+    
+    .invoice-box table tr td:nth-child(2) {
+        text-align: right;
+    }
+    
+    .invoice-box table tr.top table td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+    }
+    
+    .invoice-box table tr.information table td {
+        padding-bottom: 40px;
+    }
+    
+    .invoice-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+    
+    .invoice-box table tr.details td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+    
+    .invoice-box table tr.item.last td {
+        border-bottom: none;
+    }
+    
+    .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .sender {
+        font-size: 10px;
+        padding-bottom: 0 !important;
+    }
+
+    .payment_details {
+        font-size: 10px;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+    
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+    
+    .rtl table {
+        text-align: right;
+    }
+    
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="5">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="https://www.einfachiota.de/img/logo.ae303cc6.svg" style="width:100%; max-width:100px;">
+                            </td>
+                            
+                            <td>
+                                Invoice number #{{ invoice.number }}<br>
+                                {{ date_with_format }}<br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="5">
+                    <table>
+                        <tr>
+                            <td class="sender">
+                                einfachIOTA, 
+                                Sebastian Heußer, 
+                                Collingstraße 104, 
+                                66424 Homburg
+                            </td>    
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ order.first_name }} {{ order.last_name }} <br>
+                                {{ order.address }}<br>
+                                {{ order.zip_code }} {{ order.city }}<br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td colspan="5">
+                    Payment Method
+                </td>
+            </tr>
+            
+            <tr class="details">
+                <td colspan="5" style="max-width: 200px; word-break: break-all;">
+                    {{#if payed_with_iota}}
+                    Payed with IOTA.<br>
+                    <div class="payment_details">
+                        <strong>Value:</strong> {{ payment.value }}<br>
+                        <strong>Price (1 Mi):</strong> {{ payment.data.info.live_price }} €<br>
+                        <strong>Transaction:</strong> {{ payment.txInfo.hash }}
+                    </div>
+                    {{else}}
+                        Payed with Paypal.
+                    {{/if}}
+                 </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>
+                    Item
+                </td>
+                <td class="align-right">
+                    VAT
+                </td>
+                <td class="align-right">
+                    Quantity
+                </td>
+                <td class="align-right">
+                    Unit price
+                </td>
+                
+                <td class="align-right">
+                    Total
+                </td>
+            </tr>
+            
+            <tr class="item">
+                <td>
+                    Magazine
+                </td>
+                <td class="align-right">
+                    7%
+                </td>
+                <td class="align-right">
+                    {{ order.amount }}
+                </td>
+                <td class="align-right">
+                    9.00 €
+                </td>
+                <td class="align-right">
+                    {{ total_magazine_cost }} €
+                </td>
+            </tr>
+            
+            <tr class="item last">
+                <td>
+                    Shipping
+                </td>
+                <td class="align-right">
+                    0
+                </td>
+                <td class="align-right">
+                    {{ order.amount }}
+                </td>
+                <td class="align-right">
+                    {{ order.shipping_cost }} €
+                </td>
+                <td class="align-right">
+                    {{ total_shipping_cost }} €
+                </td>
+            </tr>
+            
+            <tr class="total">
+                <td colspan="5" class="align-right">
+                   Total excluding VAT: {{ total_excluding_vat }} €
+                </td>
+            </tr>
+
+            <tr class="total">
+                <td colspan="5" class="align-right">
+                   VAT total: {{ vat_total }} €
+                </td>
+            </tr>
+
+            <tr class="total">
+                <td colspan="5" class="align-right">
+                   Total to pay: {{ order.final_price }} €
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+</html>

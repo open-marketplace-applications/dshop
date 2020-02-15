@@ -2,6 +2,8 @@ import orderSchema from '../schemas/orderSchema'
 import mongoose from 'mongoose'
 import nodemailer from 'nodemailer'
 import axios from 'axios'
+import { createInvoice } from '../pdf/invoice.js';
+
 var paymentModule = require('iota-payment')
 
 var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
@@ -9,7 +11,7 @@ var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user
 const Order = mongoose.model('order', orderSchema)
 
 
-Order.setPayed = function (order) {
+Order.setPayed = function (order, payment) {
 
 
     console.log('setOrderPayed - order', order)
@@ -26,8 +28,13 @@ Order.setPayed = function (order) {
                         console.log("order payed ", order._id);
                         console.log('order - item', order)
 
+
+                        // generate invoice
+                        createInvoice(order, payment)
+
                         if (process.env.NODE_ENV == 'prod') {
                             // TODO: Add i18n 
+                            // TODO: Send invoice as attachment.
                             var mailOptions = { from: 'no-reply@einfachIOTA.de', to: order.email, subject: 'The einfachIOTA team has received your payment.', text: 'Hello ' + order.first_name + ',\n\n' + 'Thank you for the purchase. We hope you enjoy reading it,' + '\n' + 'Your einfachIOTA Team.' };
                             transporter.sendMail(mailOptions, function (err) {
                                 if (err) { console.log("Error sending mail.", err) }
