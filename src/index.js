@@ -13,8 +13,6 @@ import config from './config';
 import passport from 'passport'
 import User from './models/userModel'
 import Order from './models/orderModel'
-import { createInvoice } from './pdf/invoice.js';
-import orderModel from './models/orderModel';
 
 let app = express();
 var paymentModule = require('iota-payment')
@@ -24,7 +22,7 @@ var onPaymentSuccess = function (payment) {
 	console.log('onPaymentSuccess', payment)
 	let payment_object = {
 		method: "iota",
-		payment
+		data: payment
 	}
 	Order.setPayed(payment.data.order, payment_object)
 }
@@ -114,10 +112,6 @@ initializeDb( db => {
 	server.listen(process.env.PORT || config.port);
 
 	console.log(`Started on port ${process.env.PORT}`);
-
-	orderModel.findOne({ _id: "5e485a96c74a228fec0b9312" }, function (error, order) {
-		createInvoice(order, {method: "iota"})
-	});
 });
 
 export default app;

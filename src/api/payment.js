@@ -88,7 +88,7 @@ api.post('/pay_with_paypal', (req, response) => {
                                 if (payment.transactions[0].amount.total >= order.final_price) {
                                     let payment_object = {
                                         method: "paypal",
-                                        payment
+                                        data: payment
                                     }
                                     Order.setPayed(order, payment_object)
                                     response.send({ message: 'payment got approved'})

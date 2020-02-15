@@ -18,6 +18,19 @@ const invoiceSchema = new Schema({
     type: String,
     required: true
   },
+  payment_data: {
+    type: String,
+    get: function(data) {
+      try { 
+        return JSON.parse(data);
+      } catch(e) { 
+        return data;
+      }
+    },
+    set: function(data) {
+      return JSON.stringify(data);
+    }
+  }
   
 })
 

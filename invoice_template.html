@@ -77,6 +77,10 @@
         font-size: 10px;
         padding-bottom: 0 !important;
     }
+
+    .payment_details {
+        font-size: 10px;
+    }
     
     @media only screen and (max-width: 600px) {
         .invoice-box table tr.top table td {
@@ -151,15 +155,24 @@
             </tr>
             
             <tr class="heading">
-                <td>
+                <td colspan="5">
                     Payment Method
                 </td>
             </tr>
             
             <tr class="details">
-                <td>
-                   Payed with {{ payment.method }}.
-                </td>
+                <td colspan="5" style="max-width: 200px; word-break: break-all;">
+                    {{#if payed_with_iota}}
+                    Payed with IOTA.<br>
+                    <div class="payment_details">
+                        <strong>Value:</strong> {{ payment.value }}<br>
+                        <strong>Price (1 Mi):</strong> {{ payment.data.info.live_price }} €<br>
+                        <strong>Transaction:</strong> {{ payment.txInfo.hash }}
+                    </div>
+                    {{else}}
+                        Payed with Paypal.
+                    {{/if}}
+                 </td>
             </tr>
             
             <tr class="heading">

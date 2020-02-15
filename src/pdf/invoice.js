@@ -40,23 +40,17 @@ module.exports.createInvoice = (order, payment) => {
     invoiceModel.countDocuments({}, function (err, c) {
         console.log('Count is ' + c);
 
+        console.log("payment_data", payment.data)
         var invoice_data = {
             number:  c + 1,
             order_id: order.id,
             created_at: new Date(),
-            payment_method: payment.method
+            payment_method: payment.method,
+            payment_data: payment.data
         }
         var invoice_model = new invoiceModel(invoice_data)
 
         invoice_model.save().then(invoice => {
-
-            // Custom handlebar helper
-            pdf.registerHelper('ifCond', function (v1, v2, options) {
-                if (v1 === v2) {
-                    return options.fn(this);
-                }
-                return options.inverse(this);
-            })
 
             var options = {
                 format: "A4",
@@ -72,19 +66,21 @@ module.exports.createInvoice = (order, payment) => {
             var vat_total = order.amount * magazine_vat
             var vat_total = vat_total.toFixed(2)
 
+            var payed_with_iota = payment.method == 'iota' ? true : false
             console.log("invoice", invoice)
             var document = {
                 type: 'file',
                 template: html,
                 context: {
                     invoice: invoice,
-                    payment: payment,
+                    payment: payment.data,
                     order: order,
                     date_with_format: formatDateFormHuman(invoice.created_at),
                     total_magazine_cost: order.amount * 9.00,
                     total_shipping_cost: order.amount * order.shipping_cost,
                     total_excluding_vat: total_excluding_vat,
-                    vat_total: vat_total
+                    vat_total: vat_total,
+                    payed_with_iota: payed_with_iota
                 },
                 path: "./invoices/" + invoice.number + "_" + formatDate(invoice.created_at) + '_' + order.id + ".pdf"    // it is not required if type is buffer
             };
