@@ -1,0 +1,16 @@
+<html>
+    <head>
+        Dynamic HTML to PDF
+    </head>
+    <body>
+        <h1>Hi {{users.0.name}}</h1>
+        <div>
+            template
+            {{#ifCond 'v1' 'v2'}}
+                {{v1}} is equals to {{v2}}
+            {{else}}
+                Variables are not similar
+            {{/ifCond}}
+        </div>
+    </body>
+</html>

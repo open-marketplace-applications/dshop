@@ -108,6 +108,7 @@ initializeDb( db => {
 	server.listen(process.env.PORT || config.port);
 
 	console.log(`Started on port ${process.env.PORT}`);
+	require('./pdf/invoice.js')
 });
 
 export default app;

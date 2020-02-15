@@ -26,8 +26,14 @@ Order.setPayed = function (order) {
                         console.log("order payed ", order._id);
                         console.log('order - item', order)
 
+
+                        // generate invoice
+
+
+
                         if (process.env.NODE_ENV == 'prod') {
                             // TODO: Add i18n 
+                            // TODO: Send invoice as attachment.
                             var mailOptions = { from: 'no-reply@einfachIOTA.de', to: order.email, subject: 'The einfachIOTA team has received your payment.', text: 'Hello ' + order.first_name + ',\n\n' + 'Thank you for the purchase. We hope you enjoy reading it,' + '\n' + 'Your einfachIOTA Team.' };
                             transporter.sendMail(mailOptions, function (err) {
                                 if (err) { console.log("Error sending mail.", err) }
