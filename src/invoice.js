@@ -1,7 +1,11 @@
 var fs = require('fs');
 var pdf = require('dynamic-html-pdf');
 var html = fs.readFileSync('./invoice_template.html', 'utf8');
-import invoiceModel from '../models/invoiceModel';
+import nodemailer from 'nodemailer'
+
+var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
+
+import invoiceModel from './models/invoiceModel';
 
 function formatDateFormHuman(date) {
     var monthNames = [
@@ -68,6 +72,7 @@ module.exports.createInvoice = (order, payment) => {
 
             var payed_with_iota = payment.method == 'iota' ? true : false
             console.log("invoice", invoice)
+            var filename =  invoice.number + "_" + formatDate(invoice.created_at) + '_' + order.id + ".pdf" ;
             var document = {
                 type: 'file',
                 template: html,
@@ -82,7 +87,7 @@ module.exports.createInvoice = (order, payment) => {
                     vat_total: vat_total,
                     payed_with_iota: payed_with_iota
                 },
-                path: "./invoices/" + invoice.number + "_" + formatDate(invoice.created_at) + '_' + order.id + ".pdf"    // it is not required if type is buffer
+                path: "./invoices/" + filename   // it is not required if type is buffer
             };
 
             console.log("create pdf")
@@ -90,6 +95,28 @@ module.exports.createInvoice = (order, payment) => {
                 .then(res => {
                     console.log("success")
                     console.log(res)
+
+                    if (process.env.NODE_ENV == 'prod') {
+                        // TODO: Add i18n 
+                        // TODO: Send invoice as attachment.
+                        var mailOptions = { 
+                            from: 'no-reply@einfachIOTA.de', 
+                            to: order.email, 
+                            subject: 'The einfachIOTA team has received your payment.', 
+                            text: 'Hello ' + order.first_name + ',\n\n' + 'Thank you for the purchase. We hope you enjoy reading it,' + '\n' + 'Your einfachIOTA Team.',
+                            attachments: [
+                                {   // file on disk as an attachment
+                                    filename: filename,
+                                    path: res.filename,
+                                    contentType: 'application/pdf'
+                                }
+                            ] 
+                        };
+                        transporter.sendMail(mailOptions, function (err) {
+                            if (err) { console.log("Error sending mail.", err) }
+                            console.log("Paymend success message sent to: ", order.email)
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log("error")
