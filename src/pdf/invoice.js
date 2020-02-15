@@ -63,6 +63,14 @@ module.exports.createInvoice = (order) => {
                 border: "10mm"
             };
 
+            let magazine_vat = 9.00 * 0.07
+            let magazine_net_price = 9.00 - magazine_vat
+
+            var total_excluding_vat = (order.amount * magazine_net_price) + (order.amount * order.shipping_cost)
+            var total_excluding_vat = total_excluding_vat.toFixed(2);
+            var vat_total = order.amount * magazine_vat
+            var vat_total = vat_total.toFixed(2)
+
             console.log("invoice", invoice)
             var document = {
                 type: 'file',
@@ -72,7 +80,9 @@ module.exports.createInvoice = (order) => {
                     order: order,
                     date_with_format: formatDateFormHuman(invoice.created_at),
                     total_magazine_cost: order.amount * 9.00,
-                    total_shipping_cost: order.amount * order.shipping_cost
+                    total_shipping_cost: order.amount * order.shipping_cost,
+                    total_excluding_vat: total_excluding_vat,
+                    vat_total: vat_total
                 },
                 path: "./invoices/" + invoice.number + "_" + formatDate(invoice.created_at) + '_' + order.id + ".pdf"    // it is not required if type is buffer
             };

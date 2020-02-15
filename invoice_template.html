@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>einfachIOTA Magazine Invoice</title>
-    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
     <style>
     .invoice-box {
         max-width: 800px;
@@ -11,9 +11,9 @@
         padding: 30px;
         border: 1px solid #eee;
         box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-        font-size: 16px;
-        line-height: 24px;
-        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        line-height: 18px;
+        font-family: 'Open Sans', sans-serif;
         color: #555;
     }
     
@@ -112,7 +112,7 @@
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
-                <td colspan="4">
+                <td colspan="5">
                     <table>
                         <tr>
                             <td class="title">
@@ -129,7 +129,7 @@
             </tr>
             
             <tr class="information">
-                <td colspan="4">
+                <td colspan="5">
                     <table>
                         <tr>
                             <td class="sender">
@@ -167,14 +167,17 @@
                     Item
                 </td>
                 <td class="align-right">
-                    Amount
+                    VAT
                 </td>
                 <td class="align-right">
-                    Single price
+                    Quantity
+                </td>
+                <td class="align-right">
+                    Unit price
                 </td>
                 
                 <td class="align-right">
-                    Total price
+                    Total
                 </td>
             </tr>
             
@@ -183,13 +186,16 @@
                     Magazine
                 </td>
                 <td class="align-right">
+                    7%
+                </td>
+                <td class="align-right">
                     {{ order.amount }}
                 </td>
                 <td class="align-right">
-                    9.00€
+                    9.00 €
                 </td>
                 <td class="align-right">
-                    {{ total_magazine_cost }}
+                    {{ total_magazine_cost }} €
                 </td>
             </tr>
             
@@ -198,21 +204,37 @@
                     Shipping
                 </td>
                 <td class="align-right">
+                    0
+                </td>
+                <td class="align-right">
                     {{ order.amount }}
                 </td>
                 <td class="align-right">
-                    {{ order.shipping_cost }}€
+                    {{ order.shipping_cost }} €
                 </td>
                 <td class="align-right">
-                    {{ total_shipping_cost }}€
+                    {{ total_shipping_cost }} €
                 </td>
             </tr>
             
             <tr class="total">
-                <td colspan="4" class="align-right">
-                   Total: {{ order.final_price }}
+                <td colspan="5" class="align-right">
+                   Total excluding VAT: {{ total_excluding_vat }} €
                 </td>
             </tr>
+
+            <tr class="total">
+                <td colspan="5" class="align-right">
+                   VAT total: {{ vat_total }} €
+                </td>
+            </tr>
+
+            <tr class="total">
+                <td colspan="5" class="align-right">
+                   Total to pay: {{ order.final_price }} €
+                </td>
+            </tr>
+
         </table>
     </div>
 </body>
