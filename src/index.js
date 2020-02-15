@@ -13,6 +13,8 @@ import config from './config';
 import passport from 'passport'
 import User from './models/userModel'
 import Order from './models/orderModel'
+import { createInvoice } from './pdf/invoice.js';
+import orderModel from './models/orderModel';
 
 let app = express();
 var paymentModule = require('iota-payment')
@@ -108,7 +110,10 @@ initializeDb( db => {
 	server.listen(process.env.PORT || config.port);
 
 	console.log(`Started on port ${process.env.PORT}`);
-	require('./pdf/invoice.js')
+
+	orderModel.findOne({ email: "sehe89@gmail.com" }, function (error, order) {
+		createInvoice(order)
+	});
 });
 
 export default app;
