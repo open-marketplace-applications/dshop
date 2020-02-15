@@ -41,20 +41,22 @@ Order.setPayed = function (order) {
                             if (process.env.NODE_ENV == 'dev') {
                                 hock_name = 'eiMAG_dev'
                             }
-                            let hock_content = 'Verkauft! Menge: ' + order.amount
+                            let hock_content = 'Hey, jemand hat gerade ein Magazin gekauft!'
+                            if(order.amount > 1) {
+                                hock_content = 'Hey, jemand hat gerade ' + order.amount + ' Magazine gekauft!'
+                            }
 
                             axios.post(process.env.WEBHOOK_URL, {
                                 content: hock_content,
                                 username: hock_name
                             })
-                                .then(function (response) {
-                                    console.log('Webhock response', response);
-                                })
-                                .catch(function (error) {
-                                    console.log(error);
-                                });
+                            .then(function (response) {
+                                console.log('Webhock success');
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
                         }
-
                         // handle ref link payout
                         if (order.ref_address) {
                             console.log('order - reflink payout to:', order.ref_address)
@@ -62,7 +64,7 @@ Order.setPayed = function (order) {
                                 address: order.ref_address,
                                 value: 0,
                                 message: 'Example reflink payout',
-                                tag: 'EINFACHIOTAMAGAZINEREFLINKPAYOUT'
+                                tag: 'REFLINK9EINFACHIOTA'
                             }
                             paymentModule.payout.send(payoutObject)
                                 .then(result => {
