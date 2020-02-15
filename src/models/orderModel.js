@@ -11,7 +11,7 @@ var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user
 const Order = mongoose.model('order', orderSchema)
 
 
-Order.setPayed = function (order) {
+Order.setPayed = function (order, payment) {
 
 
     console.log('setOrderPayed - order', order)
@@ -30,7 +30,7 @@ Order.setPayed = function (order) {
 
 
                         // generate invoice
-                        createInvoice(order)
+                        createInvoice(order, payment)
 
                         if (process.env.NODE_ENV == 'prod') {
                             // TODO: Add i18n 

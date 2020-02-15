@@ -32,7 +32,7 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-module.exports.createInvoice = (order) => {
+module.exports.createInvoice = (order, payment) => {
 
     if (!order) return
     console.log("Create invoice for order: ", order)
@@ -43,7 +43,8 @@ module.exports.createInvoice = (order) => {
         var invoice_data = {
             number:  c + 1,
             order_id: order.id,
-            created_at: new Date()
+            created_at: new Date(),
+            payment_method: payment.method
         }
         var invoice_model = new invoiceModel(invoice_data)
 
@@ -77,6 +78,7 @@ module.exports.createInvoice = (order) => {
                 template: html,
                 context: {
                     invoice: invoice,
+                    payment: payment,
                     order: order,
                     date_with_format: formatDateFormHuman(invoice.created_at),
                     total_magazine_cost: order.amount * 9.00,

@@ -22,7 +22,11 @@ var paymentModule = require('iota-payment')
 
 var onPaymentSuccess = function (payment) {
 	console.log('onPaymentSuccess', payment)
-	Order.setPayed(payment.data.order)
+	let payment_object = {
+		method: "iota",
+		payment
+	}
+	Order.setPayed(payment.data.order, payment_object)
 }
 
 paymentModule.on('paymentSuccess', onPaymentSuccess);
@@ -112,7 +116,7 @@ initializeDb( db => {
 	console.log(`Started on port ${process.env.PORT}`);
 
 	orderModel.findOne({ _id: "5e485a96c74a228fec0b9312" }, function (error, order) {
-		createInvoice(order)
+		createInvoice(order, {method: "iota"})
 	});
 });
 
