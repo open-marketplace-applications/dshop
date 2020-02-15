@@ -2,6 +2,8 @@ import orderSchema from '../schemas/orderSchema'
 import mongoose from 'mongoose'
 import nodemailer from 'nodemailer'
 import axios from 'axios'
+import { createInvoice } from '../pdf/invoice.js';
+
 var paymentModule = require('iota-payment')
 
 var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
@@ -28,8 +30,7 @@ Order.setPayed = function (order) {
 
 
                         // generate invoice
-
-
+                        createInvoice(order)
 
                         if (process.env.NODE_ENV == 'prod') {
                             // TODO: Add i18n 

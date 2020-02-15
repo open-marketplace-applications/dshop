@@ -68,6 +68,15 @@
         border-top: 2px solid #eee;
         font-weight: bold;
     }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .sender {
+        font-size: 10px;
+        padding-bottom: 0 !important;
+    }
     
     @media only screen and (max-width: 600px) {
         .invoice-box table tr.top table td {
@@ -103,7 +112,7 @@
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
-                <td colspan="2">
+                <td colspan="4">
                     <table>
                         <tr>
                             <td class="title">
@@ -120,16 +129,17 @@
             </tr>
             
             <tr class="information">
-                <td colspan="2">
+                <td colspan="4">
                     <table>
                         <tr>
-                            <td>
-                                einfachIOTA<br>
-                                Sebastian Heußer<br>
-                                Collingstraße 104<br>
+                            <td class="sender">
+                                einfachIOTA, 
+                                Sebastian Heußer, 
+                                Collingstraße 104, 
                                 66424 Homburg
-                            </td>
-                            
+                            </td>    
+                        </tr>
+                        <tr>
                             <td>
                                 {{ order.first_name }} {{ order.last_name }} <br>
                                 {{ order.address }}<br>
@@ -156,36 +166,50 @@
                 <td>
                     Item
                 </td>
+                <td class="align-right">
+                    Amount
+                </td>
+                <td class="align-right">
+                    Single price
+                </td>
                 
-                <td>
-                    Price
+                <td class="align-right">
+                    Total price
                 </td>
             </tr>
             
             <tr class="item">
                 <td>
-                    Magazine x{{ order.amount }}
+                    Magazine
                 </td>
-                
-                <td>
+                <td class="align-right">
                     {{ order.amount }}
+                </td>
+                <td class="align-right">
+                    9.00€
+                </td>
+                <td class="align-right">
+                    {{ total_magazine_cost }}
                 </td>
             </tr>
             
             <tr class="item last">
                 <td>
-                    Shipping x{{ order.amount }}
+                    Shipping
                 </td>
-                
-                <td>
+                <td class="align-right">
                     {{ order.amount }}
+                </td>
+                <td class="align-right">
+                    {{ order.shipping_cost }}€
+                </td>
+                <td class="align-right">
+                    {{ total_shipping_cost }}€
                 </td>
             </tr>
             
             <tr class="total">
-                <td></td>
-                
-                <td>
+                <td colspan="4" class="align-right">
                    Total: {{ order.final_price }}
                 </td>
             </tr>

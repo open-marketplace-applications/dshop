@@ -70,7 +70,9 @@ module.exports.createInvoice = (order) => {
                 context: {
                     invoice: invoice,
                     order: order,
-                    date_with_format: formatDateFormHuman(invoice.created_at)
+                    date_with_format: formatDateFormHuman(invoice.created_at),
+                    total_magazine_cost: order.amount * 9.00,
+                    total_shipping_cost: order.amount * order.shipping_cost
                 },
                 path: "./invoices/" + invoice.number + "_" + formatDate(invoice.created_at) + '_' + order.id + ".pdf"    // it is not required if type is buffer
             };

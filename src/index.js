@@ -111,7 +111,7 @@ initializeDb( db => {
 
 	console.log(`Started on port ${process.env.PORT}`);
 
-	orderModel.findOne({ email: "sehe89@gmail.com" }, function (error, order) {
+	orderModel.findOne({ _id: "5e485a96c74a228fec0b9312" }, function (error, order) {
 		createInvoice(order)
 	});
 });
