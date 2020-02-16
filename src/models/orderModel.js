@@ -55,9 +55,19 @@ Order.setPayed = function (order, payment) {
                         // handle ref link payout
                         if (order.ref_address) {
                             console.log('order - reflink payout to:', order.ref_address)
+
+                            // calculate iota value
+                            let value = 0
+                            if(process.env.NODE_ENV == 'prod') {
+                                // We want to deliver 0.50€ to ref link owners
+                                value = Math.round(payment.data.value * 0.02)
+                            }
+                            console.log("ref value ", value)
+                            console.log("ref ref_address ", order.ref_address)
+
                             let payoutObject = {
                                 address: order.ref_address,
-                                value: 0,
+                                value: value,
                                 message: 'Example reflink payout',
                                 tag: 'REFLINK9EINFACHIOTA'
                             }
