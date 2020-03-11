@@ -46,7 +46,8 @@ api.post('/pay_with_iota', (req, response) => {
                             payment: {
                                 id: payment.id,
                                 address: payment.address,
-                                value: iota_price
+                                value: iota_price,
+                                live_price: live_price
                             }
                         }
                         console.log(obj)
