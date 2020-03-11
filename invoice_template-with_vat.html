@@ -81,11 +81,6 @@
     .payment_details {
         font-size: 10px;
     }
-
-    .footprint {
-        margin-bottom: 0 !important;
-        font-size: 10px;
-    }
     
     @media only screen and (max-width: 600px) {
         .invoice-box table tr.top table td {
@@ -185,6 +180,9 @@
                     Item
                 </td>
                 <td class="align-right">
+                    VAT
+                </td>
+                <td class="align-right">
                     Quantity
                 </td>
                 <td class="align-right">
@@ -201,13 +199,16 @@
                     Magazine
                 </td>
                 <td class="align-right">
+                    7%
+                </td>
+                <td class="align-right">
                     {{ order.amount }}
                 </td>
                 <td class="align-right">
                     9.00 €
                 </td>
                 <td class="align-right">
-                    {{ total_magazine_cost.toFixed(2) }} €
+                    {{ total_magazine_cost }} €
                 </td>
             </tr>
             
@@ -216,33 +217,38 @@
                     Shipping
                 </td>
                 <td class="align-right">
+                    0
+                </td>
+                <td class="align-right">
                     {{ order.amount }}
                 </td>
                 <td class="align-right">
-                    {{ order.shipping_cost.toFixed(2) }} €
+                    {{ order.shipping_cost }} €
                 </td>
                 <td class="align-right">
-                    {{ total_shipping_cost.toFixed(2) }} €
+                    {{ total_shipping_cost }} €
                 </td>
             </tr>
             
             <tr class="total">
                 <td colspan="5" class="align-right">
-                   Subtotal (net): {{ order.final_price.toFixed(2) }} €
+                   Total excluding VAT: {{ total_excluding_vat }} €
                 </td>
             </tr>
 
             <tr class="total">
                 <td colspan="5" class="align-right">
-                   Total (gross): {{ order.final_price.toFixed(2) }} €
+                   VAT total: {{ vat_total }} €
                 </td>
             </tr>
+
+            <tr class="total">
+                <td colspan="5" class="align-right">
+                   Total to pay: {{ order.final_price }} €
+                </td>
+            </tr>
+
         </table>
-        <br>
-        <br>
-        <br>
-        <p class="footprint">In our prices is in accordance with the little businessman regulation (§19 Abs. 1 UStG ) no value added tax contain and proven.  </p>
-        <p class="footprint">Tax number: 07523008301</p>
     </div>
 </body>
 </html>

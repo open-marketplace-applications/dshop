@@ -1,6 +1,6 @@
 var fs = require('fs');
 var pdf = require('dynamic-html-pdf');
-var html = fs.readFileSync('./invoice_template.html', 'utf8');
+var html = fs.readFileSync('./invoice_template_iota.html', 'utf8');
 import nodemailer from 'nodemailer'
 
 var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
@@ -62,13 +62,20 @@ module.exports.createInvoice = (order, payment) => {
                 border: "10mm"
             };
 
-            let magazine_vat = 9.00 * 0.07
+            let magazine_vat = 9.00 // * 0.07
             let magazine_net_price = 9.00 - magazine_vat
 
             var total_excluding_vat = (order.amount * magazine_net_price) + (order.amount * order.shipping_cost)
             var total_excluding_vat = total_excluding_vat.toFixed(2);
             var vat_total = order.amount * magazine_vat
             var vat_total = vat_total.toFixed(2)
+
+            let _payment = payment.data 
+            console.log("_payment", _payment)
+            console.log("_payment.data", _payment.data)
+            
+            let live_price = _payment.data.info.live_price
+            console.log("live_price", payment.data)
 
             var payed_with_iota = payment.method == 'iota' ? true : false
             console.log("invoice", invoice)
@@ -81,10 +88,11 @@ module.exports.createInvoice = (order, payment) => {
                     payment: payment.data,
                     order: order,
                     date_with_format: formatDateFormHuman(invoice.created_at),
-                    total_magazine_cost: order.amount * 9.00,
-                    total_shipping_cost: order.amount * order.shipping_cost,
-                    total_excluding_vat: total_excluding_vat,
-                    vat_total: vat_total,
+                    total_magazine_cost: (order.amount * 9.00) / live_price,
+                    total_shipping_cost: (order.amount * order.shipping_cost) / live_price,
+                    total_excluding_vat: total_excluding_vat / live_price,
+                    vat_total: vat_total / live_price,
+                    final_price: order.final_price / live_price,
                     payed_with_iota: payed_with_iota
                 },
                 path: "./invoices/" + filename   // it is not required if type is buffer
