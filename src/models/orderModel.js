@@ -27,9 +27,6 @@ Order.setPayed = function (order, payment) {
                         console.log('order - item', order)
 
 
-                        // generate invoice
-                        createInvoice(order, payment)
-
                         // Handle Webhook notification
                         if (process.env.WEBHOOK_URL) {
                             let hock_name = 'eiMAG'
@@ -52,6 +49,17 @@ Order.setPayed = function (order, payment) {
                                 console.log(error);
                             });
                         }
+
+
+                        // if payment was payed with IOTA, create an invoice and handle ref link payout
+                        
+                        console.log("payment - iota", payment)
+
+                        if(payment.method === 'iota') {
+
+                        // create an invoice
+                        createInvoice(order, payment)
+                        
                         // handle ref link payout
                         if (order.ref_address) {
                             console.log('order - reflink payout to:', order.ref_address)
@@ -79,7 +87,9 @@ Order.setPayed = function (order, payment) {
                                     console.log(err)
                                 })
                         }
-
+                        } else {
+                            // TODO: handle paypal - invoices
+                        }
                     }
                     else {
                         console.log("Error: could not save order " + order._id);
