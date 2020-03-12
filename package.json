@@ -39,7 +39,7 @@
     "dotenv": "^4.0.0",
     "dynamic-html-pdf": "^1.0.1",
     "express": "^4.13.3",
-    "iota-payment": "0.0.27",
+    "iota-payment": "0.0.31",
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^5.7.5",
     "morgan": "^1.8.0",
