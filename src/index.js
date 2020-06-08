@@ -27,10 +27,11 @@ var onPaymentSuccess = function (payment) {
 	Order.setPayed(payment.data.order, payment_object)
 }
 
-paymentModule.on('paymentSuccess', onPaymentSuccess);
+paymentModule.onEvent('paymentSuccess', onPaymentSuccess);
 
 var iota_pay_options = {
-	mount: '/api/iota_payments',
+	dashboard: true,
+	api: true,
 	websockets: true
 }
 
@@ -54,7 +55,7 @@ var allowedOrigins = [];
 if (process.env.NODE_ENV == 'prod') {
 	allowedOrigins = ['https://shop.einfachiota.de', 'https://shop.einfachiota.com'];
 } else {
-	allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080'];
+	allowedOrigins = ['http://localhost:3000','http://0.0.0.0:3001', 'http://localhost:3001', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080'];
 }
 
 console.log("allowedOrigins");
@@ -112,6 +113,7 @@ initializeDb( db => {
 	server.listen(process.env.PORT || config.port);
 
 	console.log(`Started on port ${process.env.PORT}`);
+
 });
 
 export default app;

@@ -40,7 +40,7 @@ api.post('/pay_with_iota', (req, response) => {
                     }
                     console.log('iota_price', iota_price)
 
-                    paymentModule.payment.createPayment({value: iota_price, data: obj}).then(payment => {
+                    paymentModule.createPaymentRequest({value: iota_price, data: obj}).then(payment => {
                         const obj = {
                             order,
                             payment: {
