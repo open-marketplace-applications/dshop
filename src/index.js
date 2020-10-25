@@ -55,7 +55,7 @@ var allowedOrigins = [];
 if (process.env.NODE_ENV == 'prod') {
 	allowedOrigins = ['https://shop.einfachiota.de', 'https://shop.einfachiota.com'];
 } else {
-	allowedOrigins = ['http://localhost:3000','http://0.0.0.0:3001', 'http://localhost:3001', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080'];
+	allowedOrigins = ['http://localhost:3000','http://0.0.0.0:3001', 'http://localhost:3001', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080', 'http://localhost:8000'];
 }
 
 console.log("allowedOrigins");
