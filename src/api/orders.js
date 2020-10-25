@@ -49,7 +49,14 @@ export default ({ config, db }) => resource({
 		console.log("order.final_price", order.final_price);
 		order.status = 'ordered'
 		order.save().then(result => {
-			response.send(result)
+			console.log("result:", result);
+			// clear id
+			let res = {
+				id: result._id,
+				final_price: result.final_price,
+			}
+			console.log("res:", res);
+			response.send(res)
 		}).catch(err => {
 			console.log('err', err)
 			response.status(500).send(err)

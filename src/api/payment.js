@@ -15,6 +15,7 @@ let api = Router();
 
 api.post('/pay_with_iota', (req, response) => {
     console.log('pay_with_iota called', req.query.id)
+    var t0 = Date.now();
     if (req.query.id) {
 
         orderModel.findOne({ _id: req.query.id }, function (error, order) {
@@ -52,6 +53,9 @@ api.post('/pay_with_iota', (req, response) => {
                         }
                         console.log(obj)
 
+                        var t1 = Date.now();
+                        console.log("Time for pay_with_iota " + (t1 - t0) + " milliseconds.")
+
                         response.send(obj)
                     })
                 })
@@ -66,6 +70,7 @@ api.post('/pay_with_iota', (req, response) => {
 
 api.post('/pay_with_paypal', (req, response) => {
     console.log('pay_with_paypal called', req.query.id)
+    console.log('pay_with_paypal called', req.query)
     if (req.query.id) {
         orderModel.findOne({ _id: req.query.id }, function (error, order) {
             console.log('error', error)
@@ -74,16 +79,20 @@ api.post('/pay_with_paypal', (req, response) => {
                 response.status(500).send(error)
             } else {
                 
-                var payment = req.body.payment;
-                if (payment) {
-                    console.log('payment', payment)
-                    paypal.payment.get(payment.id, function (error, payment) {
+                var paypal_id = req.body.id;
+                console.log('paypal_id', paypal_id)
+                if (paypal_id) {
+                    paypal.payment.get(paypal_id, function (error, payment) {
                         if (error) {
                             console.log(error);
                             throw error;
                         } else {
                             console.log("Get Payment Response");
                             console.log(payment);
+                            console.log("payment.state === 'approved'");
+                            console.log(payment.state === 'approved');
+                            console.log("payment.transactions[0].invoice_number === order._id.toString()");
+                            console.log(payment.transactions[0].invoice_number === order._id.toString());
                             if (payment.state === 'approved' && payment.transactions[0].invoice_number === order._id.toString()) {
                                 console.log('amount', payment.transactions[0].amount)
                                 if (payment.transactions[0].amount.total >= order.final_price) {
