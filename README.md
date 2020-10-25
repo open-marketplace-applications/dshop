@@ -29,7 +29,7 @@
 
 ---
 
-# ANNA 
+# DShop 
 
 > Dezentral Shop Application
 
