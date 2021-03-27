@@ -120,10 +120,13 @@ module.exports.createInvoice = (order, payment) => {
                                 }
                             ] 
                         };
-                        transporter.sendMail(mailOptions, function (err) {
-                            if (err) { console.log("Error sending mail.", err) }
-                            console.log("Paymend success message sent to: ", order.email)
-                        });
+
+                        // TODO:: ENABLE THIS 
+                        
+                        // transporter.sendMail(mailOptions, function (err) {
+                        //     if (err) { console.log("Error sending mail.", err) }
+                        //     console.log("Paymend success message sent to: ", order.email)
+                        // });
                     }
                 })
                 .catch(error => {

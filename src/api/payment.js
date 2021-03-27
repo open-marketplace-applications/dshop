@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import orderModel from '../models/orderModel';
-var paymentModule = require('iota-payment')
+// var paymentModule = require('iota-payment')
+const axios = require('axios');
+
 var paypal = require('paypal-rest-sdk');
 import Order from '../models/orderModel'
 
@@ -24,41 +26,63 @@ api.post('/pay_with_iota', (req, response) => {
             if (error) {
                 response.status(500).send(error)
             } else {
-                let final_price = order.final_price
-                getLivePrice().then(live_price => {
-                    var iota_price = Math.ceil(final_price / live_price * 1000000)
-                    console.log('final_price', final_price)
-                    console.log('iota_price', iota_price)
-                    console.log('live_price', live_price)
-                    let obj = {}
-                    obj.order = order
-                    obj.info = {}
-                    obj.info.live_price = live_price
-                    obj.info.timestamp = Date.now() / 1000 | 0
+                // let final_price = order.final_price
 
-                    if(process.env.NODE_ENV == 'dev') {
-                        iota_price = 1
+                console.log('iota_price', iota_price)
+                let iota_price = 0;
+                if(process.env.NODE_ENV == 'dev') {
+                    iota_price = 1
+                }
+                console.log('iota_price', iota_price)
+
+                
+                const response_obj = {
+                    order,
+                    payment: {
+                        address: order.address,
+                        value: iota_price,
+                        // live_price: live_price
                     }
-                    console.log('iota_price', iota_price)
+                }
+                console.log(response_obj)
 
-                    paymentModule.createPaymentRequest({value: iota_price, data: obj}).then(payment => {
-                        const obj = {
-                            order,
-                            payment: {
-                                id: payment.id,
-                                address: payment.address,
-                                value: iota_price,
-                                live_price: live_price
-                            }
-                        }
-                        console.log(obj)
+                var t1 = Date.now();
+                console.log("Time for pay_with_iota " + (t1 - t0) + " milliseconds.")
 
-                        var t1 = Date.now();
-                        console.log("Time for pay_with_iota " + (t1 - t0) + " milliseconds.")
+                response.send(response_obj)
 
-                        response.send(obj)
-                    })
-                })
+             
+
+                // getLivePrice().then(live_price => {
+                //     var iota_price = Math.ceil(final_price / live_price * 1000000)
+                //     console.log('final_price', final_price)
+                //     console.log('iota_price', iota_price)
+                //     console.log('live_price', live_price)
+                //     let obj = {}
+                //     obj.order = order
+                //     obj.info = {}
+                //     obj.info.live_price = live_price
+                //     obj.info.timestamp = Date.now() / 1000 | 0
+
+
+                //     // paymentModule.createPaymentRequest({value: iota_price, data: obj}).then(payment => {
+                //     //     const obj = {
+                //     //         order,
+                //     //         payment: {
+                //     //             id: payment.id,
+                //     //             address: payment.address,
+                //     //             value: iota_price,
+                //     //             live_price: live_price
+                //     //         }
+                //     //     }
+                //     //     console.log(obj)
+
+                //     //     var t1 = Date.now();
+                //     //     console.log("Time for pay_with_iota " + (t1 - t0) + " milliseconds.")
+
+                //     //     response.send(obj)
+                //     // })
+                // })
 
             }
         });
@@ -128,9 +152,10 @@ api.post('/pay_with_paypal', (req, response) => {
 
 const getLivePrice = function () {
     return new Promise(function(resolve, reject) {
-        fetch('https://api.coingecko.com/api/v3/coins/iota')
-            .then(res => res.json())
-            .then(json => {
+        axios.get('https://api.coingecko.com/api/v3/coins/iota')
+            // .then(res => res.json())
+            .then(res => {
+                console.log('getLivePrice - res', res)
                 console.log('EUR', json.market_data.current_price.eur)
                 resolve(json.market_data.current_price.eur)
             });

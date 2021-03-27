@@ -1,23 +1,23 @@
 version: "2"
 services:
-  app:
-    container_name: app
-    restart: always
-    build: .
-    ports:
-      - "3000:3000"
-    links:
-      - mongo
-    env_file:
-    - .env.production
-  web:
-    container_name: web
-    restart: always
-    build: ./frontend
-    ports:
-      - "8080:8080"
-    links:
-      - app
+  # app:
+  #   container_name: app
+  #   restart: always
+  #   build: .
+  #   ports:
+  #     - "3000:3000"
+  #   links:
+  #     - mongo
+  #   env_file:
+  #   - .env.production
+  # web:
+  #   container_name: web
+  #   restart: always
+  #   build: ./frontend
+  #   ports:
+  #     - "8080:8080"
+  #   links:
+  #     - app
   mongo:
     container_name: mongo
     image: mongo

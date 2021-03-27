@@ -1,6 +1,7 @@
 import resource from 'resource-router-middleware';
 import orderModel from '../models/orderModel';
 import jwt from 'jsonwebtoken'
+import Wallet from '../lib/wallet';
 
 export default ({ config, db }) => resource({
 
@@ -48,19 +49,28 @@ export default ({ config, db }) => resource({
 		order.final_price = order.amount * magazin_cost + order.amount * shipping_cost
 		console.log("order.final_price", order.final_price);
 		order.status = 'ordered'
-		order.save().then(result => {
-			console.log("result:", result);
-			// clear id
-			let res = {
-				id: result._id,
-				final_price: result.final_price,
-			}
-			console.log("res:", res);
-			response.send(res)
-		}).catch(err => {
-			console.log('err', err)
-			response.status(500).send(err)
+
+		Wallet.getAddress().then(address => {
+			order.address = address;
+
+			order.save().then(result => {
+				console.log("result:", result);
+				// clear id
+				let res = {
+					id: result._id,
+					final_price: result.final_price,
+					iota_address: result.address,
+				}
+				console.log("res:", res);
+				response.send(res)
+			}).catch(err => {
+				console.log('err', err)
+				response.status(500).send(err)
+			})
 		})
+
+
+		
 	},
 
 	/** GET /:id - Return a given entity */

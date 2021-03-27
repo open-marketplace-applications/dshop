@@ -12,22 +12,13 @@ import api from './api';
 import config from './config';
 import passport from 'passport'
 import User from './models/userModel'
-import Order from './models/orderModel'
+import Wallet from './lib/wallet'
 
 let app = express();
-var paymentModule = require('iota-payment')
+// var paymentModule = require('iota-payment')
 
 
-var onPaymentSuccess = function (payment) {
-	console.log('onPaymentSuccess', payment)
-	let payment_object = {
-		method: "iota",
-		data: payment
-	}
-	Order.setPayed(payment.data.order, payment_object)
-}
-
-paymentModule.onEvent('paymentSuccess', onPaymentSuccess);
+// paymentModule.onEvent('paymentSuccess', onPaymentSuccess);
 
 var iota_pay_options = {
 	dashboard: true,
@@ -108,9 +99,9 @@ initializeDb( db => {
 	// api router
 	app.use('/api', api({ config, db }));
 
-	let server = paymentModule.createServer(app, iota_pay_options);
-
-	server.listen(process.env.PORT || config.port);
+	let wallet = Wallet.init()
+	
+	app.listen(process.env.PORT || config.port);
 
 	console.log(`Started on port ${process.env.PORT}`);
 

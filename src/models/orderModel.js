@@ -3,18 +3,24 @@ import mongoose from 'mongoose'
 import axios from 'axios'
 import { createInvoice } from '../invoice.js';
 
-var paymentModule = require('iota-payment')
+// var paymentModule = require('iota-payment')
 
 
 const Order = mongoose.model('order', orderSchema)
 
 
-Order.setPayed = function (order, payment) {
+Order.setPayed = function (payment) {
 
+    // IOTA onPaymentSuccess {
+    //     indexationId: 'fd555b29d109e085d7b9dd699c2a4f2c2d67f9474eeacc5609c9f7d4fe82955b',
+    //     accountId: 'wallet-account://0c5ba8bb78526afc364de250bfcf4696ccba637a122607c3e7d27e27e1c15d7f',
+    //     address: 'atoi1qrra9h2hzw54yj2f9kkljs0wcxfcghefzgk80rsvqk3fkqlup3uu5x66mks',
+    //     balanceChange: { spent: 0, received: 1000000 }
+    //   }
 
-    console.log('setOrderPayed - order', order)
+    console.log('setOrderPayed - payment', payment)
 
-    Order.findOne({ _id: order._id }, function (err, order) {
+    Order.findOne({ address: payment.address }, function (err, order) {
         if (!err) {
             if (!order) {
                 // there is no order with this id
@@ -38,16 +44,18 @@ Order.setPayed = function (order, payment) {
                                 hock_content = 'Hey, jemand hat gerade ' + order.amount + ' Magazine gekauft!'
                             }
 
-                            axios.post(process.env.WEBHOOK_URL, {
-                                content: hock_content,
-                                username: hock_name
-                            })
-                            .then(function (response) {
-                                console.log('Webhock success');
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
+                            // TODO:: Uncomment this:
+
+                            // axios.post(process.env.WEBHOOK_URL, {
+                            //     content: hock_content,
+                            //     username: hock_name
+                            // })
+                            // .then(function (response) {
+                            //     console.log('Webhock success');
+                            // })
+                            // .catch(function (error) {
+                            //     console.log(error);
+                            // });
                         }
 
 
@@ -58,7 +66,7 @@ Order.setPayed = function (order, payment) {
                         if(payment.method === 'iota') {
 
                         // create an invoice
-                        createInvoice(order, payment)
+                        // createInvoice(order, payment)
                         
                         // handle ref link payout
                         if (order.ref_address) {
@@ -79,13 +87,13 @@ Order.setPayed = function (order, payment) {
                                 message: 'Example reflink payout',
                                 tag: 'REFLINK9EINFACHIOTA'
                             }
-                            paymentModule.payout.send(payoutObject)
-                                .then(result => {
-                                    console.log("reflink payout done.", result)
-                                })
-                                .catch(err => {
-                                    console.log(err)
-                                })
+                            // paymentModule.payout.send(payoutObject)
+                            //     .then(result => {
+                            //         console.log("reflink payout done.", result)
+                            //     })
+                            //     .catch(err => {
+                            //         console.log(err)
+                            //     })
                         }
                         } else {
                             // TODO: handle paypal - invoices
