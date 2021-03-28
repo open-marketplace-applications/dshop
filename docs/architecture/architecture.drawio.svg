@@ -1,0 +1,33 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="601px" height="611px" viewBox="-0.5 -0.5 601 611" content="&lt;mxfile&gt;&lt;diagram id=&quot;NbcyL1aSpoRZkwYzc6jT&quot; name=&quot;Page-1&quot;&gt;zVZLc5swEP41HDuDhUvbY+I66aGd6UwOPauwATWCZcRim/76CmtlHnKcZNpkyviAvv12tW8cJZvqcGtkU37DHHQk4vwQJZ8jIVYfhIiGX5z3DknjVCQOKozKmTYCd+o3MBgz2qkc2hmREDWpZg5mWNeQ0QyTxuB+TrtHPb+1kQUEwF0mdYj+UDmVDl3H9hklX0AVJfkQT6KfMnsoDHY1XxmJ5P74OHElvTnmt6XMcT+Bkm2UbAwiubfqsAE9JNhnzundPCI9uW6gpucorJ3CTuoOvMdHv6j36YDcZoePaKjEAmuptyN6fYwXBouxPY2cr4iNBVcW/AVEPZdadoQWKqnSLA295kBa7EzGfnATkTQFMIudHTycqHGkt4AVkOktwYCWpHbz+kpuk+LEY9UrY2Q/ITSoamonlr8PgCX4nk+5mNzxq/Ui5y/j2xfngT9NQhmhYx3P11QENb22XQm2JZelbfeq0rKGSyXYgSE4XEyvl8aLuD7xeT9OkfCccjI/J/BcSSZpuRh1EkR9Y7Cmtw/73ZuG/f7/HuB/PJrBLInkkZ7zJtwGYa0LQxkYWi0Mub0TGHrpsgjueWJZPMH/62XxMeifK5OViuyHtTPw6qMznxwf3HR00nOjky6r84zRiYaF4L+rLlPjP5hk+wc=&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);">
+    <defs/>
+    <g>
+        <path d="M 150 250 L 150 280 L 150 323.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 150 328.88 L 146.5 321.88 L 150 323.63 L 153.5 321.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 90 353 L 90 330 L 290 330 L 290 353" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 90 353 L 90 530 L 290 530 L 290 353" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 90 353 L 290 353" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="#000000" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="189.5" y="346">
+                Backend
+            </text>
+        </g>
+        <path d="M 90 73 L 90 50 L 290 50 L 290 73" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 90 73 L 90 250 L 290 250 L 290 73" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 90 73 L 290 73" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="#000000" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="189.5" y="66">
+                Frontend
+            </text>
+        </g>
+        <path d="M 220 330 L 220 280 L 220 256.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 220 251.12 L 223.5 258.12 L 220 256.37 L 216.5 258.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 0 23 L 0 0 L 600 0 L 600 23" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 0 23 L 0 610 L 600 610 L 600 23" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 0 23 L 600 23" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="#000000" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="299.5" y="16">
+                Architecture
+            </text>
+        </g>
+    </g>
+</svg>
