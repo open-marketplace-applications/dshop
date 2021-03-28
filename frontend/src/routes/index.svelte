@@ -1,18 +1,16 @@
 <script lang="ts">
 	import Counter from '$lib/Counter.svelte';
 	import Upload from '$lib/Upload.svelte';
+	import * as market from 'market-lib';
+	import { onMount } from 'svelte';
 
-	
+	console.log('market', market);
+	onMount(async () => {
+		console.log('market');
+		await market.default()
+		market.greet("Svelte")
+	});
 </script>
-
-<main>
-	<h1>Hello world!</h1>
-
-	<Counter />
-	<!-- <Upload /> -->
-
-	<p>Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
-</main>
 
 <style lang="scss">
 	:root {
@@ -52,3 +50,16 @@
 		}
 	}
 </style>
+
+<main>
+	<h1>Hello world!</h1>
+
+	<Counter />
+	<!-- <Upload /> -->
+
+	<p>
+		Visit
+		<a href="https://svelte.dev">svelte.dev</a>
+		to learn how to build Svelte apps.
+	</p>
+</main>
