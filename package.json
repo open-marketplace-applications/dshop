@@ -27,8 +27,8 @@
       "no-unused-vars": 0
     }
   },
-  "repository": "einfachIOTA/store",
-  "author": "huhn <huhn@einfachIOTA.de>",
+  "repository": "",
+  "author": "huhn <huhn.dev@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@iota/wallet": "0.0.6",
@@ -39,10 +39,10 @@
     "cors": "^2.7.1",
     "dotenv": "^4.0.0",
     "dynamic-html-pdf": "^1.0.1",
-    "express": "^4.13.3",
+    "express": "^4.17.1",
     "iota-payment": "0.0.67",
     "jsonwebtoken": "^7.3.0",
-    "mongoose": "^5.7.5",
+    "mongoose": "^5.12.2",
     "morgan": "^1.8.0",
     "nodemailer": "^6.3.1",
     "passport": "^0.3.2",

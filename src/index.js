@@ -17,7 +17,10 @@ import Wallet from './lib/wallet'
 let app = express();
 // var paymentModule = require('iota-payment')
 
-
+app.get('/hello', function(req, res){
+	res.send("Hello World!");
+ });
+ 
 // paymentModule.onEvent('paymentSuccess', onPaymentSuccess);
 
 var iota_pay_options = {
@@ -100,11 +103,17 @@ initializeDb( db => {
 	app.use('/api', api({ config, db }));
 
 	let wallet = Wallet.init()
+	const port = process.env.PORT || config.port
 	
-	app.listen(process.env.PORT || config.port);
+	app.listen(port, callback);
 
-	console.log(`Started on port ${process.env.PORT}`);
-
+	console.log(`Started on port ${port}`);
+	
 });
+
+const callback = function(res) {
+	console.log(`Sresresres ${res}`);
+
+}
 
 export default app;

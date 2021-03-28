@@ -7,6 +7,7 @@
 	let count;
 
 	onMount(async () => {
+		console.log("counter")
 		count = await getAvailableAmount();
 	});
 </script>
