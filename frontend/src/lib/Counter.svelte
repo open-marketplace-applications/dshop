@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { getAvailableAmount } from '../api/shop';
+	import { onMount } from 'svelte'
+	import { getAvailableAmount } from '../api/shop'
 
 	// let count: number = 0;
 
-	let count;
+	let count
 
 	onMount(async () => {
 		console.log("counter")
-		count = await getAvailableAmount();
-	});
+		count = await getAvailableAmount()
+	})
 </script>
 
 

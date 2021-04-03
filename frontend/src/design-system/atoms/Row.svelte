@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    width: 100%;
   }
   @media (min-width: 720px) {
     .row {

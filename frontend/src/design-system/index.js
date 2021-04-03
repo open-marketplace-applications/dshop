@@ -8,6 +8,7 @@ import Form from './atoms/Form.svelte'
 import Image from './atoms/Image.svelte'
 import Input from './atoms/Input.svelte'
 import Link from './atoms/Link.svelte'
+import Loading from './atoms/Loading.svelte'
 import Logo from './atoms/Logo.svelte'
 import Price from './atoms/Price.svelte'
 import Row from './atoms/Row.svelte'
@@ -27,6 +28,7 @@ export {
   Image,
   Input,
   Link,
+  Loading,
   Logo,
   Price,
   Row,

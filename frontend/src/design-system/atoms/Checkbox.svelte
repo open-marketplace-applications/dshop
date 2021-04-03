@@ -5,8 +5,8 @@
 </div>
 
 <script lang='ts'>
-  export let name: string = 'Add a name'
-  export let label: string = 'Add a label'
+  export let name = 'Add a name'
+  export let label = 'Add a label'
 </script>
 
 <style>
