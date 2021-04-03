@@ -9,3 +9,6 @@ data
 invoices
 dshop-wallet
 book
+config.json
+.env
+wallet.*

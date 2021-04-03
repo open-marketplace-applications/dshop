@@ -4,6 +4,7 @@ import orders from './orders';
 import auth from './auth'
 import app from '../index.js';
 import payment from './payment.js'
+import assets from './assets.js'
 
 export default ({ config, db }) => {
 	let api = Router();
@@ -26,6 +27,7 @@ export default ({ config, db }) => {
 		});
 	});
 	api.use(payment)
+	api.use('/assets', assets({ config, db }))
 
 	return api;
 }

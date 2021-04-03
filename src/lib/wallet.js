@@ -25,12 +25,14 @@ async function init() {
     const manager = new AccountManager({
         storagePath: './dshop-wallet',
     })
+
     manager.setStrongholdPassword(process.env.SH_PASSWORD)
-    manager.storeMnemonic(SignerType.Stronghold)
 
     account = manager.getAccount('dshop-0')
 
     if (!account) {
+        manager.storeMnemonic(SignerType.Stronghold)
+
         account = await manager.createAccount({
             clientOptions: { node: "https://api.lb-0.testnet.chrysalis2.com", localPow: true },
             alias: 'dshop-0',
@@ -41,9 +43,16 @@ async function init() {
     }
 
     addEventListener("BalanceChange", onPaymentSuccess)
+    addEventListener("ErrorThrown", callback)
+    addEventListener("NewTransaction", callback)
+    addEventListener("ConfirmationStateChange", callback)
+    addEventListener("Reattachment", callback)
 
 }
-
+const callback = function(err, data) {
+    console.log("callback err:", err)
+    console.log("callback data:", data)
+}
 var onPaymentSuccess = function (err, data) {
 	console.log('err', err)
 	console.log('onPaymentSuccess', data)

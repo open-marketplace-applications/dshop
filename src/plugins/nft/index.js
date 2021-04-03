@@ -1,5 +1,6 @@
 const { exec } = require("child_process");
 
+var path = require('path');
 
 
 
@@ -22,7 +23,7 @@ export function serverStatus(body) {
 
 export function sendAsset(color, address) {
 
-    let command = `./cli-wallet send-funds -color ${color} -amount 1 -dest-addr ${address}`
+    let command = `/src/plugins/nft/cli-wallet send-funds -color ${color} -amount 1 -dest-addr ${address}`
     exec(command, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
@@ -37,3 +38,24 @@ export function sendAsset(color, address) {
 
 }
 
+// create an asset in the form of colored coins
+export function mintAsset(name, symbol) {
+
+    let myPromise = new Promise(function (myResolve, myReject) {
+        let command = `src/plugins/nft/cli-wallet create-asset -amount 1 -name ${name}`
+        exec(command, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                myReject();
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                myReject();
+            }
+            console.log(`stdout: ${stdout}`);
+            myResolve(stdout);
+        });
+    });
+
+    return myPromise
+}

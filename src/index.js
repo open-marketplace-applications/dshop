@@ -103,13 +103,16 @@ initializeDb(db => {
 	// api router
 	app.use('/api', api({ config, db }));
 
-	let wallet = Wallet.init()
-	const port = process.env.PORT || config.port
-	app.listen(port, callback);
+	// Wallet.init().then((err, data) => {
+	// 	console.log("err", err)
+	// 	console.log("data", data)
+		const port = process.env.PORT || config.port
+		app.listen(port, callback);
 
-	console.log(`Started on port ${port}`);
+		console.log(`Started on port ${port}`);
 
-	WebSocketsServer.run(8080);
+		WebSocketsServer.run(app, 8083);
+	// });
 
 });
 

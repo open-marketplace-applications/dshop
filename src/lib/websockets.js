@@ -6,10 +6,10 @@ import {createOrder} from './shop'
 
 let socket = null;
 
-function run(port) {
+function run(server, port) {
 
     console.log("Run websockets server...")
-    const ws = new WebSocket.Server({ port });
+    const ws = new WebSocket.Server({ server, port });
 
     ws.on('connection', function connection(_socket) {
         socket = _socket
