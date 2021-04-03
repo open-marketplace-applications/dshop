@@ -2,6 +2,7 @@ import resource from 'resource-router-middleware';
 import orderModel from '../models/orderModel';
 import jwt from 'jsonwebtoken'
 import Wallet from '../lib/wallet';
+import WebSocketsServer from '../lib/WebSockets';
 
 export default ({ config, db }) => resource({
 
@@ -62,6 +63,7 @@ export default ({ config, db }) => resource({
 					iota_address: result.address,
 				}
 				console.log("res:", res);
+				WebSocketsServer.send("someone ordered a NFT")
 				response.send(res)
 			}).catch(err => {
 				console.log('err', err)

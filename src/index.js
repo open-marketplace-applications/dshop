@@ -13,14 +13,15 @@ import config from './config';
 import passport from 'passport'
 import User from './models/userModel'
 import Wallet from './lib/wallet'
+import WebSocketsServer from './lib/WebSockets'
 
 let app = express();
 // var paymentModule = require('iota-payment')
 
-app.get('/hello', function(req, res){
+app.get('/hello', function (req, res) {
 	res.send("Hello World!");
- });
- 
+});
+
 // paymentModule.onEvent('paymentSuccess', onPaymentSuccess);
 
 var iota_pay_options = {
@@ -30,16 +31,16 @@ var iota_pay_options = {
 }
 
 // logger
-if(process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== 'test') {
 	app.use(morgan('dev'));
 }
 
 app.use(bodyParser.urlencoded({
-  extended: true
+	extended: true
 }))
 
 app.use(bodyParser.json({
-	limit : config.bodyLimit
+	limit: config.bodyLimit
 }));
 
 app.use(passport.initialize({ session: false }))
@@ -49,7 +50,7 @@ var allowedOrigins = [];
 if (process.env.NODE_ENV == 'prod') {
 	allowedOrigins = ['https://shop.einfachiota.de', 'https://shop.einfachiota.com'];
 } else {
-	allowedOrigins = ['http://localhost:3000','http://0.0.0.0:3001', 'http://localhost:3001', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080', 'http://localhost:8000'];
+	allowedOrigins = ['http://localhost:3000', 'http://0.0.0.0:3001', 'http://localhost:3001', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080', 'http://localhost:8000'];
 }
 
 console.log("allowedOrigins");
@@ -73,45 +74,46 @@ const jwtOptions = {
 	jwtFromRequest: ExtractJwt.fromHeader('authorization'),
 }
 
-passport.serializeUser(function(user, done) {
-  done(null, user.username);
+passport.serializeUser(function (user, done) {
+	done(null, user.username);
 })
 
-passport.deserializeUser(function(username, done) {
+passport.deserializeUser(function (username, done) {
 	User.findOne({ username: username })
-	.then((user) => {
-		return done(user)
-	})
-	.catch(done)
+		.then((user) => {
+			return done(user)
+		})
+		.catch(done)
 })
 
 passport.use('jwt', new JwtStrategy(jwtOptions, (jwt_payload, done) => {
 	User.findOne({ username: jwt_payload.id })
-	.then(user => {
-		if(user) return done(null, user)
-		else return done(null, false)
-	})
+		.then(user => {
+			if (user) return done(null, user)
+			else return done(null, false)
+		})
 }))
 
 // connect to db
-initializeDb( db => {
+initializeDb(db => {
 
 	// internal middleware
-	app.use('/api', middleware({ config, db })); 
-	
+	app.use('/api', middleware({ config, db }));
+
 	// api router
 	app.use('/api', api({ config, db }));
 
 	let wallet = Wallet.init()
 	const port = process.env.PORT || config.port
-	
 	app.listen(port, callback);
 
 	console.log(`Started on port ${port}`);
-	
+
+	WebSocketsServer.run(8080);
+
 });
 
-const callback = function(res) {
+const callback = function (res) {
 	console.log(`Sresresres ${res}`);
 
 }

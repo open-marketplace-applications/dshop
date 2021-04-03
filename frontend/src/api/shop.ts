@@ -2,12 +2,12 @@ const URL = "http://localhost:4000/api"
 
 export const getAvailableAmount = async () => {
   try {
-    console.log("getAvailableAmount")
+    console.log("getAvailableAmount0")
     
     const response = await fetch(URL + "/amount")
-    console.log("getAvailableAmount", response)
+    console.log("getAvailableAmount1", response)
     const obj = await response.json();
-    console.log("getAvailableAmount", obj)
+    console.log("getAvailableAmount2", obj)
     return obj.amount;
   } catch (error) {
     console.log("getAvailableAmount error")
@@ -36,7 +36,7 @@ export const buyProduct = async () => {
     console.log("response", response)
     const obj = await response.json();
     console.log("obj", obj)
-    return obj.amount;
+    return obj;
   } catch (error) {
     console.error(error);
   }
