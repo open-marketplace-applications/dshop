@@ -1,0 +1,34 @@
+name: deploy frontend to github pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # - name: Setup mdBook
+      #   uses: peaceiris/actions-mdbook@v1
+      #   with:
+      #     mdbook-version: 'latest'
+
+      # - run: mdbook build docs
+
+      - run: cd frontend
+      - run: npm i
+      - run: npm run build
+
+      # - run: npm i
+      # - run: npm run build-storybook
+      # - run: cp -r storybook-static docs/book/storybook
+      
+      - name: Deploy
+        uses: iotaledger/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./frontend/build
