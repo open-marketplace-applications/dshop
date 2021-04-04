@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let countdown: string = 'May 24, 2021 15:37:25'
+	export let block: boolean = false
 	let countDownDate = new Date(countdown).getTime()
 
 	let days = 0
@@ -27,39 +28,50 @@
 	}, 1000)
 </script>
 
-<div class="countdown">
-	{#if days > 0}
-		<div class="timer">
-			<h4>{days}</h4>
-			<span>Days</span>
-		</div>
-	{/if}
-	{#if hours > 0 || days > 0}
-		<div class="timer">
-			<h4>{hours}</h4>
-			<span>Hours</span>
-		</div>
-	{/if}
-	{#if minutes > 0 || hours > 0}
-		<div class="timer">
-			<h4>{minutes}</h4>
-			<span>Minutes</span>
-		</div>
-	{/if}
-	{#if seconds > 0 || minutes > 0}
-		<div class="timer">
-			<h4>{seconds}</h4>
-			<span>Seconds</span>
-		</div>
-	{/if}
+<div class={`countdown ${block ? 'block' : ''} ${$$props.class}`}>
+	<div class="container">
+
+		{#if days > 0}
+			<div class="timer">
+				<h4>{days}</h4>
+				<span>Days</span>
+			</div>
+		{/if}
+		{#if hours > 0 || days > 0}
+			<div class="timer">
+				<h4>{hours}</h4>
+				<span>Hours</span>
+			</div>
+		{/if}
+		{#if minutes > 0 || hours > 0}
+			<div class="timer">
+				<h4>{minutes}</h4>
+				<span>Minutes</span>
+			</div>
+		{/if}
+		{#if seconds > 0 || minutes > 0}
+			<div class="timer">
+				<h4>{seconds}</h4>
+				<span>Seconds</span>
+			</div>
+		{/if}
+	</div>
 </div>
 
 <style>
 	.countdown {
+		display: inline-block;
 		background: var(--color-element-light);
 		border: var(--border);
 		border-radius: var(--radius);
 		padding: var(--space-xs);
+	}
+
+	.countdown.block {
+		display: block;
+	}
+	
+	.container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
