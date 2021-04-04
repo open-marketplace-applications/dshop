@@ -2,10 +2,9 @@
 	export const link: string = '/'
 </script>
 
-<a href={link}>
+<a class={`logo ${$$props.class}`} href={link}>
 	<svg
-		class={`${$$props.class}`}
-		id="Logo"
+		id="logo-svg"
 		xmlns="http://www.w3.org/2000/svg"
 		width="154.607"
 		height="23.966"
