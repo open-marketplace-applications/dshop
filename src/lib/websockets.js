@@ -1,6 +1,6 @@
 // const WebSocket = require('ws');
-// import config from '../config'
-// import orderModel from '../models/orderModel';
+import config from '../config'
+import orderModel from '../models/orderModel';
 // import {createOrder} from './shop'
 
 
@@ -34,27 +34,6 @@
 //     return ws
 // }
 
-// async function sendAmount() {
-//     try {
-//         orderModel.count({ status: ['payed', 'sent'] }, function (err, count) {
-//             // orderModel.countDocuments({ status: ['payed', 'sent'] }, function (err, count) {
-
-//                 console.log("count: ", count);
-//             if (err) {
-//                 console.log("error: ", err);
-//             }
-
-//             let response = {
-//                 message: `Amount update!`,
-//                 amount: config.maxAmount - count
-//             }
-//             socket.send(JSON.stringify(response));
-//         });
-//     } catch (error) {
-
-//         console.log("catch (error).", error)
-//     }
-// }
 // function send(message) {
 //     let response = {
 //         message: message,
@@ -86,12 +65,34 @@ function init(server) {
 
     io.on('connection', (socket) => {
         console.log('Client connected');
+        console.log(`User '${socket.id}' connected`)
+        // io.emit('update', `User '${socket.id}' connected`)
+        sendAmount(io)
         socket.on('disconnect', () => console.log('Client disconnected'));
     });
+}
 
-    setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
+async function sendAmount(io) {
+    try {
+        orderModel.count({ status: ['payed', 'sent'] }, function (err, count) {
+            // orderModel.countDocuments({ status: ['payed', 'sent'] }, function (err, count) {
 
+                console.log("count: ", count);
+            if (err) {
+                console.log("error: ", err);
+            }
+
+            let response = {
+                message: `Amount update!`,
+                amount: config.maxAmount - count
+            }
+            io.emit('update', JSON.stringify(response))
+        });
+    } catch (error) {
+
+        console.log("catch (error).", error)
+    }
 }
 
 module.exports = { init };

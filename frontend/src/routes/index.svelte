@@ -38,11 +38,20 @@
 		console.log('onMount')
 		// Websockets
 
+		// const socket = io("http://localhost:5000");
 		const socket = io("https://oma-dshop.herokuapp.com/");
 
 		console.log('socket', socket)
-		socket.on('time', function(timeString) {
-			console.log('timeString', timeString)
+
+		socket.on('update', function(message) {
+			let data = JSON.parse(message)
+			console.log('update', data)
+			if (data) {
+				if (data.message === 'Amount update!') {
+					amount = data.amount
+				}
+				messageStore.set(data)
+			}
 		});
 
 		// OLD SOCKET STUFF
