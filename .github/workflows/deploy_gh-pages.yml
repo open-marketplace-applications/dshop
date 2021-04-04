@@ -18,7 +18,7 @@ jobs:
 
       # - run: mdbook build docs
 
-      - run: cd frontend && npm i && npm run build
+      - run: cd frontend && npm i && ls && npm run build
 
       # - run: npm i
       # - run: npm run build-storybook
