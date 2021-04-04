@@ -1,7 +1,10 @@
 <script lang="ts">
-	export let align: string = 'flex-start'
-	export let direction: string = 'column'
-	export let justify: string = 'flex-start'
+	type Direction = 'column' | 'row'
+	type Align = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around'
+
+	export let direction: Direction = 'column'
+	export let align: Align = 'flex-start'
+	export let justify: Align = 'flex-start'
 </script>
 
 <div
