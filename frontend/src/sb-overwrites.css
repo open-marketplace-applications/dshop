@@ -1,0 +1,19 @@
+h1.sbdocs,
+h2.sbdocs,
+h3.sbdocs,
+p.sbdocs {
+	color: var(--color-text);
+}
+
+blockquote.sbdocs {
+	color: var(--color-text);
+	border-color: var(--color-primary);
+	background-color: var(--color-element-light);
+	padding-top: var(--space-sm);
+	padding-bottom: var(--space-sm);
+	border-radius: 0 var(--space-xs) var(--space-xs) 0;
+}
+
+a.sbdocs {
+	opacity: 1;
+}
