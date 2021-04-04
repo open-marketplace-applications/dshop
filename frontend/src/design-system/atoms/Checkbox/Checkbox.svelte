@@ -1,10 +1,16 @@
 <script lang="ts">
-	export let name = 'Add a name'
-	export let label = 'Add a label'
+	export let name: string = 'Add a name'
+	export let label: string = 'Add a label'
+	export let onChange: () => void
 </script>
 
 <div class={`checkbox ${$$props.class}`}>
-	<input {name} type="checkbox" tabindex="0" />
+	<input
+		{name}
+		type="checkbox"
+		tabindex="0"
+		on:change={onChange}
+	/>
 	<label for={name}>{label}</label>
 	<slot />
 </div>

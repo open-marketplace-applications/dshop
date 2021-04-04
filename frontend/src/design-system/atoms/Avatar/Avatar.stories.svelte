@@ -10,13 +10,13 @@
   component={Avatar} 
   argTypes={{
     imageUrl: { control: 'text' },
-    size: {
-      control: {
-        type: 'select',
-        options: ['sm', 'md', 'lg' , 'xl'],
-        default: 'md'
-      }
-    }
+    size: { control: {
+      type: 'select',
+      options: ['sm', 'md', 'lg' , 'xl'],
+    }},
+    class: { control: {
+      type: 'text',
+    }}
   }}
 />
 

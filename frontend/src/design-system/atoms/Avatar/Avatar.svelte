@@ -8,7 +8,7 @@
 </script>
 
 <div 
-	class={`avatar-image ${size}`} 
+	class={`avatar-image ${size} ${$$props.class}`} 
 	style="background-image: url('{imageUrl}')"
 />
 

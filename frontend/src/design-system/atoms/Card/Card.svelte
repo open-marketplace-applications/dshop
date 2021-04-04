@@ -2,7 +2,7 @@
   export let padding: boolean = true
 </script>
 
-<div class={`card ${padding ? 'padding' : ''}`} >
+<div class={`card ${padding ? 'padding' : ''} ${$$props.class}`} >
   <slot></slot>
 </div>
 
