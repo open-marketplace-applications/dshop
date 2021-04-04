@@ -4,7 +4,7 @@
 	type buttonColor = 'primary' | 'secondary'
 
 	export let callback: () => void
-	export let label: string
+	export let label: string = '👆 Click me'
 	export let color: buttonColor = 'primary'
 	export let link: string
 	export let size: buttonSize = 'md'
