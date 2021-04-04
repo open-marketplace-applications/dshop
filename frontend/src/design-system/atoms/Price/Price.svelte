@@ -1,6 +1,8 @@
 <script lang="ts">
-	export let value: number
-	export let unit: string
+	type Unit = 'IOTA' | 'MI' | '$' | '€'
+
+	export let value: number = 0
+	export let unit: string = 'MI'
 </script>
 
 <div class="price">
