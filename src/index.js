@@ -94,8 +94,6 @@ passport.use('jwt', new JwtStrategy(jwtOptions, (jwt_payload, done) => {
 // connect to db
 init().then(db => {
 
-	console.log("initializeDb", db)
-
 	// internal middleware
 	app.use('/api', middleware({ config, db }));
 
