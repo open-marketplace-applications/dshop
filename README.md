@@ -9,7 +9,6 @@
   </a>
 </p>
 
-
 <h1 align="center"><a href="https://openmarketplace.org"> Open Marketplace Apps</a></h1>
 
 <p align="center">Open marketplace apps are decentralized open source apps for smart cities and local communities.</p>
@@ -29,19 +28,21 @@
 
 ---
 
-# DShop 
+# DShop
 
-> Dezentral Shop Application
+Dezentral Shop Application
 
-## Introduction
-This is an implementation of a decentralized eCommerce Shop written in Javascript.
+## 🎯 Introduction
 
-## Warning
-This application is currently under development and is not yet ready to be used. It is currently feature incomplete and cannot be considered alpha.
+This is a monorepo to create a decentralized eCommerce Shop written, for now in Javascript.
 
-## Usage
+> **_Warning:_**
 
-### 🛠️ Build
+## This application is currently under development and is not yet ready to be used. It is currently feature incomplete and cannot be considered alpha.
+
+## 👆 Usage
+
+### 💫 Clone and Install
 
 When building for the first time, ensure to install dependencies first.
 
@@ -51,18 +52,23 @@ cd dshop
 npm install
 ```
 
-### Development
+### 🌱 Development
+
 ```
 npm run dev
 ```
 
-### Production
+### 🚀 Production
+
 ```
 npm run build
 npm start
 ```
 
-## Joining the discussion
+---
+
+## 💬 Joining the discussion
+
 If you want to get involved in discussions about this application, or you're looking for support, go to the #anna channel on [our Discord](https://discord.gg/XDQQcJC).
 
 
