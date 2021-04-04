@@ -16,7 +16,7 @@ import config from './config';
 import passport from 'passport'
 import User from './models/userModel'
 import Wallet from './lib/wallet'
-import WebSocketsServer from './lib/WebSockets'
+import WebSocketsServer from './lib/websockets'
 
 let app = express();
 // var paymentModule = require('iota-payment')
