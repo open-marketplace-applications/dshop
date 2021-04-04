@@ -49,7 +49,7 @@
 </Template>
 
 <Story 
-  name="Small" 
+  name="Small Button" 
   args={{
     label: mockButton.label,
     size: 'sm'
@@ -57,7 +57,7 @@
 />
 
 <Story 
-  name="Medium" 
+  name="Medium Button" 
   args={{
     label: mockButton.label,
     size: 'md'
@@ -65,7 +65,7 @@
 />
 
 <Story
-  name="Large" 
+  name="Large Button" 
   args={{
     label: mockButton.label,
     size: 'lg'
@@ -73,16 +73,22 @@
 />
 
 <Story
-  name="Secondary" 
+  name="Primary Button" 
   args={{
     label: mockButton.label,
-    color: 'secondary',
-    size: 'md'
   }}
 />
 
 <Story
-  name="Rounded" 
+  name="Secondary Button" 
+  args={{
+    label: mockButton.label,
+    color: 'secondary',
+  }}
+/>
+
+<Story
+  name="Rounded Button" 
   args={{
     label: mockButton.label,
     color: 'secondary',
@@ -91,7 +97,7 @@
 />
 
 <Story
-  name="Block" 
+  name="Block Button" 
   args={{
     label: mockButton.label,
     color: 'secondary',
