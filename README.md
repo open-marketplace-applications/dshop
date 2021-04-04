@@ -64,3 +64,25 @@ npm start
 
 ## Joining the discussion
 If you want to get involved in discussions about this application, or you're looking for support, go to the #anna channel on [our Discord](https://discord.gg/XDQQcJC).
+
+
+### environment variables
+
+Example Env File
+```bash
+MAX_PAYMENT_TIME=4320
+JWT_SECRET = "TESTTEST42"
+MONGO_URL="mongodb://localhost:27017/dshop-store"
+PAYPAL_MODE='sandbox'
+PAYPAL_CLIENT_ID=''
+PAYPAL_CLIENT_SECRET=''
+PORT=4000
+MAX_AMOUNT=500
+NODE_ENV=dev
+WEBHOOK_URL=""
+SENDGRID_USERNAME=""
+SENDGRID_PASSWORD=""
+debug=full
+SH_PASSWORD="your-hardcore-stronghold-password"
+
+```
