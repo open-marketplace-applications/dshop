@@ -24,6 +24,9 @@ jobs:
       - name: Install and Build 🔧
         run: |
           cd frontend
+          ls /home/runner/work/dshop/dshop/frontend
+          ls /home/runner/work/dshop/dshop/frontend/src/lib/
+          ls /home/runner/work/dshop/dshop/frontend/src/lib/ToolBar
           npm install
           npm run build
 
