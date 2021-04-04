@@ -17,7 +17,7 @@
 		<label for={name}>{label}</label>
 	{/if}
 
-	<input {name} {type} {placeholder} on:input={handleChange} />
+	<input {name} {type} {placeholder} {value} tabindex="0" on:input={handleChange} />
 	<slot />
 </div>
 
