@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let name: string = 'Add a name'
-	export let label: string = 'Add a label'
+	export let label: string
+	export let checked: boolean = false
 	export let onChange: () => void
 </script>
 
@@ -9,10 +10,12 @@
 		{name}
 		type="checkbox"
 		tabindex="0"
+		{checked}
 		on:change={onChange}
 	/>
-	<label for={name}>{label}</label>
-	<slot />
+	<label for={name}>
+		{#if label} {label} {:else} <slot /> {/if}
+	</label>
 </div>
 
 <style>
