@@ -1,14 +1,11 @@
 <script lang="ts">
-	// import Counter from '$lib/Counter.svelte';
 	import BuyButton from '$lib/BuyButton.svelte'
-	// import Upload from '$lib/Upload.svelte';
-	// import * as market from 'market-lib';
 	import { onMount } from 'svelte'
 	import { writable } from 'svelte/store'
 	import Message from '$lib/Message.svelte'
 	import '../theme.css'
 
-	import { Section, Container, Row, Col, Button, Image, Loading } from '../design-system/index'
+	import { Section, Container, Row, Col } from '../design-system/index'
 
 	import Hero from '$lib/Hero/Hero.svelte'
 	import Toolbar from '$lib/ToolBar/Toolbar.svelte'
