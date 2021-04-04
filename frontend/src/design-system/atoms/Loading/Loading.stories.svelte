@@ -1,7 +1,7 @@
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
   import Loading from './Loading.svelte'
-  import Section from '../Section.svelte'
+  import Section from '../Section/Section.svelte'
 </script>
 
 <Meta 

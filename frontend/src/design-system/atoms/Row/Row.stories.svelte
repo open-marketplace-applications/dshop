@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
-  import Section from '../Section.svelte'
+  import Section from '../Section/Section.svelte'
   import Container from '../Container/Container.svelte'
   import Row from './Row.svelte'
 </script>
