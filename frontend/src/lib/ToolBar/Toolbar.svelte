@@ -1,15 +1,15 @@
-<script lang='ts'>
-  import { Container, Button } from '../../design-system/index'
+<script lang="ts">
+	import { Container, Button } from '../../design-system/index'
 </script>
 
 <div class="toolbar">
-  <Container class="toolbar-container">
-    <Button color="secondary" rounded>Share</Button>
-  </Container>
+	<Container class="toolbar-container">
+		<Button color="secondary" rounded>Share</Button>
+	</Container>
 </div>
 
 <style>
-  .toolbar {
+	.toolbar {
 		position: absolute;
 		top: -40px;
 		left: 0;

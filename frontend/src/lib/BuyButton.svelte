@@ -38,6 +38,6 @@
 	{/if}
 {:else}
 	<Button callback={buy} block={true}>
-		<Loading size='sm' orientation='vertical' color='light' />
+		<Loading size="sm" orientation="vertical" color="light" />
 	</Button>
 {/if}

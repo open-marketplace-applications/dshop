@@ -18,22 +18,22 @@ import UserInfo from './atoms/UserInfo.svelte'
 import Video from './atoms/Video.svelte'
 
 export {
-  Avatar,
-  Button,
-  Checkbox,
-  Col,
-  Container,
-  Countdown,
-  Form,
-  Image,
-  Input,
-  Link,
-  Loading,
-  Logo,
-  Price,
-  Row,
-  Section,
-  Separator,
-  UserInfo,
-  Video
-} 
+	Avatar,
+	Button,
+	Checkbox,
+	Col,
+	Container,
+	Countdown,
+	Form,
+	Image,
+	Input,
+	Link,
+	Loading,
+	Logo,
+	Price,
+	Row,
+	Section,
+	Separator,
+	UserInfo,
+	Video
+}

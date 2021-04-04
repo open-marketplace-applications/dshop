@@ -1,23 +1,4 @@
-{#if link}
-	<a
-		href={link}
-		class={`btn ${rounded ? 'rounded' : ''} ${size} ${color} ${block ? 'block' : ''} ${$$props.class}`}
-	>
-		{label ? label : ''}
-		<slot/>
-	</a>
-{:else}
-	<button 
-		on:click={callback}
-		type={type}
-		class={`btn ${rounded ? 'rounded' : ''} ${size} ${color} ${block ? 'block' : ''} ${$$props.class}`}
-	>
-		{label ? label : ''}
-		<slot/>
-	</button>
-{/if}
-
-<script lang='ts'>
+<script lang="ts">
 	type buttonType = 'button' | 'submit'
 	type buttonSize = 'sm' | 'md' | 'lg'
 	type buttonColor = 'primary' | 'secondary'
@@ -32,8 +13,31 @@
 	export let type: buttonType = 'button'
 </script>
 
+{#if link}
+	<a
+		href={link}
+		class={`btn ${rounded ? 'rounded' : ''} ${size} ${color} ${block ? 'block' : ''} ${
+			$$props.class
+		}`}
+	>
+		{label ? label : ''}
+		<slot />
+	</a>
+{:else}
+	<button
+		on:click={callback}
+		{type}
+		class={`btn ${rounded ? 'rounded' : ''} ${size} ${color} ${block ? 'block' : ''} ${
+			$$props.class
+		}`}
+	>
+		{label ? label : ''}
+		<slot />
+	</button>
+{/if}
+
 <style>
-  .btn {
+	.btn {
 		background: var(--color-primary);
 		outline: none;
 		border-radius: var(--radius);
@@ -61,7 +65,8 @@
 		border-radius: 100px;
 	}
 
-	.btn:hover, .btn:focus {
+	.btn:hover,
+	.btn:focus {
 		background: var(--color-primary-light);
 	}
 
@@ -75,7 +80,7 @@
 	.btn.lg {
 		padding: var(--space-md) var(--space-xxl);
 	}
-	
+
 	/* Color */
 	.btn.primary {
 		background: var(--color-primary);

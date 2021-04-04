@@ -1,12 +1,12 @@
-<div class='form-container'>
-	<form on:submit|preventDefault={onSubmit}>
-		<slot/>
-	</form>
-</div>
-
-<script lang='ts'>
+<script lang="ts">
 	export let onSubmit: () => void
 </script>
+
+<div class="form-container">
+	<form on:submit|preventDefault={onSubmit}>
+		<slot />
+	</form>
+</div>
 
 <style>
 	.form-container {
@@ -18,9 +18,9 @@
 		border-radius: var(--radius);
 	}
 
-  :global(h1) {
-    margin-bottom: var(--space-xl);
-  }
+	:global(h1) {
+		margin-bottom: var(--space-xl);
+	}
 
 	@media (min-width: 720px) {
 		.form-container {

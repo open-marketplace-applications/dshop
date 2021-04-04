@@ -1,8 +1,8 @@
-<script lang='ts'>
-  import Nav from '../lib/Nav/Nav.svelte'
+<script lang="ts">
+	import Nav from '../lib/Nav/Nav.svelte'
 </script>
 
 <Nav />
 <main>
-  <slot></slot>
+	<slot />
 </main>

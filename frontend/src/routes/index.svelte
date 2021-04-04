@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte'
+	// import Counter from '$lib/Counter.svelte';
 	import BuyButton from '$lib/BuyButton.svelte'
-	import Upload from '$lib/Upload.svelte'
-	import * as market from 'market-lib'
+	// import Upload from '$lib/Upload.svelte';
+	// import * as market from 'market-lib';
 	import { onMount } from 'svelte'
 	import { writable } from 'svelte/store'
 	import Message from '$lib/Message.svelte'
@@ -20,29 +20,28 @@
 	const messageStore = writable('')
 	let messages = []
 	let socket = null
-	const sendMessage = message => {
+	const sendMessage = (message) => {
 		console.log('sendMessage called!')
 		if (socket.readyState <= 1) {
-
-			socket.send("buy")
+			socket.send('buy')
 		}
 	}
 
 	onMount(async () => {
 		// WASM Market Lib
-		await market.default()
+		// await market.default()
 		// market.greet("Svelte")
 
 		console.log('onMount')
 		// Websockets
 		socket = new WebSocket('ws://localhost:8083')
 		// Connection opened
-		socket.addEventListener('open', function(event) {
+		socket.addEventListener('open', function (event) {
 			console.log("It's open", event)
 		})
 
 		// Listen for messages
-		socket.addEventListener('message', function(event) {
+		socket.addEventListener('message', function (event) {
 			console.log('message', event)
 			console.log('message', event.data)
 			let data = JSON.parse(event.data)
@@ -54,13 +53,12 @@
 			}
 		})
 
-		messageStore.subscribe(currentMessage => {
+		messageStore.subscribe((currentMessage) => {
 			console.log('currentMessage', currentMessage)
 
 			messages = [...messages, currentMessage]
 		})
 	})
-	
 </script>
 
 <Hero />
@@ -73,7 +71,7 @@
 				<p>This is the first IOTA NFT Cat</p>
 			</Col>
 			<Col class="history-col">
-				<AvailabilityCount amount={amount} max={MAX} />
+				<AvailabilityCount {amount} max={MAX} />
 				<BuyButton />
 				<h4>Messages</h4>
 				{#each messages as message, i}

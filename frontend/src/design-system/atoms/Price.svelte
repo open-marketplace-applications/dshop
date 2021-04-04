@@ -1,15 +1,15 @@
-<div class='price'>
+<script lang="ts">
+	export let value: number
+	export let unit: string
+</script>
+
+<div class="price">
 	<h3>{value}</h3>
 	<span>{unit}</span>
 </div>
 
-<script lang='ts'>
-  export let value: number
-  export let unit: string
-</script>
-
 <style>
-  .price {
+	.price {
 		display: flex;
 		align-items: flex-end;
 		margin-bottom: var(--space-md);

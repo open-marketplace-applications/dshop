@@ -1,19 +1,17 @@
+<script>
+	import Moon from '../../design-system/icons/Moon.svelte'
+
+	function toggle() {
+		window.document.body.classList.toggle('dark-mode')
+	}
+</script>
 
 <button on:click={toggle}>
 	<Moon />
 </button>
 
-
-<script>
-	import Moon from '../../design-system/icons/Moon.svelte'
-
-  function toggle() {
-    window.document.body.classList.toggle('dark-mode')
-  }
-</script>
-
 <style>
-  button {
+	button {
 		background-color: var(--color-element);
 		outline: none;
 		border-radius: var(--radius);

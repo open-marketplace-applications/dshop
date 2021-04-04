@@ -1,7 +1,7 @@
 <script>
-	export let message;
+	export let message
 </script>
 
-<p >
+<p>
 	{message.message}
 </p>

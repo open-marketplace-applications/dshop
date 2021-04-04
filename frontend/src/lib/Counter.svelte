@@ -7,11 +7,10 @@
 	let count
 
 	onMount(async () => {
-		console.log("counter")
+		console.log('counter')
 		count = await getAvailableAmount()
 	})
 </script>
-
 
 <div>
 	{#if count}

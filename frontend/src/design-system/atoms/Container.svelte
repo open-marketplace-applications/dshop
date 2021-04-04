@@ -3,16 +3,16 @@
 </div>
 
 <style>
-  .container {
+	.container {
 		max-width: var(--content-width);
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 var(--space-lg);
+		width: 100%;
+		margin: 0 auto;
+		padding: 0 var(--space-lg);
 	}
-  
-  @media (min-width: 720px) {
-    .container {
-      padding: 0 var(--space-xxl);
-    }
+
+	@media (min-width: 720px) {
+		.container {
+			padding: 0 var(--space-xxl);
+		}
 	}
 </style>

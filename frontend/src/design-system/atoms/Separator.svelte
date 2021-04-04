@@ -1,9 +1,13 @@
-<script lang='ts'>
-  export let title: string
+<script lang="ts">
+	export let title: string
 </script>
 
+<span>
+	{title}
+</span>
+
 <style>
-  span {
+	span {
 		text-transform: uppercase;
 		font-size: var(--space-sm);
 		letter-spacing: 0.1em;
@@ -12,7 +16,3 @@
 		opacity: 0.5;
 	}
 </style>
-
-<span>
-	{title}
-</span>

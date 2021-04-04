@@ -1,7 +1,7 @@
-const sveltePreprocess = require('svelte-preprocess');
-const node = require('@sveltejs/adapter-node');
-const pkg = require('./package.json');
-const copy = require('rollup-plugin-copy');
+const sveltePreprocess = require('svelte-preprocess')
+const node = require('@sveltejs/adapter-node')
+const pkg = require('./package.json')
+const copy = require('rollup-plugin-copy')
 
 /** @type {import('@sveltejs/kit').Config} */
 module.exports = {
@@ -28,7 +28,8 @@ module.exports = {
 					dest: 'assets',
 					rename: 'market_lib_bg.wasm',
 					hook: 'writeBundle' // notice here
-				})],
+				})
+			]
 		}
 	}
-};
+}
