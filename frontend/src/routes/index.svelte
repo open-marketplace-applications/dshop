@@ -34,7 +34,7 @@
 
 		console.log('onMount')
 		// Websockets
-		socket = new WebSocket('ws://localhost:8083')
+		socket = new WebSocket('ws://oma-dshop.herokuapp.com')
 		// Connection opened
 		socket.addEventListener('open', function (event) {
 			console.log("It's open", event)
