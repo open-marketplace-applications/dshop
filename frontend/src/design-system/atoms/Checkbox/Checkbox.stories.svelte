@@ -13,6 +13,9 @@
     label: { control: {
       type: 'text',
     } },
+    checked: { control: {
+      type: 'boolean',
+    } },
     class: { control: {
       type: 'text',
     } },
@@ -20,19 +23,23 @@
 />
 
 <Template let:args>
-  <Checkbox {...args} />
+  <Checkbox {...args} >
+    👆 Click me to toggle
+  </Checkbox>
 </Template>
 
 <Story 
-  name="Padding" 
+  name="Unchecked" 
   args={{
-    padding: true
+    name: 'example-1'
   }}
 />
 
 <Story 
-  name="No Padding" 
+  name="Checked" 
   args={{
-    padding: false
+    name: 'example-1',
+    checked: true
   }}
 />
+
