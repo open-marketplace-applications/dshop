@@ -16,7 +16,7 @@ import Price from './atoms/Price/Price.svelte'
 import Row from './atoms/Row/Row.svelte'
 import Section from './atoms/Section/Section.svelte'
 import UserInfo from './atoms/UserInfo.svelte'
-import Video from './atoms/Video.svelte'
+import Video from './atoms/Video/Video.svelte'
 
 export {
 	Avatar,

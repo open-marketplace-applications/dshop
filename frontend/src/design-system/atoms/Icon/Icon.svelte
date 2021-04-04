@@ -4,9 +4,10 @@
   import Back from './assets/Back.svelte'
   import Share from './assets/Share.svelte'
   import Link from './assets/Link.svelte'
+  import Play from './assets/Play.svelte'
 
-  type Icon = 'sun' | 'moon' | 'link' | 'back' | 'share'
-  type Size = 'sm' | 'md' | 'lg' | 'xl'
+  type Icon = 'sun' | 'moon' | 'link' | 'back' | 'share' | 'play'
+  type Size = 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
 
   export let icon: Icon
   export let size: Size = 'md'
@@ -23,6 +24,8 @@
     <Back />
   {:else if icon === 'share'}
     <Share />
+  {:else if icon === 'play'}
+    <Play />
   {/if}
 </i>
 
@@ -49,5 +52,9 @@
   :global(.icon.xl) {
     height: var(--space-xxl);
     width: var(--space-xxl);
+  }
+  :global(.icon.xxl) {
+    height: var(--space-xxxl);
+    width: var(--space-xxxl);
   }
 </style>

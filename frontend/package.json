@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "market-lib": "../market-lib/pkg"
+    "market-lib": "../market-lib/pkg",
+    "svelte-video-player": "^1.2.5"
   }
 }
