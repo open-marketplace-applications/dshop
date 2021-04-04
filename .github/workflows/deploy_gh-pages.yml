@@ -28,6 +28,7 @@ jobs:
           ls /home/runner/work/dshop/dshop/frontend/src/lib/
           ls /home/runner/work/dshop/dshop/frontend/src/lib/ToolBar
           npm install
+          car home/runner/work/dshop/dshop/frontend/src/lib/Toolbar/Toolbar.svelte
           npm run build
 
       # - run: npm i
