@@ -43,13 +43,14 @@ app.use(passport.initialize({ session: false }))
 
 var allowedOrigins = [];
 
-if (process.env.NODE_ENV == 'prod') {
+if (process.env.NODE_ENV == 'production') {
 	allowedOrigins = ['https://dshop.einfachiota.de/'];
 } else {
 	allowedOrigins = ['http://localhost:3000', 'http://0.0.0.0:3000'];
 }
 
 console.log("allowedOrigins");
+console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 console.log(allowedOrigins);
 app.use(cors({
 	origin: function (origin, callback) {
