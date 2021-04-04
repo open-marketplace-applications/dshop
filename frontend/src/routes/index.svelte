@@ -51,8 +51,10 @@
 					amount = data.amount
 				} else if(data.type === 'connect_user') {
 					console.log('set', data.message)
-					messageStore.set(data.message)
+				} else {
+					console.log('whatever type')
 				}
+				messageStore.set(data.message)
 			}
 		});
 

@@ -1,3 +1,4 @@
+// const URL = 'http://localhost:5000/api'
 const URL = 'https://oma-dshop.herokuapp.com/api'
 
 export const getAvailableAmount = async () => {

@@ -34,12 +34,12 @@ import orderModel from '../models/orderModel';
 //     return ws
 // }
 
-// function send(message) {
-//     let response = {
-//         message: message,
-//     }
-//     socket.send(JSON.stringify(response));
-// }
+function send(message) {
+    let response = {
+        message,
+    }
+    io.emit('update', JSON.stringify(response))
+}
 
 
 // module.exports = {
@@ -108,4 +108,4 @@ async function sendAmount(io) {
     }
 }
 
-module.exports = { init };
+module.exports = { init, send };
