@@ -29,7 +29,7 @@ jobs:
           ls /home/runner/work/dshop/dshop/frontend/src/lib/
           ls /home/runner/work/dshop/dshop/frontend/src/lib/ToolBar
           pwd
-          cat /home/runner/work/dshop/dshop/frontend/src/lib/Toolbar/Toolbar.svelte
+          cat /home/runner/work/dshop/dshop/frontend/src/lib/ToolBar/Toolbar.svelte
           npm run build
 
       # - run: npm i
