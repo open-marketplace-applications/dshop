@@ -7,6 +7,7 @@ import Countdown from './atoms/Countdown.svelte'
 import Form from './atoms/Form/Form.svelte'
 import Image from './atoms/Image/Image.svelte'
 import Input from './atoms/Input/Input.svelte'
+import Label from './atoms/Label.svelte'
 import Link from './atoms/Link.svelte'
 import Loading from './atoms/Loading.svelte'
 import Logo from './atoms/Logo.svelte'
@@ -27,6 +28,7 @@ export {
 	Form,
 	Image,
 	Input,
+	Label,
 	Link,
 	Loading,
 	Logo,
