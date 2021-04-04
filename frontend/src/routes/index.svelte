@@ -38,8 +38,8 @@
 		console.log('onMount')
 		// Websockets
 
-		// const socket = io("http://localhost:5000");
-		const socket = io("https://oma-dshop.herokuapp.com/");
+		const socket = io("http://localhost:5000");
+		// const socket = io("https://oma-dshop.herokuapp.com/");
 
 		console.log('socket', socket)
 
@@ -47,10 +47,12 @@
 			let data = JSON.parse(message)
 			console.log('update', data)
 			if (data) {
-				if (data.message === 'Amount update!') {
+				if (data.type === 'amount_update') {
 					amount = data.amount
+				} else if(data.type === 'connect_user') {
+					console.log('set', data.message)
+					messageStore.set(data.message)
 				}
-				messageStore.set(data)
 			}
 		});
 
@@ -75,11 +77,11 @@
 		// 	}
 		// })
 
-		// messageStore.subscribe((currentMessage) => {
-		// 	console.log('currentMessage', currentMessage)
+		messageStore.subscribe((currentMessage) => {
+			console.log('currentMessage', currentMessage)
 
-		// 	messages = [...messages, currentMessage]
-		// })
+			messages = [...messages, currentMessage]
+		})
 	})
 </script>
 
@@ -96,7 +98,7 @@
 				<AvailabilityCount {amount} max={MAX} />
 				<BuyButton />
 				<h4>Messages</h4>
-				{#each messages as message, i}
+				{#each messages.reverse() as message, i}
 					<Message {message} />
 				{/each}
 			</Col>

@@ -67,8 +67,20 @@ function init(server) {
         console.log('Client connected');
         console.log(`User '${socket.id}' connected`)
         // io.emit('update', `User '${socket.id}' connected`)
+        let response = {
+            type: "connect_user",
+            message: `User '${socket.id}' connected!`,
+        }
+        io.emit('update', JSON.stringify(response))
         sendAmount(io)
-        socket.on('disconnect', () => console.log('Client disconnected'));
+        socket.on('disconnect', (socket) => {
+            console.log(`User '${socket.id}' disconnect`)
+            let response = {
+                type: "connect_user",
+                message: `User disconnect!`,
+            }
+            io.emit('update', JSON.stringify(response))
+        });
     });
 }
 
@@ -84,6 +96,7 @@ async function sendAmount(io) {
             }
 
             let response = {
+                type: "amount_update",
                 message: `Amount update!`,
                 amount: config.maxAmount - count
             }

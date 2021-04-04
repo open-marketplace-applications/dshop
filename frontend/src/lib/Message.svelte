@@ -3,5 +3,5 @@
 </script>
 
 <p>
-	{message.message}
+	{message}
 </p>
