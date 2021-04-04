@@ -11,6 +11,7 @@ import Label from './atoms/Label.svelte'
 import Link from './atoms/Link/Link.svelte'
 import Loading from './atoms/Loading/Loading.svelte'
 import Logo from './atoms/Logo/Logo.svelte'
+import Mode from './atoms/Mode/Mode.svelte'
 import Price from './atoms/Price.svelte'
 import Row from './atoms/Row.svelte'
 import Section from './atoms/Section.svelte'
@@ -32,6 +33,7 @@ export {
 	Link,
 	Loading,
 	Logo,
+	Mode,
 	Price,
 	Row,
 	Section,

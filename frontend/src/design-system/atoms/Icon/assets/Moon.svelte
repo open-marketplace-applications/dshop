@@ -6,7 +6,7 @@
       }
 
       .cls-2 {
-        fill: black;
+        fill: currentColor;
       }
     </style>
   </defs>
