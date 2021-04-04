@@ -72,11 +72,16 @@
 import socketIO from 'socket.io'
 let io;
 function init(server) {
+    let options = {
+        cors: true,
+        origins: [],
+    }
+    if (process.env.NODE_ENV == 'production') {
+        options.origins = ['https://dshop.einfachiota.de'];
+    } else {
+        options.origins = ['http://localhost:3000', 'http://0.0.0.0:3000'];
+    }
 
-    let options={
-        cors:true,
-        origins:["http://127.0.0.1:3000"],
-       }
     io = socketIO(server, options);
 
     io.on('connection', (socket) => {
