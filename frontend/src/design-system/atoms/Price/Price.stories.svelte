@@ -22,5 +22,37 @@
 </Template>
 
 <Story
-  name="Empty price" 
+  name="Empty price"
+/>
+
+<Story
+  name="Small one"
+  args={{
+    value: 42,
+    unit: 'IOTA'
+  }}
+/>
+
+<Story
+  name="More Medium"
+  args={{
+    value: 42000,
+    unit: 'MI'
+  }}
+/>
+
+<Story
+  name="Lot's of Dollars"
+  args={{
+    value: 42000000,
+    unit: '$'
+  }}
+/>
+
+<Story
+  name="Even more Euros"
+  args={{
+    value: 42000000000,
+    unit: '€'
+  }}
 />

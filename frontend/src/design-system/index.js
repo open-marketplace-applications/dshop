@@ -14,8 +14,7 @@ import Logo from './atoms/Logo/Logo.svelte'
 import Mode from './atoms/Mode/Mode.svelte'
 import Price from './atoms/Price/Price.svelte'
 import Row from './atoms/Row/Row.svelte'
-import Section from './atoms/Section.svelte'
-import Separator from './atoms/Separator.svelte'
+import Section from './atoms/Section/Section.svelte'
 import UserInfo from './atoms/UserInfo.svelte'
 import Video from './atoms/Video.svelte'
 
@@ -37,7 +36,6 @@ export {
 	Price,
 	Row,
 	Section,
-	Separator,
 	UserInfo,
 	Video
 }
