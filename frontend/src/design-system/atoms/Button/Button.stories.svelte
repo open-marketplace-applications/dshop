@@ -45,7 +45,7 @@
 />
 
 <Template let:args>
-  <Button {...args}/>
+  <Button {...args} />
 </Template>
 
 <Story 
