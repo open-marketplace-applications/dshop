@@ -17,6 +17,7 @@ import passport from 'passport'
 import User from './models/userModel'
 import Wallet from './lib/wallet'
 import WebSocketsServer from './lib/websockets'
+import {init} from './db';
 
 let app = express();
 // var paymentModule = require('iota-payment')
@@ -98,7 +99,9 @@ passport.use('jwt', new JwtStrategy(jwtOptions, (jwt_payload, done) => {
 }))
 
 // connect to db
-initializeDb(db => {
+init().then(db => {
+
+	console.log("initializeDb", db)
 
 	// internal middleware
 	app.use('/api', middleware({ config, db }));
