@@ -2,7 +2,7 @@
 	export let imageUrl: string
 	export let name: string
 
-	import Avatar from '../Avatar/Avatar.svelte'
+	import Avatar from './Avatar/Avatar.svelte'
 </script>
 
 <div class="user-info">

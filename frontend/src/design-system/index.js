@@ -1,5 +1,5 @@
-import Avatar from './Avatar/Avatar.svelte'
-import Button from './Button/Button.svelte'
+import Avatar from './atoms/Avatar/Avatar.svelte'
+import Button from './atoms/Button/Button.svelte'
 import Checkbox from './atoms/Checkbox.svelte'
 import Col from './atoms/Col.svelte'
 import Container from './atoms/Container.svelte'
