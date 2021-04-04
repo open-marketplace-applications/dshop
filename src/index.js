@@ -6,6 +6,9 @@ import bodyParser from 'body-parser';
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt'
 var path = require('path');
 
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import initializeDb from './db';
 import middleware from './middleware';
 import api from './api';

@@ -36,6 +36,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
+    "core-js": "^3.10.0",
     "cors": "^2.7.1",
     "dotenv": "^4.0.0",
     "dynamic-html-pdf": "^1.0.1",
@@ -48,6 +49,7 @@
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "paypal-rest-sdk": "^1.8.1",
+    "regenerator-runtime": "^0.13.7",
     "resource-router-middleware": "^0.6.0"
   },
   "devDependencies": {
