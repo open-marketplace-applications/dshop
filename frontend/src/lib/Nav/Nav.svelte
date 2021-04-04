@@ -1,6 +1,5 @@
 <script>
-	import ToggleMode from '../ToggleMode/ToggleMode.svelte'
-	import { Logo, Container, Button } from '../../design-system/index'
+	import { Mode, Logo, Container, Button } from '../../design-system/index'
 </script>
 
 <div class={`nav`}>
@@ -9,7 +8,7 @@
 			<Logo />
 		</div>
 		<div class="right">
-			<ToggleMode />
+			<Mode />
 			<Button class="cta-btn" link="/faq">FAQ</Button>
 		</div>
 	</Container>

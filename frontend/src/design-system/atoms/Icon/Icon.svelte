@@ -27,22 +27,26 @@
 </i>
 
 <style lang='scss'>
-  :global(.icon svg) {
+  :global(svg) {
+    height: inherit;
+    width: inherit;
+  }
+  :global(.icon) {
     height: var(--space-lg);
     width: var(--space-lg);
   }
 
-  :global(.icon.sm svg) {
+  :global(.icon.sm) {
     height: var(--space-md);
     width: var(--space-md);
   }
 
-  :global(.icon.lg svg) {
+  :global(.icon.lg) {
     height: var(--space-xl);
     width: var(--space-xl);
   }
 
-  :global(.icon.xl svg) {
+  :global(.icon.xl) {
     height: var(--space-xxl);
     width: var(--space-xxl);
   }
