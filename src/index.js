@@ -18,6 +18,8 @@ import User from './models/userModel'
 import Wallet from './lib/wallet'
 import WebSocketsServer from './lib/websockets'
 import {init} from './db';
+import {listen} from 'socket.io';
+
 
 let app = express();
 // var paymentModule = require('iota-payment')
@@ -104,11 +106,11 @@ init().then(db => {
 	// 	console.log("err", err)
 	// 	console.log("data", data)
 		const port = process.env.PORT || config.port
-		app.listen(port, callback);
-
-		console.log(`Started on port ${port}`);
-
-		WebSocketsServer.run(app);
+		var server = app.listen(port, callback);
+		// WebSocketsServer.run(app);
+		// attach socket to the node server
+		// attach socket to the node server
+		WebSocketsServer.init(server);
 	});
 
 });

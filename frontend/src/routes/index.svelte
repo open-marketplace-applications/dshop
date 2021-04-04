@@ -15,6 +15,9 @@
 	import Progress from '$lib/Progress/Progress.svelte'
 	import AvailabilityCount from '$lib/AvailabilityCount/AvailabilityCount.svelte'
 
+	// import { io } from "socket.io-client";
+	
+
 	$: amount = 0
 	const MAX = 500
 	const messageStore = writable('')
@@ -34,30 +37,40 @@
 
 		console.log('onMount')
 		// Websockets
-		socket = new WebSocket('wss://oma-dshop.herokuapp.com')
-		// Connection opened
-		socket.addEventListener('open', function (event) {
-			console.log("It's open", event)
-		})
 
-		// Listen for messages
-		socket.addEventListener('message', function (event) {
-			console.log('message', event)
-			console.log('message', event.data)
-			let data = JSON.parse(event.data)
-			if (data) {
-				if (data.message === 'Amount update!') {
-					amount = data.amount
-				}
-				messageStore.set(data)
-			}
-		})
+		const socket = io("ws://localhost:5000");
 
-		messageStore.subscribe((currentMessage) => {
-			console.log('currentMessage', currentMessage)
+		console.log('socket', socket)
+		socket.on('time', function(timeString) {
+			console.log('timeString', timeString)
+		});
 
-			messages = [...messages, currentMessage]
-		})
+		// OLD SOCKET STUFF
+		// socket = new WebSocket('wss://oma-dshop.herokuapp.com')
+		// socket = new WebSocket('ws://localhost:4000')
+		// // Connection opened
+		// socket.addEventListener('open', function (event) {
+		// 	console.log("It's open", event)
+		// })
+
+		// // Listen for messages
+		// socket.addEventListener('message', function (event) {
+		// 	console.log('message', event)
+		// 	console.log('message', event.data)
+		// 	let data = JSON.parse(event.data)
+		// 	if (data) {
+		// 		if (data.message === 'Amount update!') {
+		// 			amount = data.amount
+		// 		}
+		// 		messageStore.set(data)
+		// 	}
+		// })
+
+		// messageStore.subscribe((currentMessage) => {
+		// 	console.log('currentMessage', currentMessage)
+
+		// 	messages = [...messages, currentMessage]
+		// })
 	})
 </script>
 
