@@ -1,20 +1,16 @@
 <script lang="ts">
 	type Color = 'light' | 'dark'
-	type Orientation = 'horizontal' | 'vertical'
 	type Size = 'sm' | 'md' | 'lg' | 'xl'
 
 	export let color: Color = 'dark'
-	export let orientation: Orientation = 'horizontal'
 	export let size: Size = 'md'
-	export let label: string = ''
 </script>
 
-<div class={`loading ${orientation}`}>
-	<div class={`loading-square ${color} ${orientation} ${size}`}>
+<div class={`loading`}>
+	<div class={`loading-square ${color} ${size}`}>
 		<div />
 		<div />
 	</div>
-	<span>Loading...</span>
 </div>
 
 <style style="scss">
@@ -22,19 +18,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-	}
-
-	.loading.vertical {
-	}
-
-	.loading.horizontal {
-		flex-direction: column;
-	}
-
-	.loading span {
-		margin-left: var(--space-md);
-		font-size: var(--space-sm);
-		font-weight: bold;
 	}
 
 	.loading-square,

@@ -1,10 +1,10 @@
 <script lang="ts">
 	type Target = 'self' | 'blank' | 'parent'
+	
 	export let link: string
 	export let text: string
 	export let target: Target = 'parent'
 	export let block: boolean = true
-
 </script>
 
 <a 
