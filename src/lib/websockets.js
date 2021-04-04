@@ -9,7 +9,7 @@ let socket = null;
 function run(server) {
 
     console.log("Run websockets server...")
-    const ws = new WebSocket.Server({ server });
+    const ws = new WebSocket.Server({ server, origin: "https:://oma-dshop.herokuapp.com" });
 
     ws.on('connection', function connection(_socket) {
         socket = _socket

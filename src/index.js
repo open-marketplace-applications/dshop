@@ -44,7 +44,7 @@ app.use(passport.initialize({ session: false }))
 var allowedOrigins = [];
 
 if (process.env.NODE_ENV == 'production') {
-	allowedOrigins = ['https://dshop.einfachiota.de/'];
+	allowedOrigins = ['https://dshop.einfachiota.de'];
 } else {
 	allowedOrigins = ['http://localhost:3000', 'http://0.0.0.0:3000'];
 }
