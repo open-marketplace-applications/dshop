@@ -26,14 +26,6 @@ app.get('/hello', function (req, res) {
 	res.send("Hello World!");
 });
 
-// paymentModule.onEvent('paymentSuccess', onPaymentSuccess);
-
-var iota_pay_options = {
-	dashboard: true,
-	api: true,
-	websockets: true
-}
-
 // logger
 if (process.env.NODE_ENV !== 'test') {
 	app.use(morgan('dev'));
@@ -52,9 +44,9 @@ app.use(passport.initialize({ session: false }))
 var allowedOrigins = [];
 
 if (process.env.NODE_ENV == 'prod') {
-	allowedOrigins = ['https://shop.einfachiota.de', 'https://shop.einfachiota.com'];
+	allowedOrigins = ['https://dshop.einfachiota.de/'];
 } else {
-	allowedOrigins = ['http://localhost:3000', 'http://0.0.0.0:3001', 'http://localhost:3001', 'http://localhost:5000', 'https://magazin.einfachiota.de', 'http://localhost:9080', 'http://localhost:8000'];
+	allowedOrigins = ['http://localhost:3000', 'http://0.0.0.0:3000'];
 }
 
 console.log("allowedOrigins");
