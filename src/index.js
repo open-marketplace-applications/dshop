@@ -117,7 +117,7 @@ init().then(db => {
 
 		console.log(`Started on port ${port}`);
 
-		WebSocketsServer.run(app, 8083);
+		WebSocketsServer.run(app);
 	});
 
 });
