@@ -10,10 +10,10 @@
 
 	import { Section, Container, Row, Col, Button, Image, Loading } from '../design-system/index'
 
-	import Hero from '../lib/Hero/Hero.svelte'
-	import Toolbar from '../lib/Toolbar/Toolbar.svelte'
-	import Progress from '../lib/Progress/Progress.svelte'
-	import AvailabilityCount from '../lib/AvailabilityCount/AvailabilityCount.svelte'
+	import Hero from '$lib/Hero/Hero.svelte'
+	import Toolbar from '$lib/Toolbar/Toolbar.svelte'
+	import Progress from '$lib/Progress/Progress.svelte'
+	import AvailabilityCount from '$lib/AvailabilityCount/AvailabilityCount.svelte'
 
 	$: amount = 0
 	const MAX = 500
