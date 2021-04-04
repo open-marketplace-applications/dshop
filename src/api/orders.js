@@ -2,7 +2,7 @@ import resource from 'resource-router-middleware';
 import orderModel from '../models/orderModel';
 import jwt from 'jsonwebtoken'
 import Wallet from '../lib/wallet';
-import WebSocketsServer from '../lib/WebSockets';
+import WebSocketsServer from '../lib/websockets';
 
 export default ({ config, db }) => resource({
 
