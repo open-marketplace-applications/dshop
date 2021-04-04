@@ -1,14 +1,17 @@
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
-  import Card from './Card.svelte'
+  import Checkbox from './Checkbox.svelte'
 </script>
 
 <Meta 
-  title="💧 Atoms / Card" 
-  component={Card} 
+  title="💧 Atoms / Checkbox" 
+  component={Checkbox} 
   argTypes={{
-    padding: { control: {
-      type: 'boolean',
+    name: { control: {
+      type: 'text',
+    } },
+    label: { control: {
+      type: 'text',
     } },
     class: { control: {
       type: 'text',
@@ -17,9 +20,7 @@
 />
 
 <Template let:args>
-  <Card {...args} >
-    Nothing but a card, you can put any content in here.
-  </Card>
+  <Checkbox {...args} />
 </Template>
 
 <Story 

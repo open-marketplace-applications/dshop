@@ -37,7 +37,10 @@
     link: { control: {
       type: 'text'
     } },
-    callback: { action: 'onClick' }
+    callback: { action: 'onClick' },
+    class: { control: {
+      type: 'text'
+    } },
   }}
 />
 

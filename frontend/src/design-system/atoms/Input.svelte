@@ -7,7 +7,7 @@
 	export let value: string = ''
 	export let placeholder: string = 'Add a placeholder'
 
-	const handleInput = (e) => {
+	const handleChange = (e) => {
 		value = e.target.value
 	}
 </script>
@@ -17,7 +17,7 @@
 		<label for={name}>{label}</label>
 	{/if}
 
-	<input {name} {type} {placeholder} on:input={handleInput} />
+	<input {name} {type} {placeholder} on:input={handleChange} />
 	<slot />
 </div>
 

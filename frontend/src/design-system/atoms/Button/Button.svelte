@@ -16,9 +16,13 @@
 {#if link}
 	<a
 		href={link}
-		class={`btn ${rounded ? 'rounded' : ''} ${size} ${color} ${block ? 'block' : ''} ${
-			$$props.class
-		}`}
+		class={`btn 
+			${rounded ? 'rounded' : ''}
+			${size}
+			${color}
+			${block ? 'block' : ''}
+			${$$props.class}
+		`}
 	>
 		{label ? label : ''}
 		<slot />
@@ -27,9 +31,13 @@
 	<button
 		on:click={callback}
 		{type}
-		class={`btn ${rounded ? 'rounded' : ''} ${size} ${color} ${block ? 'block' : ''} ${
-			$$props.class
-		}`}
+		class={`btn
+			${rounded ? 'rounded' : ''} 
+			${size} 
+			${color} 
+			${block ? 'block' : ''} 
+			${$$props.class}
+		`}
 	>
 		{label ? label : ''}
 		<slot />
