@@ -2,7 +2,7 @@
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
   import Section from '../Section.svelte'
   import Row from '../Row.svelte'
-  import Container from '../Container.svelte'
+  import Container from '../Container/Container.svelte'
   import Card from '../Card/Card.svelte'
   import Col from './Col.svelte'
 </script>
@@ -44,12 +44,12 @@
 </Template>
 
 <Story 
-  name="row" 
+  name="Row Layout" 
   args={{
     direction: 'row'
   }}
 />
 
 <Story 
-  name="column" 
+  name="Column" 
 />
