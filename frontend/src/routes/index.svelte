@@ -38,7 +38,7 @@
 		console.log('onMount')
 		// Websockets
 
-		const socket = io("ws://localhost:5000");
+		const socket = io("https://oma-dshop.herokuapp.com/");
 
 		console.log('socket', socket)
 		socket.on('time', function(timeString) {
