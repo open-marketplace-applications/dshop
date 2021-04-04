@@ -16,12 +16,12 @@
 	const messageStore = writable('')
 	let messages = []
 	let socket = null
-	const sendMessage = (message) => {
-		console.log('sendMessage called!')
-		if (socket.readyState <= 1) {
-			socket.send('buy')
-		}
-	}
+	// const sendMessage = (message) => {
+	// 	console.log('sendMessage called!')
+	// 	if (socket.readyState <= 1) {
+	// 		socket.send('buy')
+	// 	}
+	// }
 
 	onMount(async () => {
 		// WASM Market Lib
