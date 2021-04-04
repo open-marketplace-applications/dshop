@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { buyProduct } from '../api/shop'
-	import Button from '../design-system/Button/Button.svelte'
+	import Button from '../design-system/atoms/Button/Button.svelte'
 	import Loading from '../design-system/atoms/Loading.svelte'
 
 	let loading = true
