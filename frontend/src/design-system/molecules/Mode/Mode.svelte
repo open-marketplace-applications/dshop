@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 
-	import Icon from '../Icon/Icon.svelte'
+	import Icon from '../../atoms/Icon/Icon.svelte'
 	
 	export let darkMode: boolean
 
