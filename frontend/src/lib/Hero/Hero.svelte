@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { Section, Image } from '../../design-system/index'
+	import { Section, Image, Video } from '../../design-system/index'
 </script>
 
 <Section dark>
 	<div class="hero">
 		<div class="artwork">
-			<Image
+			<!-- <Image
 				imageUrl="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F83%2FNeugierige-Katze.JPG%2F1280px-Neugierige-Katze.JPG&f=1&nofb=1"
-			/>
+			/> -->
+			<Video loop={true} />
 		</div>
 	</div>
 </Section>

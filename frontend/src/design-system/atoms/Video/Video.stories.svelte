@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
   import Video from './Video.svelte'
 </script>
@@ -46,4 +46,4 @@
     url: 'https://cdn.dribbble.com/users/1468665/screenshots/14249556/media/a6dde26a0e527aea67f7fc38b76d14d1.mp4',
     loop: true
   }}
-/> -->
+/>
