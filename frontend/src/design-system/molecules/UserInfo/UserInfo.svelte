@@ -1,12 +1,12 @@
 <script lang="ts">
-	export let imageUrl: string
+	export let image: string
 	export let name: string
 
-	import Avatar from './Avatar/Avatar.svelte'
+	import Avatar from '../../atoms/Avatar/Avatar.svelte'
 </script>
 
 <div class="user-info">
-	<Avatar {imageUrl} />
+	<Avatar imageUrl={image} />
 	<span>{name}</span>
 </div>
 
