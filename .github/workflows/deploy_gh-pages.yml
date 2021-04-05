@@ -21,15 +21,16 @@ jobs:
       # - run: cd frontend && npm i && ls && npm run build
       # - run: cd frontend && npm i && ls && npm run build
 
-      - name: Install and Build 🔧
+      - name: Install and Build 🔧 Frontend
         run: |
           cd frontend
           npm install
           npm run build
-
-      # - run: npm i
-      # - run: npm run build-storybook
-      # - run: cp -r storybook-static docs/book/storybook
+      - name: Install and Build 🔧 Storybook
+        run: |
+          cd frontend
+          npm run build-storybook
+          cp -r storybook-static ./build/storybook
       
       - name: Deploy
         uses: iotaledger/actions-gh-pages@v3
