@@ -30,7 +30,7 @@ jobs:
         run: |
           cd frontend
           npm run build-storybook
-          cp -r storybook-static ./frontend/build/storybook
+          cp -r storybook-static ./build/storybook
       
       - name: Deploy
         uses: iotaledger/actions-gh-pages@v3
