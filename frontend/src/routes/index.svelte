@@ -38,8 +38,8 @@
 		console.log('onMount')
 		// Websockets
 
-		const socket = io("http://localhost:5000");
-		// const socket = io("https://oma-dshop.herokuapp.com/");
+		// const socket = io("http://localhost:5000");
+		const socket = io("https://oma-dshop.herokuapp.com/");
 
 		console.log('socket', socket)
 
