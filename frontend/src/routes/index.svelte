@@ -1,41 +1,37 @@
 <script lang="ts">
-	import BuyButton from '$lib/BuyButton.svelte'
 	import { onMount } from 'svelte'
 	import { writable } from 'svelte/store'
-	import Message from '$lib/Message.svelte'
 	import '../theme.css'
-
-	import { Section, Container, Row, Col } from '../design-system/index'
-
+	
+	import { Section, Container, Row, Col, Loading } from '../design-system/index'
+	
 	import Hero from '$lib/Hero/Hero.svelte'
 	import Toolbar from '$lib/ToolBar/Toolbar.svelte'
 	import AvailabilityCount from '$lib/AvailabilityCount/AvailabilityCount.svelte'
-
-	// import { io } from "socket.io-client";
+	import BuyButton from '$lib/BuyButton.svelte'
+	import Messages from '$lib/Messages.svelte'
 	
-
 	$: amount = 0
+	$: loading = true
 	const MAX = 500
 	const messageStore = writable('')
 	let messages = []
-	let socket = null
-	// const sendMessage = (message) => {
-	// 	console.log('sendMessage called!')
-	// 	if (socket.readyState <= 1) {
-	// 		socket.send('buy')
-	// 	}
-	// }
+	let socket = {
+		emit: function(x,y){
+			console.log("not loadet yet.")
+		}
+	}
 
 	onMount(async () => {
+		console.log('onMount')
+
 		// WASM Market Lib
 		// await market.default()
 		// market.greet("Svelte")
-
-		console.log('onMount')
 		// Websockets
-
-		// const socket = io("http://localhost:5000");
-		const socket = io("https://oma-dshop.herokuapp.com/");
+		
+		socket = io("http://localhost:5000")
+		// socket = io("https://oma-dshop.herokuapp.com/")
 
 		console.log('socket', socket)
 
@@ -52,7 +48,14 @@
 				}
 				messageStore.set(data.message)
 			}
-		});
+		})
+
+		messageStore.subscribe((currentMessage) => {
+			console.log('currentMessage', currentMessage)
+			messages = [...messages, currentMessage]
+		})
+
+		loading = false
 
 		// OLD SOCKET STUFF
 		// socket = new WebSocket('wss://oma-dshop.herokuapp.com')
@@ -74,12 +77,6 @@
 		// 		messageStore.set(data)
 		// 	}
 		// })
-
-		messageStore.subscribe((currentMessage) => {
-			console.log('currentMessage', currentMessage)
-
-			messages = [...messages, currentMessage]
-		})
 	})
 </script>
 
@@ -95,27 +92,11 @@
 			<Col class="history-col">
 				<AvailabilityCount {amount} max={MAX} />
 				<BuyButton />
-				<h5 style="margin-top: var(--space-xl); margin-bottom: var(--space-sm)">Messages</h5>
-				{#each messages.reverse() as message, i}
-					<Message
-						type='user-connected' 
-						author='@johnDoe'
-						dateTime='04.01.2021 at 9:52am'
-					/>
-					<Message 
-						type='purchase' 
-						volume={42000}
-						unit='MI'
-						owner='@iotaben'
-						author='@johnDoe'
-						dateTime='04.01.2021 at 9:42am'
-					/>
-					<Message 
-						type='user-disconnected' 
-						author='@johnDoe'
-						dateTime='04.01.2021 at 9:24am'
-					/>
-				{/each}
+				{#if loading}
+					<Loading />
+				{:else}
+					<Messages messages={messages} socket={socket} />
+				{/if}
 			</Col>
 		</Row>
 	</Container>

@@ -6,10 +6,6 @@
 	export let type: Type = 'text'
 	export let value: string = ''
 	export let placeholder: string = 'Add a placeholder'
-
-	const handleChange = (e) => {
-		value = e.target.value
-	}
 </script>
 
 <div class={`input ${$$props.class}`}>
@@ -17,7 +13,7 @@
 		<label for={name}>{label}</label>
 	{/if}
 
-	<input {name} {type} {placeholder} {value} tabindex="0" on:input={handleChange} />
+	<input {name} {type} {placeholder} value={value} tabindex="0" />
 	<slot />
 </div>
 

@@ -63,6 +63,7 @@ function init(server) {
 
     io = socketIO(server, options);
 
+
     io.on('connection', (socket) => {
         console.log('Client connected');
         console.log(`User '${socket.id}' connected`)
@@ -81,6 +82,24 @@ function init(server) {
             }
             io.emit('update', JSON.stringify(response))
         });
+
+        socket.on("new_message", (message, fn) => {
+            fn("woot");
+            let response = {
+                type: "new_message",
+                message: message,
+            }
+            io.emit('update', JSON.stringify(response))
+        });
+
+        socket.on('data', (message) => {
+            console.log('new message:', message);
+            let response = {
+                type: "new_message",
+                message: message,
+            }
+            io.emit('update', JSON.stringify(response))
+        })
     });
 }
 
@@ -90,7 +109,7 @@ async function sendAmount(io) {
         orderModel.count({ status: ['payed', 'sent'] }, function (err, count) {
             // orderModel.countDocuments({ status: ['payed', 'sent'] }, function (err, count) {
 
-                console.log("count: ", count);
+            console.log("count: ", count);
             if (err) {
                 console.log("error: ", err);
             }
