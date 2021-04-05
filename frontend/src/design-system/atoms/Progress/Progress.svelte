@@ -28,6 +28,9 @@
 
 <style lang="scss">
 	.progress {
+		width: 100%;
+		margin-bottom: var(--space-md);
+		
 		.labels {
 			display: flex;
 			justify-content: space-between;

@@ -14,6 +14,7 @@ import Loading from './atoms/Loading/Loading.svelte'
 import Logo from './atoms/Logo/Logo.svelte'
 import Mode from './atoms/Mode/Mode.svelte'
 import Price from './atoms/Price/Price.svelte'
+import Progress from './atoms/Progress/Progress.svelte'
 import Row from './atoms/Row/Row.svelte'
 import Section from './atoms/Section/Section.svelte'
 import UserInfo from './molecules/UserInfo/UserInfo.svelte'
@@ -36,6 +37,7 @@ export {
 	Logo,
 	Mode,
 	Price,
+	Progress,
 	Row,
 	Section,
 	UserInfo,

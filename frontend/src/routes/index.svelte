@@ -3,11 +3,10 @@
 	import { writable } from 'svelte/store'
 	import '../theme.css'
 	
-	import { Section, Container, Row, Col, Loading } from '../design-system/index'
+	import { Section, Container, Row, Col, Loading, Progress } from '../design-system/index'
 	
 	import Hero from '$lib/Hero/Hero.svelte'
 	import Toolbar from '$lib/ToolBar/Toolbar.svelte'
-	import AvailabilityCount from '$lib/AvailabilityCount/AvailabilityCount.svelte'
 	import BuyButton from '$lib/BuyButton.svelte'
 	import Messages from '$lib/Messages.svelte'
 	
@@ -31,7 +30,6 @@
 		// Websockets
 		
 		socket = io("http://localhost:5000")
-		// socket = io("https://oma-dshop.herokuapp.com/")
 
 		console.log('socket', socket)
 
@@ -56,27 +54,6 @@
 		})
 
 		loading = false
-
-		// OLD SOCKET STUFF
-		// socket = new WebSocket('wss://oma-dshop.herokuapp.com')
-		// socket = new WebSocket('ws://localhost:4000')
-		// // Connection opened
-		// socket.addEventListener('open', function (event) {
-		// 	console.log("It's open", event)
-		// })
-
-		// // Listen for messages
-		// socket.addEventListener('message', function (event) {
-		// 	console.log('message', event)
-		// 	console.log('message', event.data)
-		// 	let data = JSON.parse(event.data)
-		// 	if (data) {
-		// 		if (data.message === 'Amount update!') {
-		// 			amount = data.amount
-		// 		}
-		// 		messageStore.set(data)
-		// 	}
-		// })
 	})
 </script>
 
@@ -90,7 +67,11 @@
 				<p>IOTA Chrysalis is coming soon. This is a very first step into that direction. We are using both, IOTA 1.5 and 2.0 to already create NFTs with colored coins. Read more <a target='_blank' href='www.google.de'>here</a></p>
 			</Col>
 			<Col class="history-col">
-				<AvailabilityCount {amount} max={MAX} />
+				<Progress
+					label="Availability"
+					value={amount}
+					max={MAX}
+				/>
 				<BuyButton />
 				{#if loading}
 					<Loading />
@@ -101,3 +82,26 @@
 		</Row>
 	</Container>
 </Section>
+
+<!-- 
+	// OLD SOCKET STUFF
+	// socket = new WebSocket('wss://oma-dshop.herokuapp.com')
+	// socket = new WebSocket('ws://localhost:4000')
+	// // Connection opened
+	// socket.addEventListener('open', function (event) {
+	// 	console.log("It's open", event)
+	// })
+
+	// // Listen for messages
+	// socket.addEventListener('message', function (event) {
+	// 	console.log('message', event)
+	// 	console.log('message', event.data)
+	// 	let data = JSON.parse(event.data)
+	// 	if (data) {
+	// 		if (data.message === 'Amount update!') {
+	// 			amount = data.amount
+	// 		}
+	// 		messageStore.set(data)
+	// 	}
+	// })
+-->
