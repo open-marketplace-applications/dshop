@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { buyProduct } from '../api/shop'
-	import Button from '../design-system/Button/Button.svelte'
-	import Loading from '../design-system/atoms/Loading.svelte'
+	import Button from '../design-system/atoms/Button/Button.svelte'
+	import Loading from '../design-system/atoms/Loading/Loading.svelte'
 
 	let loading = true
 	let address_to_pay = null
@@ -38,6 +38,6 @@
 	{/if}
 {:else}
 	<Button callback={buy} block={true}>
-		<Loading size="sm" orientation="vertical" color="light" />
+		<Loading size="sm" color="light" />
 	</Button>
 {/if}
