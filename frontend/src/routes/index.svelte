@@ -89,15 +89,32 @@
 	<Container>
 		<Row>
 			<Col>
-				<h1 class="headline">NFTCat</h1>
-				<p>This is the first IOTA NFT Cat</p>
+				<h1 class="headline">IOTA Chrysalis</h1>
+				<p>IOTA Chrysalis is coming soon. This is a very first step into that direction. We are using both, IOTA 1.5 and 2.0 to already create NFTs with colored coins. Read more <a target='_blank' href='www.google.de'>here</a></p>
 			</Col>
 			<Col class="history-col">
 				<AvailabilityCount {amount} max={MAX} />
 				<BuyButton />
-				<h4>Messages</h4>
+				<h5 style="margin-top: var(--space-xl); margin-bottom: var(--space-sm)">Messages</h5>
 				{#each messages.reverse() as message, i}
-					<Message {message} />
+					<Message 
+						type='user-connected' 
+						author='@johnDoe'
+						dateTime='04.01.2021 at 9:52am'
+					/>
+					<Message 
+						type='purchase' 
+						volume={42000}
+						unit='MI'
+						owner='@iotaben'
+						author='@johnDoe'
+						dateTime='04.01.2021 at 9:42am'
+					/>
+					<Message 
+						type='user-disconnected' 
+						author='@johnDoe'
+						dateTime='04.01.2021 at 9:24am'
+					/>
 				{/each}
 			</Col>
 		</Row>

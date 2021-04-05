@@ -34,10 +34,10 @@
 	{#if address_to_pay}
 		<p>Send 1Mi to this address: {address_to_pay}</p>
 	{:else}
-		<Button callback={buy} block={true}>Buy</Button>
+		<Button size='lg' callback={buy} block={true}>Buy</Button>
 	{/if}
 {:else}
-	<Button callback={buy} block={true}>
+	<Button size='lg' callback={buy} block={true}>
 		<Loading size="sm" color="light" />
 	</Button>
 {/if}

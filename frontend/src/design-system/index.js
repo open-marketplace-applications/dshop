@@ -1,5 +1,6 @@
 import Avatar from './atoms/Avatar/Avatar.svelte'
 import Button from './atoms/Button/Button.svelte'
+import Card from './atoms/Card/Card.svelte'
 import Checkbox from './atoms/Checkbox/Checkbox.svelte'
 import Col from './atoms/Col/Col.svelte'
 import Container from './atoms/Container/Container.svelte'
@@ -21,6 +22,7 @@ import Video from './atoms/Video/Video.svelte'
 export {
 	Avatar,
 	Button,
+	Card,
 	Checkbox,
 	Col,
 	Container,

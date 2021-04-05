@@ -39,10 +39,12 @@
 		background-color: var(--color-element);
 		border-radius: calc(var(--radius) / 4);
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+		height: inherit;
 	}
 
 	progress[value]::-webkit-progress-value {
 		position: relative;
+		height: inherit;
 
 		background-image: -webkit-linear-gradient(
 				-45deg,
@@ -52,7 +54,7 @@
 				transparent 66%
 			),
 			-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
-			-webkit-linear-gradient(left, var(--color-primary-dark), var(--color-primary-light));
+			-webkit-linear-gradient(left, var(--color-primary), var(--color-primary-light));
 
 		border-radius: calc(var(--radius) / 4);
 		background-size: 35px 20px, 100% 100%, 100% 100%;

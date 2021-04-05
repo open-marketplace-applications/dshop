@@ -1,11 +1,10 @@
 <script>
 	import Progress from '../Progress/Progress.svelte'
-	import { Col, Row } from '../../design-system/index'
 	export let amount = 200
 	export let max = 500
 </script>
 
-<h6>Availability</h6>
+<h5>Availability</h5>
 <Progress {max} value={amount} />
 <div class="labels">
 	<span>{amount}</span>
@@ -13,7 +12,7 @@
 </div>
 
 <style>
-	h6 {
+	h5 {
 		margin-bottom: var(--space-sm);
 	}
 
