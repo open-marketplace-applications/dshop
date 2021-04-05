@@ -97,7 +97,7 @@
 				<BuyButton />
 				<h5 style="margin-top: var(--space-xl); margin-bottom: var(--space-sm)">Messages</h5>
 				{#each messages.reverse() as message, i}
-					<Message 
+					<Message
 						type='user-connected' 
 						author='@johnDoe'
 						dateTime='04.01.2021 at 9:52am'

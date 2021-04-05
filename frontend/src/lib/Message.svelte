@@ -2,13 +2,12 @@
 	import { Card } from '../design-system/index'
 	type Type = 'user-connected' | 'user-disconnected' | 'purchase'
 
-	export let message
-	export let type: Type = 'purchase'
-	export let volume: number = 42000
-	export let unit: string = 'MI'
-	export let owner: string = '@iotaBen'
-	export let author: string = '@johnDoe'
-	export let dateTime: string = '04.01.2021 at 10:42am'
+	export let type: Type
+	export let volume: number
+	export let unit: string
+	export let owner: string
+	export let author: string
+	export let dateTime: string
 
 	let response = ''
 
