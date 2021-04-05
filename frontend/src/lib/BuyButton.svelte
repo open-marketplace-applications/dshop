@@ -19,12 +19,6 @@
 		console.log('buyButton buy res', res)
 		if (res.iota_address) {
 			address_to_pay = res.iota_address
-
-			// const client = new Iota.MqttClient("ws://localhost:14265/mqtt");
-
-			// client.milestonesLatest((topic, data) => {
-			//     consoleLog(topic, data);
-			// });
 		}
 		loading = false
 	}

@@ -12,11 +12,8 @@
 
 <style>
   .label {
-		font-size: 12px;
+		font-size: var(--space-md);
     font-weight: bold;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
 		margin-bottom: var(--space-xxs);
-		transition: var(--transition);
 	}
 </style>

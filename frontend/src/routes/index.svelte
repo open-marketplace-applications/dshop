@@ -3,7 +3,7 @@
 	import { writable } from 'svelte/store'
 	import '../theme.css'
 	
-	import { Section, Container, Row, Col, Loading, Progress } from '../design-system/index'
+	import { Section, Container, Row, Col, Loading, Progress, Price, Label } from '../design-system/index'
 	
 	import Hero from '$lib/Hero/Hero.svelte'
 	import Toolbar from '$lib/ToolBar/Toolbar.svelte'
@@ -29,7 +29,8 @@
 		// market.greet("Svelte")
 		// Websockets
 		
-		socket = io("http://localhost:5000")
+		// socket = io("http://localhost:5000")
+		socket = io("https://oma-dshop.herokuapp.com/")
 
 		console.log('socket', socket)
 
@@ -67,11 +68,18 @@
 				<p>IOTA Chrysalis is coming soon. This is a very first step into that direction. We are using both, IOTA 1.5 and 2.0 to already create NFTs with colored coins. Read more <a target='_blank' href='www.google.de'>here</a></p>
 			</Col>
 			<Col class="history-col">
-				<Progress
-					label="Availability"
-					value={amount}
-					max={MAX}
-				/>
+				<div class="offer">
+					<Progress
+						label="Availability"
+						value={amount}
+						max={MAX}
+						size='lg'
+					/>
+					<div>
+						<Label label="Price" />
+						<Price value={42000} />
+					</div>
+				</div>
 				<BuyButton />
 				{#if loading}
 					<Loading />
@@ -82,6 +90,18 @@
 		</Row>
 	</Container>
 </Section>
+
+<style>
+	.offer {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	:global(.offer .progress) {
+		margin-right: var(--space-xl);
+	}
+</style>
 
 <!-- 
 	// OLD SOCKET STUFF
