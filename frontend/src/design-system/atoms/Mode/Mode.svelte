@@ -6,7 +6,7 @@
 	export let darkMode: boolean
 
 	let bodyHasDarkMode = window.document.body.classList.contains('dark-mode')
-
+	
 	onMount(() => {
 		if (darkMode && !bodyHasDarkMode) {
 			window.document.body.classList.add('dark-mode')
