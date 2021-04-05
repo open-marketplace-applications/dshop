@@ -14,6 +14,9 @@
       type: 'select',
       options: ['IOTA', 'MI', '$', '€'],
     } },
+    class: { control: {
+      type: 'text',
+    } },
   }}
 />
 

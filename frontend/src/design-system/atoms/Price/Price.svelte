@@ -2,10 +2,10 @@
 	type Unit = 'IOTA' | 'MI' | '$' | '€'
 
 	export let value: number = 0
-	export let unit: string = 'MI'
+	export let unit: Unit = 'MI'
 </script>
 
-<div class="price">
+<div class={`price ${$$props.class}`}>
 	<h3>{value}</h3>
 	<span>{unit}</span>
 </div>

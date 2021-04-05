@@ -1,5 +1,5 @@
 <script>
-	import Progress from '../Progress/Progress.svelte'
+	import Progress from '../../design-system/atoms/Progress/Progress.svelte'
 	export let amount = 200
 	export let max = 500
 </script>
