@@ -9,7 +9,6 @@
 
 	import Hero from '$lib/Hero/Hero.svelte'
 	import Toolbar from '$lib/ToolBar/Toolbar.svelte'
-	import Progress from '$lib/Progress/Progress.svelte'
 	import AvailabilityCount from '$lib/AvailabilityCount/AvailabilityCount.svelte'
 
 	// import { io } from "socket.io-client";
