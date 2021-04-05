@@ -5,7 +5,7 @@
 	export let max: number
 	export let value: number
 	export let showValue: boolean = true
-	export let size: Size = 'lg'
+	export let size: Size = 'md'
 </script>
 
 <div class={`progress

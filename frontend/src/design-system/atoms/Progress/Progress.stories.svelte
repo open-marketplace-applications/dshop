@@ -4,7 +4,7 @@
 </script>
 
 <Meta
-  title="💧 Atoms / Progressss"
+  title="💧 Atoms / Progress"
   component={Progress}
   argTypes={{
     label: { control: {
@@ -34,18 +34,56 @@
 </Template>
 
 <Story
-  name="Progress default"
+  name="Progress Medium"
   args={{
-    label: "Example Progress bar",
+    label: "Medium sized",
     value: 42,
     max: 50
   }}
 />
 
 <Story
-  name="Small Progress"
+  name="Progress Small"
   args={{
-    label: "Example Progress bar",
+    label: "Small one",
+    size: 'sm',
+    value: 42,
+    max: 50
+  }}
+/>
+
+<Story
+  name="Progress Large"
+  args={{
+    label: "Large one",
+    size: 'lg',
+    value: 42,
+    max: 50
+  }}
+/>
+
+<Story
+  name="Label, but no Values"
+  args={{
+    label: "Label, but no Values",
+    showValue: false,
+    value: 42,
+    max: 50
+  }}
+/>
+
+<Story
+  name="Values but no Label"
+  args={{
+    value: 42,
+    max: 50
+  }}
+/>
+
+<Story
+  name="Naked, no label no values"
+  args={{
+    showValue: false,
     value: 42,
     max: 50
   }}
