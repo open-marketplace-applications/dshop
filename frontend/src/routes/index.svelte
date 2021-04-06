@@ -29,8 +29,8 @@
 		// market.greet("Svelte")
 		// Websockets
 		
-		// socket = io("http://localhost:5000")
-		socket = io("https://oma-dshop.herokuapp.com/")
+		socket = io("http://localhost:5000")
+		// socket = io("https://oma-dshop.herokuapp.com/")
 
 		console.log('socket', socket)
 
@@ -45,13 +45,15 @@
 				} else {
 					console.log('whatever type')
 				}
-				messageStore.set(data.message)
+				messageStore.set(data)
 			}
 		})
 
 		messageStore.subscribe((currentMessage) => {
 			console.log('currentMessage', currentMessage)
-			messages = [...messages, currentMessage]
+			if(currentMessage) {
+				messages = [...messages, currentMessage]
+			}
 		})
 
 		loading = false
@@ -77,10 +79,10 @@
 					/>
 					<div>
 						<Label label="Price" />
-						<Price value={42000} />
+						<Price value={1000000} unit='IOTA' />
 					</div>
 				</div>
-				<BuyButton />
+				<BuyButton disabled={true} />
 				{#if loading}
 					<Loading />
 				{:else}
