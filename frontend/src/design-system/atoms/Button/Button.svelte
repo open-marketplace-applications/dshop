@@ -11,6 +11,7 @@
 	export let block: boolean = false
 	export let rounded: boolean = false
 	export let type: buttonType = 'button'
+	export let disabled: boolean = false
 </script>
 
 {#if link}
@@ -31,20 +32,21 @@
 	<button
 		on:click={callback}
 		{type}
+		disabled={ disabled }
 		class={`btn
 			${rounded ? 'rounded' : ''} 
 			${size} 
 			${color} 
 			${block ? 'block' : ''} 
 			${$$props.class}
-		`}
+			`}
 	>
-		{label ? label : ''}
+	{label ? label : ''}
 		<slot />
 	</button>
 {/if}
 
-<style>
+<style lang="scss">
 	.btn {
 		background: var(--color-primary);
 		outline: none;
@@ -104,5 +106,17 @@
 	}
 	.btn.secondary:hover {
 		background: var(--color-element);
+	}
+
+	.btn:disabled {
+		opacity: .5;
+		background: var(--color-element);
+		color: var(--color-text);
+		cursor: not-allowed;
+		
+		&:hover {
+			background-color: var(--color-element);
+			opacity: 1;
+		}
 	}
 </style>
