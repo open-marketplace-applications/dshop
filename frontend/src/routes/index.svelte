@@ -65,7 +65,7 @@
 		<Row>
 			<Col>
 				<h1 class="headline">IOTA Chrysalis</h1>
-				<p>IOTA Chrysalis is coming soon. This is a very first step into that direction. We are using both, IOTA 1.5 and 2.0 to already create NFTs with colored coins. Read more <a target='_blank' href='www.google.de'>here</a></p>
+				<p>IOTA Chrysalis is coming soon. This is a very first step into that direction. We are using both, IOTA 1.5 and 2.0 to already create NFTs with colored coins. Read more </p>
 			</Col>
 			<Col class="history-col">
 				<div class="offer">
