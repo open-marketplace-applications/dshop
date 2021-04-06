@@ -12,6 +12,8 @@
 		loading = false
 	})
 
+	export let disabled
+
 	async function buy() {
 		console.log('buyButton buy')
 		loading = true
@@ -28,7 +30,7 @@
 	{#if address_to_pay}
 		<p>Send 1Mi to this address: {address_to_pay}</p>
 	{:else}
-		<Button size='lg' callback={buy} block={true}>Buy</Button>
+		<Button disabled={disabled} size='lg' callback={buy} block={true}>Buy</Button>
 	{/if}
 {:else}
 	<Button size='lg' callback={buy} block={true}>
