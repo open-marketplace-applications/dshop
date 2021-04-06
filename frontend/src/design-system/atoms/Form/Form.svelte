@@ -23,8 +23,6 @@
 
 	@media (min-width: 720px) {
 		.form {
-			border: var(--border);
-			padding: var(--space-xxl);
 			background-color: var(--color-layout-50);
 		}
 	}
