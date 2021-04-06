@@ -71,6 +71,7 @@ function init(server) {
         let response = {
             type: "connect_user",
             message: `User '${socket.id}' connected!`,
+            time: Date.now()
         }
         io.emit('update', JSON.stringify(response))
         sendAmount(io)
@@ -79,6 +80,7 @@ function init(server) {
             let response = {
                 type: "connect_user",
                 message: `User disconnect!`,
+                time: Date.now()
             }
             io.emit('update', JSON.stringify(response))
         });
@@ -88,6 +90,7 @@ function init(server) {
             let response = {
                 type: "new_message",
                 message: message,
+                time: Date.now()
             }
             io.emit('update', JSON.stringify(response))
         });
@@ -97,6 +100,7 @@ function init(server) {
             let response = {
                 type: "new_message",
                 message: message,
+                time: Date.now()
             }
             io.emit('update', JSON.stringify(response))
         })
@@ -117,7 +121,8 @@ async function sendAmount(io) {
             let response = {
                 type: "amount_update",
                 message: `Amount update!`,
-                amount: config.maxAmount - count
+                amount: config.maxAmount - count,
+                time: Date.now()
             }
             io.emit('update', JSON.stringify(response))
         });
