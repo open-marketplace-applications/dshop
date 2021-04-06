@@ -15,5 +15,6 @@
     type='message'
     dateTime={message.time}
     message={message.message}
+    user={message.user}
   ></Message>
 {/each}

@@ -86,11 +86,13 @@ function init(server) {
         });
 
         socket.on("new_message", (message, fn) => {
+
             fn("woot");
             let response = {
                 type: "new_message",
                 message: message,
-                time: Date.now()
+                time: Date.now(),
+                user: socket.id
             }
             io.emit('update', JSON.stringify(response))
         });

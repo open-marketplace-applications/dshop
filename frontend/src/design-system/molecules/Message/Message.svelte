@@ -9,6 +9,7 @@
 	export let owner: string | null
 	export let author: string | null
 	export let dateTime: string | null
+	export let user: string | null
 
 	let response = ''
 
@@ -28,18 +29,20 @@
 		{message}
 	</p>
 </Card>
-<span class="time">{new Date(dateTime).toLocaleString()}</span>
+<span class="time">@{user} - {new Date(dateTime).toLocaleString()}</span>
 
 <style>
 	p {
 		margin: 0;
 		font-weight: 400;
+		font-size: 14px;
 	}
+
 	:global(.card) {
 		display: block;
-		padding: var(--space-xs);
+		padding: var(--space-xs) !important;
 	}
-	
+
 	.time {
 		font-size: 12px;
 		font-weight: 400;
