@@ -11,8 +11,6 @@ import Container from './atoms/Container/Container.svelte'
 import Form from './atoms/Form/Form.svelte'
 import Image from './atoms/Image/Image.svelte'
 import Input from './atoms/Input/Input.svelte'
-import EmailInput from './atoms/Input/EmailInput.svelte'
-import TextInput from './atoms/Input/TextInput.svelte'
 import Label from './atoms/Label/Label.svelte'
 import Link from './atoms/Link/Link.svelte'
 import Loading from './atoms/Loading/Loading.svelte'
@@ -33,8 +31,6 @@ export {
 	Form,
 	Image,
 	Input,
-	TextInput,
-	EmailInput,
 	Label,
 	Link,
 	Loading,
