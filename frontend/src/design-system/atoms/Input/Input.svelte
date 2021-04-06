@@ -3,6 +3,8 @@
 
 	export let type: Type
 	export let name: string
+	export let min: number
+	export let max: number
 	export let label: string
 	export let value: string = ''
 	export let placeholder: string = 'Add a placeholder'
@@ -17,7 +19,9 @@
 		<input 
 			type="text"
 			{name}
-			{placeholder} 
+			{placeholder}
+			maxlength={max}
+			minlength={min}
 			bind:value
 			tabindex="0"
 		>
@@ -25,7 +29,9 @@
 		<input 
 			type="email"
 			{name}
-			{placeholder} 
+			{placeholder}
+			maxlength={max}
+			minlength={min}
 			bind:value
 			tabindex="0"
 		>
