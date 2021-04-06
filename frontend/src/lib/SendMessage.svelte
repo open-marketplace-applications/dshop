@@ -1,27 +1,26 @@
 <script>
+  import { Input, Form, Button } from '../design-system/index'
+  
   export let socket
+  
+  $: new_message = ''
 
-  import { Form, Button } from '../design-system/index'
-
-  let new_message = ''
 	const sendMessage = () => {
-		console.log('sendMessage called 2:', new_message)
-		// socket.emit("new_message", new_message )
-        socket.emit("new_message", new_message, (data) => {
-            console.log(data); // data will be "woot"
-        });
-    console.log("socket", socket)
+    socket.emit("new_message", new_message, (data) => {
+      console.log(data); // data will be "woot"
+    })
+    new_message = ''
 	}
 </script>
 
-<Form>
-  <input 
+<Form onSubmit={sendMessage}>
+  <Input 
     type="text" 
-    placeholder="Drop a line" 
+    name="new-message"
+    placeholder="Drop a line here" 
     bind:value={new_message}
-  >
-  <Button 
-    callback={sendMessage} 
+  />
+  <Button
     type='submit'
   >
     Send message
