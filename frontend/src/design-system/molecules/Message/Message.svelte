@@ -4,11 +4,11 @@
 
 	export let type: Type
 	export let message: string
-	export let volume: number
-	export let unit: string
-	export let owner: string
-	export let author: string
-	export let dateTime: string
+	export let volume: number | null
+	export let unit: string | null
+	export let owner: string | null
+	export let author: string | null
+	export let dateTime: string | null
 
 	let response = ''
 

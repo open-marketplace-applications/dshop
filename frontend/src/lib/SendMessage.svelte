@@ -20,9 +20,7 @@
     placeholder="Drop a line here" 
     bind:value={new_message}
   />
-  <Button
-    type='submit'
-  >
+  <Button type='submit' block size='lg' class='m-b-lg'>
     Send message
   </Button>
 </Form>
