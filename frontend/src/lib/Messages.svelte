@@ -3,14 +3,17 @@
   import { Message } from '../design-system/index'
 	export let socket
 	export let messages
+
+  $: sorted = messages.sort(function(a, b){return b.time-a.time});
+
 </script>
 
 <h5 style="margin-top: var(--space-xl); margin-bottom: var(--space-sm)">Messages</h5>
 <SendMessage socket={socket} />
-{#each messages.reverse() as message, i}
+{#each sorted as message, i}
   <Message
     type='message'
-    dateTime={'04.01.'}
-    message={message}
+    dateTime={message.time}
+    message={message.message}
   ></Message>
 {/each}
