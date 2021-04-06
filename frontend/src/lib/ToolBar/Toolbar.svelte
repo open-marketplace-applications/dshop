@@ -4,7 +4,7 @@
 
 <div class="toolbar">
 	<Container class="toolbar-container">
-		<Button color="secondary" rounded>Share</Button>
+		<Button disabled color="secondary" rounded>Share</Button>
 	</Container>
 </div>
 

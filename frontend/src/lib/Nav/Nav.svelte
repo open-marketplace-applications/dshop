@@ -9,7 +9,7 @@
 		</div>
 		<div class="right">
 			<Mode />
-			<Button class="cta-btn" link="/faq">FAQ</Button>
+			<!-- <Button class="cta-btn" link="/faq">FAQ</Button> -->
 		</div>
 	</Container>
 </div>

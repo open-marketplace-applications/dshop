@@ -29,8 +29,8 @@
 		// market.greet("Svelte")
 		// Websockets
 		
-		socket = io("http://localhost:5000")
-		// socket = io("https://oma-dshop.herokuapp.com/")
+		// socket = io("http://localhost:5000")
+		socket = io("https://oma-dshop.herokuapp.com/")
 
 		console.log('socket', socket)
 
