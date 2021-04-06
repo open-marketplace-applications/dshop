@@ -25,11 +25,10 @@
 
 <Card class={`message-card ${$$props.class}`}>
 	<p>
-		{response}
+		{message}
 	</p>
 </Card>
-<span class="time">{dateTime}</span>
-
+<span class="time">{new Date(dateTime).toLocaleString()}</span>
 
 <style>
 	p {
@@ -38,6 +37,7 @@
 	}
 	:global(.card) {
 		display: block;
+		padding: var(--space-xs);
 	}
 	
 	.time {
