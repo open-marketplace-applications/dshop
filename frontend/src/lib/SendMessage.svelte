@@ -17,10 +17,25 @@
   <Input 
     type="text" 
     name="new-message"
-    placeholder="Drop a line here" 
+    placeholder="Drop a line here"
+    min={1}
     bind:value={new_message}
   />
   <Button type='submit' block size='lg' class='m-b-lg'>
     Send message
   </Button>
 </Form>
+
+<style>
+  :global(.input) {
+    margin-bottom: 0 !important;
+  }
+
+  :global(input) {
+    border-radius: var(--radius) var(--radius) 0 0  !important;
+  }
+
+  :global(form button) {
+    border-radius: 0 0 var(--radius) var(--radius) !important;
+  }
+</style>
