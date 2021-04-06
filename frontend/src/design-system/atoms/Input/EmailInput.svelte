@@ -1,7 +1,4 @@
 <script lang="ts">
-	type Type = 'email' | 'text'
-
-	export let type: Type
 	export let name: string
 	export let label: string
 	export let value: string = ''
@@ -13,24 +10,13 @@
 		<label for={name}>{label}</label>
 	{/if}
 
-	{#if type === 'text'}
-		<input 
-			type="text"
-			{name}
-			{placeholder} 
-			bind:value
-			tabindex="0"
-		>
-	{:else} 
-		<input 
-			type="email"
-			{name}
-			{placeholder} 
-			bind:value
-			tabindex="0"
-		>
-	{/if}
-
+	<input 
+		type="email"
+		{name}
+		{placeholder} 
+		bind:value
+		tabindex="0"
+	/>
 	<slot />
 </div>
 
