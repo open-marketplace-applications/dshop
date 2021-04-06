@@ -14,6 +14,7 @@
   title="💧 Atoms / Form" 
   component={Form} 
   argTypes={{
+    class: { control: { type: 'text' } },
     onSubmit: { action: 'onClick' },
   }}
 />

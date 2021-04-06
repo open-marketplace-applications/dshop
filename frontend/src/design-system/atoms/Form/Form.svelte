@@ -2,14 +2,14 @@
 	export let onSubmit: () => void
 </script>
 
-<div class="form-container">
+<div class={`form ${$$props.class}`}>
 	<form on:submit|preventDefault={onSubmit}>
 		<slot />
 	</form>
 </div>
 
-<style>
-	.form-container {
+<style lang="scss">
+	.form {
 		max-width: 500px;
 		width: 100%;
 		margin: 0 auto;
