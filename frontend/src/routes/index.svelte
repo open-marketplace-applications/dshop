@@ -30,31 +30,31 @@
 		// Websockets
 		
 		// socket = io("http://localhost:5000")
-		socket = io("https://oma-dshop.herokuapp.com/")
+		// socket = io("https://oma-dshop.herokuapp.com/")
 
-		console.log('socket', socket)
+		// console.log('socket', socket)
 
-		socket.on('update', function(message) {
-			let data = JSON.parse(message)
-			console.log('update', data)
-			if (data) {
-				if (data.type === 'amount_update') {
-					amount = data.amount
-				} else if(data.type === 'connect_user') {
-					console.log('set', data.message)
-				} else {
-					console.log('whatever type')
-				}
-				messageStore.set(data)
-			}
-		})
+		// socket.on('update', function(message) {
+		// 	let data = JSON.parse(message)
+		// 	console.log('update', data)
+		// 	if (data) {
+		// 		if (data.type === 'amount_update') {
+		// 			amount = data.amount
+		// 		} else if(data.type === 'connect_user') {
+		// 			console.log('set', data.message)
+		// 		} else {
+		// 			console.log('whatever type')
+		// 		}
+		// 		messageStore.set(data)
+		// 	}
+		// })
 
-		messageStore.subscribe((currentMessage) => {
-			console.log('currentMessage', currentMessage)
-			if(currentMessage) {
-				messages = [...messages, currentMessage]
-			}
-		})
+		// messageStore.subscribe((currentMessage) => {
+		// 	console.log('currentMessage', currentMessage)
+		// 	if(currentMessage) {
+		// 		messages = [...messages, currentMessage]
+		// 	}
+		// })
 
 		loading = false
 	})
