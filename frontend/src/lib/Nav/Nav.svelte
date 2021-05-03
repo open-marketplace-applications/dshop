@@ -5,12 +5,11 @@
 <div class={`nav`}>
 	<Container class="container">
 		<div class="left">
-			<Logo />
+			<Logo link="/" />
 		</div>
 		<div class="right">
 			<Mode />
 			<Button class="cta-btn" link="/faq">FAQ</Button>
-			<Button class="cta-btn" link="/shopping_cart">CART</Button>
 		</div>
 	</Container>
 </div>

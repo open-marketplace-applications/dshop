@@ -24,43 +24,8 @@
 
 <nav class="navbar navbar-dark bg-primary navbar-expand-lg navbar-dark ">
 	<div class="container">
-		<a class="navbar-brand logo-font" id="brand" on:click={goToHome}> SvelteCart </a>
+		<a class="navbar-brand logo-font" id="brand" on:click={goToHome}> Products </a>
 
-		<!-- links toggle -->
-		<button
-			class="navbar-toggler order-first"
-			type="button"
-			data-toggle="collapse"
-			data-target="#links"
-			aria-controls="navbarResponsive"
-			aria-expanded="false"
-			aria-label="Toggle navigation"
-		>
-			<i class="fa fa-bars" />
-		</button>
-		<!-- account toggle -->
-		<button
-			class="navbar-toggler"
-			type="button"
-			data-toggle="collapse"
-			data-target="#account"
-			aria-controls="navbarResponsive"
-			aria-expanded="false"
-			aria-label="Toggle navigation"
-		>
-			<i class="fa fa-shopping-cart fa-1x" aria-hidden="true" />
-			<span class="badge badge-light">00</span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="links">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="#"> Magazin</a>
-				</li>
-				<li class="nav-item">
-				</li>
-			</ul>
-		</div>
 		<div class="collapse navbar-collapse" id="account">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active">

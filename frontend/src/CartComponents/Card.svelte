@@ -7,6 +7,7 @@
     const cartItems = get(cart);
     let inCart = cartItems[name] ? cartItems[name].count : 0;
     function addToCart() {
+      console.log("addToCart called", item, inCart)
       inCart++;
       cart.update(n => {
         return { ...n, [name]: { ...item, count: inCart } };
