@@ -1,5 +1,9 @@
-const URL = 'http://localhost:5000/api'
+// const URL = 'http://localhost:5000/api'
 // const URL = 'https://oma-dshop.herokuapp.com/api'
+
+import { variables } from '$lib/variables';
+
+const URL = variables.basePath + '/api'
 
 export const getShopConfig = async () => {
 	try {
