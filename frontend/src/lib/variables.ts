@@ -1,0 +1,4 @@
+export const variables = {
+    basePath: import.meta.env.VITE_PUBLIC_BASE_PATH,
+    mode: import.meta.env.VITE_MODE,
+  };

@@ -183,10 +183,10 @@ a:hover {
 
 hr {
 	background: transparent;
-	opacity: 0.2;
+	opacity: 1;
 	border-color: var(--text-color);
 	border-top: none;
-	margin: var(--space-md) 0;
+	margin: var(--space-lg) 0;
 }
 
 .number {

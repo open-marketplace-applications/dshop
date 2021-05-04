@@ -1,9 +1,9 @@
 <script>
     import { get } from "svelte/store";
-    import { cart } from "./stores.js";
+    import { cart } from "../cart/stores.js"
     export let item;
     let { img, name, price } = item;
-    img = `img/${img}`;
+    img = `${img}`;
     const cartItems = get(cart);
     let inCart = cartItems[name] ? cartItems[name].count : 0;
     function addToCart() {
@@ -24,7 +24,7 @@
     <h5 class="card-title">{name}</h5>
     
   
-    <b class=alert alert-info > $ {price}</b>
+    <b class=alert alert-info > € {price}</b>
     <p class=alert alert-info >{#if inCart > 0}
         <span>
           <em>({inCart} in cart)</em>

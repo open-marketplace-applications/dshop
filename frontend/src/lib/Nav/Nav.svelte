@@ -1,5 +1,7 @@
 <script>
 	import { Mode, Logo, Container, Button } from '../../design-system/index'
+	export let cartCount
+	$: console.log("Ciaoaaa", cartCount)
 </script>
 
 <div class={`nav`}>
@@ -8,8 +10,14 @@
 			<Logo link="/" />
 		</div>
 		<div class="right">
+			<Button color="secondary" link="/faq">FAQ</Button>
+			<Button color="primary" class="cta-btn" link="/cart">
+				Kaufen 
+				{#if cartCount > 0}
+				{cartCount}
+				{/if}
+			</Button>
 			<Mode />
-			<Button class="cta-btn" link="/faq">FAQ</Button>
 		</div>
 	</Container>
 </div>
@@ -33,6 +41,10 @@
 
 	.left {
 		width: 50px;
+	}
+
+	:global(.cta-btn) {
+		margin-left: 20px !important;
 	}
 
 	.nav :global(.container, .right) {

@@ -23,7 +23,7 @@
 
 	@media (min-width: 720px) {
 		.form {
-			background-color: var(--color-layout-50);
+			background-color: var(--color-page);
 		}
 	}
 </style>

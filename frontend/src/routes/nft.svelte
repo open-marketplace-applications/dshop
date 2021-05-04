@@ -7,7 +7,7 @@
 	import { onMount } from 'svelte'
 	import { writable } from 'svelte/store'
 	
-	import { Section, Container, Row, Col, Loading, Progress, Price, Label } from '../design-system/index'
+	import { Section, Container, Row, Col, Loading, Progress, Price, Label } from '$design-system/index'
 	
 	import Hero from '$lib/Hero/Hero.svelte'
 	import Toolbar from '$lib/ToolBar/Toolbar.svelte'
