@@ -1,3 +1,5 @@
+
+
 <script context="module">
 	export const prerender = true;
 </script>
@@ -10,13 +12,26 @@
   import items from '../mocks/products.js'
 	let item = items[0]
   let { img, name, price } = item;
+
+  import { variables } from '$lib/variables';
+
+  const client_id = variables.paypal_client_id 
+
+  console.log('client_id', client_id)
   onMount(() => {
 		console.log('onMount')
 		cart.update(n => {
         return { ...n, [name]: { ...item, count: 1 } };
       });
   })
+  
 </script>
+
+<svelte:head>
+    <script
+        src={"https://www.paypal.com/sdk/js?currency=EUR&client-id=ASdqo5xgUZOW_YrjgR0XnepLOLbJBCPhJK9N5TMVx0YRj1e3mM3jICi80CDorJZNtwnrC2uUQxSmFhTK"}>
+    </script>
+</svelte:head>
 
 <div class="cart">
   <Section>
