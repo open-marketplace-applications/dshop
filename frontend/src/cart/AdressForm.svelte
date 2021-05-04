@@ -1,8 +1,12 @@
 
+
 <script>
     import { Input, Form } from '../design-system/index'
-   
+    import { getCountries } from '../cart/countries.js'
+
+    let counties = getCountries();
 	export let values;
+
 
     const submitHandler = () => {
         alert(JSON.stringify(values, null, 2))
@@ -53,13 +57,13 @@
         bind:value={values.city}
         placeholder="Stadt"
     />
-    <Input
-        type="text"
-        name="country"
-        label="Land"
-        bind:value={values.country}
-        placeholder="Land"
-    />
+    <select bind:value={values.country}>
+		{#each counties as country}
+			<option value={country.name}>
+				{country.name}
+			</option>
+		{/each}
+	</select>
 </Form>
 
 <style>

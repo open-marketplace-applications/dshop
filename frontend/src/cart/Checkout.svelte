@@ -5,18 +5,8 @@
 	import { cart } from './stores.js'
 	import { checkout } from '../api/shop'
 	
-	let checkedOut = false
-	let cartItems = []
-	const unsubscribe = cart.subscribe((items) => {
-		cartItems = Object.values(items)
-	})
-
-	import { regSchema } from './schema'
-    let values = {}
-
-	import { variables } from '$lib/variables';
-
 	const MODE = variables.mode
+	let values = {}
 
 	if(MODE == "DEV") {
 		values = { 
@@ -29,6 +19,20 @@
 			country: "Germany"
 		}
 	}
+
+	let checkedOut = false
+	let cartItems = []
+	const unsubscribe = cart.subscribe((items) => {
+		cartItems = Object.values(items)
+	})
+
+	import { regSchema } from './schema'
+    let price = 9.00
+	
+	import { variables } from '$lib/variables';
+	
+
+	$: shipping_cost = values.country === "Germany" ? 1.55 : 3.70
 
 	const send_checkout = async () => {
 		console.log('send_checkout cartItems', cartItems)
@@ -58,7 +62,11 @@
 		<CheckoutItem {item} />
 	{/each}
 	<hr>
-	<AdressForm values={values} />
+	<AdressForm bind:values={values} />
+	<hr>
+	<p>Magazin ({cartItems[0].count} Stück): {price * cartItems[0].count}€ </p>
+	<p>Shipping: {shipping_cost}€</p>
+	<p>Total: {(price * cartItems[0].count) + shipping_cost}€</p>
 	<hr>
 	<Button label="Checkout" size="lg" callback={send_checkout} block />
 {/if}
