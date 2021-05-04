@@ -51,24 +51,35 @@ export default ({ config, db }) => resource({
 		console.log("order.final_price", order.final_price);
 		order.status = 'ordered'
 
-		Wallet.getAddress().then(address => {
-			order.address = address;
+		// Wallet.getAddress().then(address => {
+		// 	order.address = address;
 
-			order.save().then(result => {
-				console.log("result:", result);
-				// clear id
-				let res = {
-					id: result._id,
-					final_price: result.final_price,
-					iota_address: result.address,
-				}
-				console.log("res:", res);
-				WebSocketsServer.send("someone ordered a NFT")
-				response.send(res)
-			}).catch(err => {
-				console.log('err', err)
-				response.status(500).send(err)
-			})
+		// 	order.save().then(result => {
+		// 		console.log("result:", result);
+		// 		// clear id
+		// 		let res = {
+		// 			id: result._id,
+		// 			final_price: result.final_price,
+		// 			iota_address: result.address,
+		// 		}
+		// 		console.log("res:", res);
+		// 		WebSocketsServer.send("someone ordered a NFT")
+		// 		response.send(res)
+		// 	}).catch(err => {
+		// 		console.log('err', err)
+		// 		response.status(500).send(err)
+		// 	})
+		// })
+
+		order.save().then(result => {
+			console.log("result:", result);
+			// clear id
+			console.log("res:", result);
+			WebSocketsServer.send("someone ordered a NFT")
+			response.send(result)
+		}).catch(err => {
+			console.log('err', err)
+			response.status(500).send(err)
 		})
 
 
