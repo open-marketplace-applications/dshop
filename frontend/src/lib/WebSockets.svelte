@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
+    import { variables } from '$lib/variables';
+
+    let WS_URL = variables.ws_url
 
 	$: amount = 0
 
@@ -14,6 +17,7 @@
 		console.log('onMount')
 
 
+		// socket = io(WS_URL)
 		socket = io("http://localhost:5000")
 		// socket = io("https://oma-dshop.herokuapp.com/")
 
