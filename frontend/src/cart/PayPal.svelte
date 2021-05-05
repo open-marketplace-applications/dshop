@@ -2,9 +2,11 @@
 	import { onMount } from 'svelte'
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
+	import { payWithPaypal } from '../api/shop'
 
 	export let value
 	export let callback
+	export let order_id
 
 	const success = (message) => dispatch('success', message);
 
@@ -38,12 +40,16 @@
 					return actions.order.capture().then(function (details) {
 						// This function shows a transaction success message to your buyer.
 						console.log('details of transcation: ', details)
+						
+						// TODO: Fix this on server side
+						// payWithPaypal(order_id, details)
 						success('Transaction completed by ' + details.payer.name.given_name)
 					})
 				}
 			})
 			.render('#paypal-button-container')
 	}
+
 </script>
 
 <div>

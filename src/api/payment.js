@@ -2,6 +2,7 @@ import { Router } from 'express';
 import orderModel from '../models/orderModel';
 // var paymentModule = require('iota-payment')
 const axios = require('axios');
+import Wallet from '../lib/wallet';
 
 var paypal = require('paypal-rest-sdk');
 import Order from '../models/orderModel'
@@ -34,23 +35,27 @@ api.post('/pay_with_iota', (req, response) => {
                     iota_price = 1
                 }
                 console.log('iota_price', iota_price)
-
                 
-                const response_obj = {
-                    order,
-                    payment: {
-                        address: order.address,
-                        value: iota_price,
-                        // live_price: live_price
+                Wallet.getAddress().then(iota_address => {
+                    console.log('iota_address', iota_address)
+                
+                    const response_obj = {
+                        order,
+                        payment: {
+                            address: iota_address,
+                            value: iota_price,
+                            // live_price: live_price
+                        }
                     }
-                }
-                console.log(response_obj)
-
-                var t1 = Date.now();
-                console.log("Time for pay_with_iota " + (t1 - t0) + " milliseconds.")
-
-                response.send(response_obj)
-
+                    console.log(response_obj)
+    
+                    var t1 = Date.now();
+                    console.log("Time for pay_with_iota " + (t1 - t0) + " milliseconds.")
+    
+                    response.send(response_obj)
+    
+                })
+                
              
 
                 // getLivePrice().then(live_price => {
@@ -92,62 +97,76 @@ api.post('/pay_with_iota', (req, response) => {
     }
 });
 
-api.post('/pay_with_paypal', (req, response) => {
-    console.log('pay_with_paypal called', req.query.id)
-    console.log('pay_with_paypal called', req.query)
-    if (req.query.id) {
-        orderModel.findOne({ _id: req.query.id }, function (error, order) {
-            console.log('error', error)
-            console.log('order', order)
-            if (error) {
-                response.status(500).send(error)
-            } else {
+// TODO: This function is deprecated, try to check paypal payment somewhere else
+
+// api.post('/pay_with_paypal', (req, response) => {
+//     console.log('pay_with_paypal called', req.query.id)
+//     console.log('pay_with_paypal called', req.query)
+//     if (req.query.id) {
+//         orderModel.findOne({ _id: req.query.id }, function (error, order) {
+//             console.log('error', error)
+//             console.log('order', order)
+//             if (error) {
+//                 response.status(500).send(error)
+//             } else {
                 
-                var paypal_id = req.body.id;
-                console.log('paypal_id', paypal_id)
-                if (paypal_id) {
-                    paypal.payment.get(paypal_id, function (error, payment) {
-                        if (error) {
-                            console.log(error);
-                            throw error;
-                        } else {
-                            console.log("Get Payment Response");
-                            console.log(payment);
-                            console.log("payment.state === 'approved'");
-                            console.log(payment.state === 'approved');
-                            console.log("payment.transactions[0].invoice_number === order._id.toString()");
-                            console.log(payment.transactions[0].invoice_number === order._id.toString());
-                            if (payment.state === 'approved' && payment.transactions[0].invoice_number === order._id.toString()) {
-                                console.log('amount', payment.transactions[0].amount)
-                                if (payment.transactions[0].amount.total >= order.final_price) {
-                                    let payment_object = {
-                                        method: "paypal",
-                                        data: payment
-                                    }
-                                    Order.setPayed(order, payment_object)
-                                    response.send({ message: 'payment got approved'})
-                                } else {
-                                    response.status(500).send({ error: 'the payment was not enough' })
-                                }
-                            } else {
-                                response.status(500).send({ error: 'payment not accepted' })
-                            }
-                        }
+//                 var paypal_id = req.body.id;
+//                 console.log('Hello world!')
+//                 console.log('paypal_id', paypal_id)
+//                 if (paypal_id) {
+//                     console.log('1')
+//                     paypal.payment.get(paypal_id, function (error, payment) {
+//                         console.log('2')
+//                         if (error) {
+//                             console.log('3')
+//                             console.log("error Get Payment", error);
+//                             throw error;
+//                         } else {
+//                             console.log('3.5')
+//                             console.log("Get Payment Response");
+//                             console.log(payment);
+//                             console.log("payment.state === 'approved'");
+//                             console.log(payment.state === 'approved');
+//                             console.log("payment.transactions[0].invoice_number === order._id.toString()");
+//                             console.log(payment.transactions[0].invoice_number === order._id.toString());
+//                             if (payment.state === 'approved' && payment.transactions[0].invoice_number === order._id.toString()) {
+//                                 console.log('amount', payment.transactions[0].amount)
+//                                 if (payment.transactions[0].amount.total >= order.final_price) {
+//                                     let payment_object = {
+//                                         method: "paypal",
+//                                         data: payment
+//                                     }
+//                                     Order.setPayed(order, payment_object)
+//                                     console.log("payment got approved", order);
+//                                     response.send({ message: 'payment got approved'})
+//                                 } else {
+//                                     console.log("the payment was not enough", error);
 
-                    });
+//                                     response.status(500).send({ error: 'the payment was not enough' })
+//                                 }
+//                             } else {
+//                                 console.log("payment not accepted", error);
+//                                 response.status(500).send({ error: 'payment not accepted' })
+//                             }
+//                         }
 
-                } else {
-                    response.status(500).send({error: 'no payment found'})
-                }
+//                     });
+
+//                 } else {
+//                     console.log("no payment found", error);
+
+//                     response.status(500).send({error: 'no payment found'})
+//                 }
 
 
-            }
-        });
+//             }
+//         });
 
-    } else {
-        response.status(500).send({ error: 'No id in params.' })
-    }
-});
+//     } else {
+//         console.log("No id in params", error);
+//         response.status(500).send({ error: 'No id in params.' })
+//     }
+// });
 
 
 const getLivePrice = function () {

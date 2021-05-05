@@ -3,6 +3,7 @@
 	import CheckoutItem from './CheckoutItem.svelte'
 	import AdressForm from './AdressForm.svelte'
 	import PayPal from './PayPal.svelte'
+	import IOTAPay from './IOTAPay.svelte'
 	import { cart } from './stores.js'
 	import { checkout } from '../api/shop'
 	
@@ -56,6 +57,10 @@
 	function handlePayPalSuccess(message) {
 		payment_success = true
 	}
+	function handleIOTASuccess(message) {
+		alert("great success!")
+		payment_success = true
+	}
 </script>
 
 {#if cartItems.length === 0}
@@ -64,8 +69,8 @@
 		<h3>Bezahlen</h3>
 		<p>Mit was möchstest du bezahlen?</p>
 		<p>Total: {checkedOutResponse.final_price}€</p>
-		<PayPal value={checkedOutResponse.final_price} on:success={handlePayPalSuccess} />
-		<p>IOTA</p>
+		<PayPal value={checkedOutResponse.final_price} order_id={checkedOutResponse._id} on:success={handlePayPalSuccess} />
+		<IOTAPay value={checkedOutResponse.final_price} order_id={checkedOutResponse._id} on:success={handleIOTASuccess} />
 		{:else}
 			<p class="empty-message">Danke für deinen Kauf!</p>
 		{/if}

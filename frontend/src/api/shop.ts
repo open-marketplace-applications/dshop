@@ -83,3 +83,55 @@ export const checkout = async (shopping_cart) => {
 		console.error(error)
 	}
 }
+
+
+export const payWithPaypal = async (order_id, payment) => {
+	try {
+		console.log('payWithPaypal', payment)
+
+	
+		const options = {
+			method: 'POST',
+			body: JSON.stringify(payment),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}
+		 
+		const response = await fetch(`${URL}/pay_with_paypal?id=${order_id}`, options)
+		console.log('response', response)
+		const obj = await response.json()
+		console.log('obj', obj)
+		return obj
+	} catch (error) {
+		console.error(error)
+	}
+
+}
+
+
+export const payWithIOTA = async (order_id, payment) => {
+	try {
+		console.log('payWithIOTA', payment)
+
+	
+		const options = {
+			method: 'POST',
+			body: JSON.stringify(payment),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}
+		 
+		const response = await fetch(`${URL}/pay_with_iota?id=${order_id}`, options)
+		console.log('response', response)
+		const obj = await response.json()
+		console.log('obj', obj)
+		return obj
+	} catch (error) {
+		console.error(error)
+	}
+
+}
+
+

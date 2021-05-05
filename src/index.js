@@ -17,7 +17,7 @@ import passport from 'passport'
 import User from './models/userModel'
 import Wallet from './lib/wallet'
 import WebSocketsServer from './lib/websockets'
-import {init} from './db';
+import {database} from './db';
 import {listen} from 'socket.io';
 
 
@@ -94,8 +94,7 @@ passport.use('jwt', new JwtStrategy(jwtOptions, (jwt_payload, done) => {
 }))
 
 // connect to db
-init().then(db => {
-
+database.then(db => {
 	// internal middleware
 	app.use('/api', middleware({ config, db }));
 
