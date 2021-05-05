@@ -4,6 +4,7 @@
 	import AdressForm from './AdressForm.svelte'
 	import PayPal from './PayPal.svelte'
 	import IOTAPay from './IOTAPay.svelte'
+	import Annotations from './Annotations.svelte'
 	import { cart } from './stores.js'
 	import { checkout } from '../api/shop'
 	
@@ -90,4 +91,10 @@
 	<p>Total: { (price * cartItems[0].count) + shipping_cost}€</p>
 	<hr>
 	<Button label="Checkout" size="lg" callback={send_checkout} block />
+	<br>
+	<br>
+	<hr>
+
+
+	<Annotations />
 {/if}
