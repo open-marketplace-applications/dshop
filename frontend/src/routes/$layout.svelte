@@ -1,5 +1,6 @@
 <script>
 	import Nav from '$lib/Nav/Nav.svelte'
+	import WebSockets from '$lib/WebSockets.svelte'
 	import '../theme.css'
 	import { cart } from '../cart/stores.js'
 	let cardCount;
@@ -17,3 +18,4 @@
 <main>
 	<slot />
 </main>
+<WebSockets />

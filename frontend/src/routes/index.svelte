@@ -7,8 +7,9 @@
 	
 	import items from '../mocks/products.js'
 	let item = items[0]
+	console.log("item", item)
+	const MAX = item.quantity
 
-	const MAX = 1000
 </script>
 
 <Hero image={item.img} />
