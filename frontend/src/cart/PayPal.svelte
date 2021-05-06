@@ -42,7 +42,7 @@
 						console.log('details of transcation: ', details)
 						
 						// TODO: Fix this on server side
-						// payWithPaypal(order_id, details)
+						payWithPaypal(order_id, details)
 						success('Transaction completed by ' + details.payer.name.given_name)
 					})
 				}

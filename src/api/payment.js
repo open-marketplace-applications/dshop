@@ -168,6 +168,79 @@ api.post('/pay_with_iota', (req, response) => {
 //     }
 // });
 
+api.post('/pay_with_paypal', (req, response) => {
+    console.log('pay_with_paypal called', req.query.id)
+    console.log('pay_with_paypal called', req.query)
+    if (req.query.id) {
+        orderModel.findOne({ _id: req.query.id }, function (error, order) {
+            console.log('error', error)
+            console.log('order', order)
+            if (error) {
+                response.status(500).send(error)
+            } else {
+                
+                var paypal_id = req.body.id;
+                console.log('paypal_id', paypal_id)
+                if (paypal_id) {
+                    console.log('1')
+                    captureOrder(paypal_id, true).then((response) => {
+                        console.log('paypal response', response)
+                    }).catch((err) => {
+                        console.log('paypal err', err)
+
+                    })
+                }
+            }
+        })
+    }
+});
+
+const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
+
+const payPalClient = require('../lib/PayPal/payPalClient');
+/**
+ * This function can be used to capture an order payment by passing the approved
+ * order id as argument.
+ * 
+ * @param orderId
+ * @param debug
+ * @returns
+ */
+ async function captureOrder(orderId, debug=false) {
+     console.log("captureOrder orderId: ", orderId);
+    try {
+        const request = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderId);
+        request.requestBody({});
+        const response = await payPalClient.client().execute(request);
+        if (debug){
+            console.log("Status Code: " + response.statusCode);
+            console.log("Status: " + response.result.status);
+            console.log("Order ID: " + response.result.id);
+            console.log("Links: ");
+            response.result.links.forEach((item, index) => {
+                let rel = item.rel;
+                let href = item.href;
+                let method = item.method;
+                let message = `\t${rel}: ${href}\tCall Type: ${method}`;
+                console.log(message);
+            });
+            console.log("Capture Ids:");
+            response.result.purchase_units.forEach((item,index)=>{
+            	item.payments.captures.forEach((item, index)=>{
+            		console.log("\t"+item.id);
+                });
+            });
+            // To toggle print the whole body comment/uncomment the below line
+            console.log(JSON.stringify(response.result, null, 4));
+        }
+        return response;
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
+
+
 
 const getLivePrice = function () {
     return new Promise(function(resolve, reject) {

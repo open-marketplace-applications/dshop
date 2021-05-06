@@ -32,6 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "@iota/wallet": "0.1.1",
+    "@paypal/checkout-server-sdk": "^1.0.2",
     "axios": "^0.21.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
