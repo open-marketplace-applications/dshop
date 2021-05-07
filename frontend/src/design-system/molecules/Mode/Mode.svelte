@@ -47,7 +47,7 @@
 		align-items: center;
 		color: var(--color-text);
 		cursor: pointer;
-		margin-right: var(--space-md);
+		margin-left: var(--space-md);
 	
 		:global(.icon) {
 			margin: var(--space-xs);

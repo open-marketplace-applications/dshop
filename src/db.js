@@ -16,23 +16,23 @@ import config from './config'
 // }
 
 
-export async function init() {
+export const database = new Promise(function (myResolve, myReject) {
 
 	try {
 		console.log("connecting to db...")
-		let db = await mongoose.connect(config.db, {
+		let db = mongoose.connect(config.db, {
 			useNewUrlParser: true,
-			useUnifiedTopology: true,
+			// TODO: ENABLE THIS FOR PRODUCTION
+			// useUnifiedTopology: true, 
 			useFindAndModify: false,
 			useCreateIndex: true
 		});
 		console.log("connected to db!")
-	
-		return db
+
+		myResolve(db); // when successful
 	} catch (error) {
 		console.log("error", error)
-		return error
-		
-	}
+		myReject(error);
 
-}
+	}
+});

@@ -19,7 +19,7 @@
 	@media (min-width: 720px) {
 		.image {
 			width: 450px;
-			height: 600px;
+			height: 450px;
 		}
 	}
 </style>

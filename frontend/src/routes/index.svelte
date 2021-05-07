@@ -1,129 +1,60 @@
 <script lang="ts">
-	import { onMount } from 'svelte'
-	import { writable } from 'svelte/store'
-	import '../theme.css'
-	
-	import { Section, Container, Row, Col, Loading, Progress, Price, Label } from '../design-system/index'
-	
+
+	import { Section, Container, Row, Col, Button, Price, Progress } from '../design-system/index'
+
 	import Hero from '$lib/Hero/Hero.svelte'
-	import Toolbar from '$lib/ToolBar/Toolbar.svelte'
-	import BuyButton from '$lib/BuyButton.svelte'
-	import Messages from '$lib/Messages.svelte'
+	import Checkout from '../cart/Checkout.svelte'
 	
-	$: amount = 0
-	$: loading = true
-	const MAX = 500
-	const messageStore = writable('')
-	let messages = []
-	let socket = {
-		emit: function(x,y){
-			console.log("not loadet yet.")
-		}
-	}
+	import items from '../mocks/products.js'
+	let item = items[0]
+	console.log("item", item)
+	const MAX = item.quantity
 
-	onMount(async () => {
-		console.log('onMount')
-
-		// WASM Market Lib
-		// await market.default()
-		// market.greet("Svelte")
-		// Websockets
-		
-		// socket = io("http://localhost:5000")
-		// socket = io("https://oma-dshop.herokuapp.com/")
-
-		// console.log('socket', socket)
-
-		// socket.on('update', function(message) {
-		// 	let data = JSON.parse(message)
-		// 	console.log('update', data)
-		// 	if (data) {
-		// 		if (data.type === 'amount_update') {
-		// 			amount = data.amount
-		// 		} else if(data.type === 'connect_user') {
-		// 			console.log('set', data.message)
-		// 		} else {
-		// 			console.log('whatever type')
-		// 		}
-		// 		messageStore.set(data)
-		// 	}
-		// })
-
-		// messageStore.subscribe((currentMessage) => {
-		// 	console.log('currentMessage', currentMessage)
-		// 	if(currentMessage) {
-		// 		messages = [...messages, currentMessage]
-		// 	}
-		// })
-
-		loading = false
-	})
 </script>
 
-<Hero />
+<Hero image={item.img} />
 <Section>
-	<Toolbar />
 	<Container>
 		<Row>
 			<Col>
-				<h1 class="headline">IOTA Chrysalis</h1>
-				<p>IOTA Chrysalis is coming soon. This is a very first step into that direction. We are using both, IOTA 1.5 and 2.0 to already create NFTs with colored coins. Read more </p>
+				<h1>{item.name}</h1>
+				<p>{item.description}</p>
 			</Col>
-			<Col class="history-col">
-				<div class="offer">
-					<Progress
-						label="Availability"
-						value={amount}
-						max={MAX}
-						size='lg'
-					/>
-					<div>
-						<Label label="Price" />
-						<Price value={1000000} unit='IOTA' />
-					</div>
+			<Col>
+				<Progress
+					label="Verfügbar"
+					value={item.quantity}
+					max={MAX}
+					size='lg'
+				/>
+				<div class="price-container">
+					<h2>Preis:</h2>
+					<h2>9,00 €</h2>
 				</div>
-				<BuyButton disabled={true} />
-				{#if loading}
-					<Loading />
-				{:else}
-					<Messages messages={messages} socket={socket} />
-				{/if}
+				<Button label="Kaufen" size="lg" link="/cart" block />
 			</Col>
 		</Row>
 	</Container>
 </Section>
 
-<style>
-	.offer {
+<style lang="scss">
+	:global(.row .col:last-child) {
+		max-width: 360px;
+	}
+	.price-container {
 		width: 100%;
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
+		align-items: center;
+		margin: var(--space-md) 0 var(--space-xl);
+		h2 {
+			margin: 0 var(--space-sm);
+		}
+		h2:first-child {
+			font-weight: 200;
+		}
 	}
-
-	:global(.offer .progress) {
-		margin-right: var(--space-xl);
+	p {
+		font-size: 20px;
 	}
 </style>
-
-<!-- 
-	// OLD SOCKET STUFF
-	// socket = new WebSocket('wss://oma-dshop.herokuapp.com')
-	// socket = new WebSocket('ws://localhost:4000')
-	// // Connection opened
-	// socket.addEventListener('open', function (event) {
-	// 	console.log("It's open", event)
-	// })
-
-	// // Listen for messages
-	// socket.addEventListener('message', function (event) {
-	// 	console.log('message', event)
-	// 	console.log('message', event.data)
-	// 	let data = JSON.parse(event.data)
-	// 	if (data) {
-	// 		if (data.message === 'Amount update!') {
-	// 			amount = data.amount
-	// 		}
-	// 		messageStore.set(data)
-	// 	}
-	// })
--->

@@ -82,13 +82,14 @@
 
 	/* Size */
 	.btn.sm {
-		padding: var(--space-xs) var(--space-lg);
+		padding: var(--space-xs) var(--space-md);
 	}
 	.btn.md {
 		padding: var(--space-sm) var(--space-xl);
 	}
 	.btn.lg {
 		padding: var(--space-md) var(--space-xxl);
+		font-size: var(--space-md);
 	}
 
 	/* Color */

@@ -1,5 +1,5 @@
 <script>
-	import Card from './Card.svelte'
+	import ProductCard from './ProductCard.svelte'
 	import items from '../mocks/products.js'
 </script>
 
@@ -7,8 +7,10 @@
 	<div class="row">
 		{#each items as item}
 			<div class="col-md-4">
-				<Card {item} />
+				<ProductCard {item} />
 			</div>
 		{/each}
 	</div>
 </div>
+
+<style></style>
