@@ -50,13 +50,25 @@ When building for the first time, ensure to install dependencies first.
 git clone https://github.com/open-marketplace-applications/dshop
 cd dshop
 npm install
+cd frontend
+npm install
 ```
 
 ### 🌱 Development
 
+You need to run the backend and the frontend in a seperate terminal.
+
+Run this in the root folder:
 ```
 npm run dev
 ```
+
+And run this in the `/frontend` folder:
+```
+npm run dev
+```
+
+Open your browser and open [http://localhost:3000](http://localhost:3000)
 
 ### 🚀 Production
 
