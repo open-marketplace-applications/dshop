@@ -10,7 +10,7 @@
 			<Logo link="/" />
 		</div>
 		<div class="right">
-			<Button color="secondary" link="/faq">FAQ</Button>
+			<!-- <Button color="secondary" link="/faq">FAQ</Button> -->
 			<Button color="primary" class="cta-btn" link="/cart">
 				Kaufen 
 				{#if cartCount > 0}
