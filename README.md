@@ -70,21 +70,17 @@ npm run dev
 
 Open your browser and open [http://localhost:3000](http://localhost:3000)
 
-### 🚀 Production
+Be sure your MongoDB is running and your `environment variables` are set.
+
+#### Running MongoDB
+
+The easiest way to run the databse is with docker.
 
 ```
-npm run build
-npm start
+docker-compose up -d
 ```
 
----
-
-## 💬 Joining the discussion
-
-If you want to get involved in discussions about this application, or you're looking for support, go to the #anna channel on [our Discord](https://discord.gg/XDQQcJC).
-
-
-### environment variables
+#### environment variables
 
 Example Env File
 ```bash
@@ -104,3 +100,19 @@ debug=full
 SH_PASSWORD="your-hardcore-stronghold-password"
 
 ```
+
+
+### 🚀 Production
+
+```
+npm run build
+npm start
+```
+
+---
+
+## 💬 Joining the discussion
+
+If you want to get involved in discussions about this application, or you're looking for support, go to the #anna channel on [our Discord](https://discord.gg/XDQQcJC).
+
+
