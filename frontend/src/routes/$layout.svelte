@@ -1,5 +1,7 @@
 <script>
 	import Nav from '$lib/Nav/Nav.svelte'
+	import Footer from '$lib/Footer.svelte';
+
 	import WebSockets from '$lib/WebSockets.svelte'
 	import '../theme.css'
 	import { cart } from '../cart/stores.js'
@@ -18,4 +20,5 @@
 <main>
 	<slot />
 </main>
+<Footer />
 <WebSockets />
