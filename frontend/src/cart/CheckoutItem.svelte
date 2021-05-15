@@ -1,6 +1,6 @@
 <script>
 	import { Button } from '../design-system/index'
-  import { cart } from "./stores.js";
+  import { cart } from "./stores";
   export let item;
   let { name, price, img, count } = item;
   const countButtonHandler = (e) => {

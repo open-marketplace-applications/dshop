@@ -4,7 +4,7 @@
 
 	import WebSockets from '$lib/WebSockets.svelte'
 	import '../theme.css'
-	import { cart } from '../cart/stores.js'
+	import { cart } from '../cart/stores'
 	let cardCount;
 	const unsubscribe = cart.subscribe((items) => {
 		const itemValues = Object.values(items)

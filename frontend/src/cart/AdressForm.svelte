@@ -2,7 +2,7 @@
 
 <script>
     import { Input, Form } from '../design-system/index'
-    import { getCountries } from '../cart/countries.js'
+    import { getCountries } from '../cart/countries'
 
     let counties = getCountries();
 	export let values;

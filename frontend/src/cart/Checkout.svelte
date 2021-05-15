@@ -5,7 +5,7 @@
 	import PayPal from './PayPal.svelte'
 	import IOTAPay from './IOTAPay.svelte'
 	import Annotations from './Annotations.svelte'
-	import { cart } from './stores.js'
+	import { cart } from './stores'
 	import { checkout } from '../api/shop'
 	
 	const MODE = variables.mode
