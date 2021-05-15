@@ -1,17 +1,13 @@
 <script lang="ts">
 	type Target = 'self' | 'blank' | 'parent'
-	
+
 	export let link: string
 	export let text: string
 	export let target: Target = 'parent'
 	export let block: boolean = true
 </script>
 
-<a 
-	href={link}
-	target={`_${target}`}
-	class={`link ${block ? 'block' : ''} ${$$props.class}`}
->
+<a href={link} target={`_${target}`} class={`link ${block ? 'block' : ''} ${$$props.class}`}>
 	<slot />
 	{text}
 </a>

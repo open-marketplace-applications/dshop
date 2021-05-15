@@ -9,6 +9,7 @@
 		})
 	})
 </script>
+
 <li class="nav-link active">
 	{#if cart_sum > 0}
 		{cart_sum}

@@ -1,15 +1,13 @@
 <script lang="ts">
-
 	import { Section, Container, Row, Col, Button, Price, Progress } from '../design-system/index'
 
 	import Hero from '$lib/Hero/Hero.svelte'
 	import Checkout from '../cart/Checkout.svelte'
-	
+
 	import items from '../mocks/products.js'
 	let item = items[0]
-	console.log("item", item)
+	console.log('item', item)
 	const MAX = item.quantity
-
 </script>
 
 <Hero image={item.img} />
@@ -21,12 +19,7 @@
 				<p>{item.description}</p>
 			</Col>
 			<Col>
-				<Progress
-					label="Verfügbar"
-					value={item.quantity}
-					max={MAX}
-					size='lg'
-				/>
+				<Progress label="Verfügbar" value={item.quantity} max={MAX} size="lg" />
 				<div class="price-container">
 					<h2>Preis:</h2>
 					<h2>9,00 €</h2>

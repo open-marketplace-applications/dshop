@@ -30,7 +30,6 @@
 
 <div class={`countdown ${block ? 'block' : ''} ${$$props.class}`}>
 	<div class="container">
-
 		{#if days > 0}
 			<div class="timer">
 				<h4>{days}</h4>
@@ -70,7 +69,7 @@
 	.countdown.block {
 		display: block;
 	}
-	
+
 	.container {
 		display: flex;
 		justify-content: center;

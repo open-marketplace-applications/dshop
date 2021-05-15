@@ -51,12 +51,7 @@ import Message from './molecules/Message/Message.svelte'
 import Mode from './molecules/Mode/Mode.svelte'
 import UserInfo from './molecules/UserInfo/UserInfo.svelte'
 
-export {
-	Countdown,
-	Message,
-	Mode,
-	UserInfo
-}
+export { Countdown, Message, Mode, UserInfo }
 
 // ==================================================
 // === 🌱 Organisms

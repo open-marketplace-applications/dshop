@@ -1,8 +1,8 @@
 <script context="module">
-	export const prerender = true;
-  </script>
-  
-  <script lang="ts">
+	export const prerender = true
+</script>
+
+<script lang="ts">
 	import { Section, Container, Row, Col } from '../design-system/index'
 </script>
 

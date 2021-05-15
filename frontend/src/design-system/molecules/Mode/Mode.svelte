@@ -2,10 +2,9 @@
 	import { onMount } from 'svelte'
 
 	import Icon from '../../atoms/Icon/Icon.svelte'
-	
+
 	export let darkMode: boolean
 
-	
 	onMount(() => {
 		let bodyHasDarkMode = window.document.body.classList.contains('dark-mode')
 		if (darkMode && !bodyHasDarkMode) {
@@ -14,24 +13,21 @@
 			window.document.body.classList.remove('dark-mode')
 		}
 	})
-	
+
 	function toggle() {
 		window.document.body.classList.toggle('dark-mode')
 		darkMode = !darkMode
 	}
 </script>
 
-<button 
-	class={`mode ${darkMode ? 'dark' : ''} ${$$props.class}`} 
-	on:click={toggle}
->
+<button class={`mode ${darkMode ? 'dark' : ''} ${$$props.class}`} on:click={toggle}>
 	<div class="icons">
-		<Icon icon='sun' />
-		<Icon icon='moon' />
+		<Icon icon="sun" />
+		<Icon icon="moon" />
 	</div>
 </button>
 
-<style lang='scss'>
+<style lang="scss">
 	.mode {
 		position: relative;
 		overflow: hidden;
@@ -48,7 +44,7 @@
 		color: var(--color-text);
 		cursor: pointer;
 		margin-left: var(--space-md);
-	
+
 		:global(.icon) {
 			margin: var(--space-xs);
 		}
@@ -69,8 +65,4 @@
 			}
 		}
 	}
-
-	
-
-	
 </style>

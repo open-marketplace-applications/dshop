@@ -1,27 +1,35 @@
 <script context="module">
-	export const prerender = true;
-  </script>
-  
+	export const prerender = true
+</script>
 
-  <script lang="ts">
+<script lang="ts">
 	import { onMount } from 'svelte'
 	import { writable } from 'svelte/store'
-	
-	import { Section, Container, Row, Col, Loading, Progress, Price, Label } from '$design-system/index'
-	
+
+	import {
+		Section,
+		Container,
+		Row,
+		Col,
+		Loading,
+		Progress,
+		Price,
+		Label
+	} from '$design-system/index'
+
 	import Hero from '$lib/Hero/Hero.svelte'
 	import Toolbar from '$lib/ToolBar/Toolbar.svelte'
 	import BuyButton from '$lib/BuyButton.svelte'
 	import Messages from '$lib/Messages.svelte'
-	
+
 	$: amount = 0
 	$: loading = true
 	const MAX = 500
 	const messageStore = writable('')
 	let messages = []
 	let socket = {
-		emit: function(x,y){
-			console.log("not loadet yet.")
+		emit: function (x, y) {
+			console.log('not loadet yet.')
 		}
 	}
 
@@ -32,7 +40,7 @@
 		// await market.default()
 		// market.greet("Svelte")
 		// Websockets
-		
+
 		// socket = io("http://localhost:5000")
 		// socket = io("https://oma-dshop.herokuapp.com/")
 
@@ -71,43 +79,29 @@
 		<Row>
 			<Col>
 				<h1 class="headline">IOTA Chrysalis</h1>
-				<p>IOTA Chrysalis is coming soon. This is a very first step into that direction. We are using both, IOTA 1.5 and 2.0 to already create NFTs with colored coins. Read more </p>
+				<p>
+					IOTA Chrysalis is coming soon. This is a very first step into that direction. We are using
+					both, IOTA 1.5 and 2.0 to already create NFTs with colored coins. Read more
+				</p>
 			</Col>
 			<Col class="history-col">
 				<div class="offer">
-					<Progress
-						label="Availability"
-						value={amount}
-						max={MAX}
-						size='lg'
-					/>
+					<Progress label="Availability" value={amount} max={MAX} size="lg" />
 					<div>
 						<Label label="Price" />
-						<Price value={1000000} unit='IOTA' />
+						<Price value={1000000} unit="IOTA" />
 					</div>
 				</div>
 				<BuyButton disabled={true} />
 				{#if loading}
 					<Loading />
 				{:else}
-					<Messages messages={messages} socket={socket} />
+					<Messages {messages} {socket} />
 				{/if}
 			</Col>
 		</Row>
 	</Container>
 </Section>
-
-<style>
-	.offer {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-	}
-
-	:global(.offer .progress) {
-		margin-right: var(--space-xl);
-	}
-</style>
 
 <!-- 
 	// OLD SOCKET STUFF
@@ -131,3 +125,14 @@
 	// 	}
 	// })
 -->
+<style>
+	.offer {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	:global(.offer .progress) {
+		margin-right: var(--space-xl);
+	}
+</style>

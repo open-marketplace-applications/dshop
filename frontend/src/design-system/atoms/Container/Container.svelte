@@ -12,13 +12,11 @@
 		width: 100%;
 		margin: 0 auto;
 		padding: 0 var(--space-lg);
-		
+
 		&.small {
 			width: 100%;
 		}
 	}
-
-	
 
 	@media (min-width: 720px) {
 		.container {

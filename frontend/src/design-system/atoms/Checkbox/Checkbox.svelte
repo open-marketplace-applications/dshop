@@ -6,13 +6,7 @@
 </script>
 
 <div class={`checkbox ${$$props.class}`}>
-	<input
-		{name}
-		type="checkbox"
-		tabindex="0"
-		{checked}
-		on:change={onChange}
-	/>
+	<input {name} type="checkbox" tabindex="0" {checked} on:change={onChange} />
 	<label for={name}>
 		{#if label} {label} {:else} <slot /> {/if}
 	</label>

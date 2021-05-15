@@ -1,7 +1,7 @@
-<script lang='ts'>
-  import VideoPlayer from 'svelte-video-player'
+<script lang="ts">
+	import VideoPlayer from 'svelte-video-player'
 
-  export let loop: boolean
+	export let loop: boolean
 	export let poster: string
 	export let url: string
 </script>
@@ -9,8 +9,8 @@
 <VideoPlayer
 	{poster}
 	source={url}
-	loop={loop}
-	color= 'var(--color-primary)'
+	{loop}
+	color="var(--color-primary)"
 	width="400px"
 	height="400px"
 />

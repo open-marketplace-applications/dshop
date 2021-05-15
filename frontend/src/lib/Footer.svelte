@@ -39,10 +39,10 @@
 			<div class="section3">
 				<div class="footer-title">Info</div>
 				<br />
-				<a class={segment === 'impressum' ? 'selected' : ''} href="imprint" id="link">Impressum</a
-                    >
-                <br />
-				<a class={segment === 'Datenschutz™' ? 'selected' : ''} href="privacy" id="link">Datenschutz</a
+				<a class={segment === 'impressum' ? 'selected' : ''} href="imprint" id="link">Impressum</a>
+				<br />
+				<a class={segment === 'Datenschutz™' ? 'selected' : ''} href="privacy" id="link"
+					>Datenschutz</a
 				>
 				<br />
 				<br />
@@ -51,7 +51,6 @@
         <a href="mailto:info@einfachiota.de" id="link">info@einfachiota.de</a>
         -->
 			</div>
-
 		</layout>
 
 		<br />

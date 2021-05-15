@@ -1,18 +1,18 @@
 <script lang="ts">
-  export let padding: boolean = true
+	export let padding: boolean = true
 </script>
 
-<div class={`card ${padding ? 'padding' : ''} ${$$props.class}`} >
-  <slot></slot>
+<div class={`card ${padding ? 'padding' : ''} ${$$props.class}`}>
+	<slot />
 </div>
 
 <style lang="scss">
-  .card {
-    border-radius: var(--radius);
-    background-color: var(--color-element);
+	.card {
+		border-radius: var(--radius);
+		background-color: var(--color-element);
 
-    &.padding {
-      padding: var(--space-md);
-    }
-  }
+		&.padding {
+			padding: var(--space-md);
+		}
+	}
 </style>
