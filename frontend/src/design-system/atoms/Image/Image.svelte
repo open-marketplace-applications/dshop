@@ -12,14 +12,14 @@
 		width: var(--dimension);
 		height: var(--dimension);
 		margin: 0 auto;
-		margin-bottom: var(--space-xl);
+		/* margin-bottom: var(--space-xl); */
 		border-radius: var(--radius);
 	}
 
 	@media (min-width: 720px) {
 		.image {
-			width: 450px;
-			height: 450px;
+			width: 100%;
+			height: 820px;
 		}
 	}
 </style>

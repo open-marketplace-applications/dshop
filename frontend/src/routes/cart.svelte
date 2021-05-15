@@ -6,8 +6,8 @@
 	import Checkout from '../cart/Checkout.svelte'
 	import { Section, Container, Row, Col } from '../design-system/index'
 	import { onMount } from 'svelte'
-	import { cart } from '../cart/stores.js'
-	import items from '../mocks/products.js'
+	import { cart } from '../cart/stores'
+	import items from '../mocks/products'
 	let item = items[0]
 	let { img, name, price } = item
 
