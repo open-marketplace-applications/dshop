@@ -3,7 +3,7 @@
 	export let image: string
 </script>
 
-<Section dark>
+<Section>
 	<div class="hero">
 		<div class="artwork">
 			<Image imageUrl={image} />
@@ -16,11 +16,12 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		width: 100%;
 	}
 
 	.artwork {
 		width: 100%;
-		margin: 0 var(--space-lg);
+		/* margin: 0 var(--space-lg); */
 	}
 
 	:global(.artwork .aspect) {
