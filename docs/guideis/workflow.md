@@ -7,7 +7,7 @@ You want to contribute to the DShop? Please use these workflow -  or suggest a c
 
 2. Check if there is a PR - if now, if not create one:
 
-    - Go to your IDE (We recommend [Visial Studio Code](https://code.visualstudio.com/))
+    - Go to your IDE (We recommend [Visual Studio Code](https://code.visualstudio.com/))
     - Create a new branch, use a tag (`feature`, `fix`, or `docs`) and a descriptive name. Example: `feature/<descriptive-name-of-your-feature>`
     - Push your new branch and create a PR.
     - Add a description, assign yourself and add some labels.
