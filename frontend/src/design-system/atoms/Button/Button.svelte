@@ -32,7 +32,7 @@
 	<button
 		on:click={callback}
 		{type}
-		disabled={ disabled }
+		{disabled}
 		class={`btn
 			${rounded ? 'rounded' : ''} 
 			${size} 
@@ -41,7 +41,7 @@
 			${$$props.class}
 			`}
 	>
-	{label ? label : ''}
+		{label ? label : ''}
 		<slot />
 	</button>
 {/if}
@@ -110,11 +110,11 @@
 	}
 
 	.btn:disabled {
-		opacity: .5;
+		opacity: 0.5;
 		background: var(--color-element);
 		color: var(--color-text);
 		cursor: not-allowed;
-		
+
 		&:hover {
 			background-color: var(--color-element);
 			opacity: 1;

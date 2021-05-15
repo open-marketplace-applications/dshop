@@ -1,7 +1,7 @@
 <script>
 	import { Mode, Logo, Container, Button } from '../../design-system/index'
 	export let cartCount
-	$: console.log("Ciaoaaa", cartCount)
+	$: console.log('Ciaoaaa', cartCount)
 </script>
 
 <div class={`nav`}>
@@ -12,9 +12,9 @@
 		<div class="right">
 			<!-- <Button color="secondary" link="/faq">FAQ</Button> -->
 			<Button color="primary" class="cta-btn" link="/cart">
-				Kaufen 
+				Kaufen
 				{#if cartCount > 0}
-				{cartCount}
+					{cartCount}
 				{/if}
 			</Button>
 			<Mode />

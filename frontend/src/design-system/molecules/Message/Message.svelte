@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
 	import Card from '../../atoms/Card/Card.svelte'
 	type Type = 'message' | 'user-connected' | 'user-disconnected' | 'purchase'
 

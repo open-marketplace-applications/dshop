@@ -7,10 +7,7 @@
 	// TODO: Handle fallback if no image provided
 </script>
 
-<div 
-	class={`avatar-image ${size} ${$$props.class}`} 
-	style="background-image: url('{imageUrl}')"
-/>
+<div class={`avatar-image ${size} ${$$props.class}`} style="background-image: url('{imageUrl}')" />
 
 <style>
 	.avatar-image {
@@ -42,7 +39,7 @@
 		height: var(--dimension);
 	}
 
-	@media (min-width: 720px) {		
+	@media (min-width: 720px) {
 		.avatar-image.xl {
 			--dimension: calc((var(--space-xxxl) * 5));
 			height: var(--dimension);

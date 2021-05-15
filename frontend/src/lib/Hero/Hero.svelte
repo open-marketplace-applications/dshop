@@ -6,9 +6,7 @@
 <Section dark>
 	<div class="hero">
 		<div class="artwork">
-			<Image
-				imageUrl={image}
-			/>
+			<Image imageUrl={image} />
 		</div>
 	</div>
 </Section>

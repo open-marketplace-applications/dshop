@@ -3,7 +3,7 @@
 	import Navbar from '$cart/Navbar.svelte'
 	import Checkout from '$cart/Checkout.svelte'
 	import { Section, Container, Row, Col } from '$design-system/index'
-	import { cart } from "$cart/stores.js"
+	import { cart } from '$cart/stores.js'
 </script>
 
 <Section>

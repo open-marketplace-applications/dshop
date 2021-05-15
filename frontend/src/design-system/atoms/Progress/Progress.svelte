@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
 	type Size = 'sm' | 'md' | 'lg'
 
 	export let label: string
@@ -8,13 +8,14 @@
 	export let size: Size = 'md'
 </script>
 
-<div class={`progress
+<div
+	class={`progress
 		${size}
 		${showValue ? 'showValue' : ''}
-		${$$props.class}`
-	} >
+		${$$props.class}`}
+>
 	<div class="labels">
-		{#if label} 
+		{#if label}
 			<span class="label">{label}</span>
 		{/if}
 		{#if showValue}
@@ -30,7 +31,7 @@
 	.progress {
 		width: 100%;
 		margin-bottom: var(--space-md);
-		
+
 		.labels {
 			display: flex;
 			justify-content: space-between;
@@ -42,7 +43,7 @@
 				font-weight: bold;
 			}
 			.total {
-				opacity: .25;
+				opacity: 0.25;
 			}
 		}
 	}

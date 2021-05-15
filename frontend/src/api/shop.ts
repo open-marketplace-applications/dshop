@@ -1,7 +1,7 @@
 // const URL = 'http://localhost:5000/api'
 // const URL = 'https://oma-dshop.herokuapp.com/api'
 
-import { variables } from '$lib/variables';
+import { variables } from '$lib/variables'
 
 const URL = variables.basePath + '/api'
 
@@ -60,12 +60,10 @@ export const buyProduct = async () => {
 	}
 }
 
-
 export const checkout = async (shopping_cart) => {
 	try {
 		console.log('checkout', shopping_cart)
 
-	
 		const options = {
 			method: 'POST',
 			body: JSON.stringify(shopping_cart),
@@ -73,7 +71,7 @@ export const checkout = async (shopping_cart) => {
 				'Content-Type': 'application/json'
 			}
 		}
-		 
+
 		const response = await fetch(URL + '/orders', options)
 		console.log('response', response)
 		const obj = await response.json()
@@ -84,12 +82,10 @@ export const checkout = async (shopping_cart) => {
 	}
 }
 
-
 export const payWithPaypal = async (order_id, payment) => {
 	try {
 		console.log('payWithPaypal', payment)
 
-	
 		const options = {
 			method: 'POST',
 			body: JSON.stringify(payment),
@@ -97,7 +93,7 @@ export const payWithPaypal = async (order_id, payment) => {
 				'Content-Type': 'application/json'
 			}
 		}
-		 
+
 		const response = await fetch(`${URL}/pay_with_paypal?id=${order_id}`, options)
 		console.log('response', response)
 		const obj = await response.json()
@@ -106,15 +102,12 @@ export const payWithPaypal = async (order_id, payment) => {
 	} catch (error) {
 		console.error(error)
 	}
-
 }
-
 
 export const payWithIOTA = async (order_id, payment) => {
 	try {
 		console.log('payWithIOTA', payment)
 
-	
 		const options = {
 			method: 'POST',
 			body: JSON.stringify(payment),
@@ -122,7 +115,7 @@ export const payWithIOTA = async (order_id, payment) => {
 				'Content-Type': 'application/json'
 			}
 		}
-		 
+
 		const response = await fetch(`${URL}/pay_with_iota?id=${order_id}`, options)
 		console.log('response', response)
 		const obj = await response.json()
@@ -131,7 +124,4 @@ export const payWithIOTA = async (order_id, payment) => {
 	} catch (error) {
 		console.error(error)
 	}
-
 }
-
-

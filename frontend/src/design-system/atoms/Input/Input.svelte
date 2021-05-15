@@ -16,7 +16,7 @@
 	{/if}
 
 	{#if type === 'text'}
-		<input 
+		<input
 			type="text"
 			{name}
 			{placeholder}
@@ -24,9 +24,9 @@
 			minlength={min}
 			bind:value
 			tabindex="0"
-		>
-	{:else} 
-		<input 
+		/>
+	{:else}
+		<input
 			type="email"
 			{name}
 			{placeholder}
@@ -34,7 +34,7 @@
 			minlength={min}
 			bind:value
 			tabindex="0"
-		>
+		/>
 	{/if}
 
 	<slot />
