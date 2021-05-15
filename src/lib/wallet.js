@@ -30,12 +30,6 @@ async function init() {
 
     account = manager.getAccount('dshop-0')
 
-
-    // Always sync before doing anything with the account
-    console.log('Syncing...')
-    const synced = await account.sync()
-    console.log('Synced!')
-
     if (!account) {
         manager.storeMnemonic(SignerType.Stronghold)
 
@@ -47,7 +41,11 @@ async function init() {
     } else {
         console.log('Account loaded:', account.alias())
     }
-
+    
+    // Always sync before doing anything with the account
+    console.log('Syncing...')
+    const synced = await account.sync()
+    console.log('Synced!')
     // Add several event listeners to handle changes to the account.
     addEventListener("BalanceChange", onPaymentSuccess)
     addEventListener("ErrorThrown", callback)
