@@ -1,11 +1,23 @@
-const sveltePreprocess = require('svelte-preprocess')
-const node = require('@sveltejs/adapter-node')
-const pkg = require('./package.json')
-const copy = require('rollup-plugin-copy')
-const static = require('@sveltejs/adapter-static')
+// const sveltePreprocess = require('svelte-preprocess')
+import sveltePreprocess from 'svelte-preprocess';
+
+// const node = require('@sveltejs/adapter-node')
+import node from '@sveltejs/adapter-node';
+
+// const pkg = require('./package.json')
+// import pkg from './package.json';
+
+// const copy = require('rollup-plugin-copy')
+import copy from 'rollup-plugin-copy';
+
+// const _static = require('@sveltejs/adapter-static')
+import _static from '@sveltejs/adapter-static';
+
+
+
 
 /** @type {import('@sveltejs/kit').Config} */
-module.exports = {
+export default {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
 	preprocess: sveltePreprocess(),
@@ -15,14 +27,14 @@ module.exports = {
 		// You can create optimized builds for different platforms by
 		// specifying a different adapter
 		// adapter: node(),
-		adapter: static(),
+		adapter: _static(),
 
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
 
 		vite: {
 			ssr: {
-				noExternal: Object.keys(pkg.dependencies || {})
+				// noExternal: Object.keys(pkg.dependencies || {})
 			},
 			plugins: [
 				copy({
