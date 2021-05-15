@@ -43,8 +43,8 @@ async function init() {
     }
     
     // Always sync before doing anything with the account
-    const synced = await account.sync()
     console.log('Syncing...')
+    const synced = await account.sync()
     console.log('Synced!')
     // Add several event listeners to handle changes to the account.
     addEventListener("BalanceChange", onPaymentSuccess)
