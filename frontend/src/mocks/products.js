@@ -4,7 +4,7 @@ export default [
 		description:
 			'Das zweite einfachIOTA Magazin ist endlich da! Dieses mal haben wir den Schwerpunkt auf die Industrie gelegt. Die Artikel, Interviews und Partnerbeiträge wurden im Jahr 2020 verfasst. ',
 		price: 9.0,
-		img: '/assets/front_mag01_de.jpeg',
+		img: '/assets/front_mag02_de.jpg',
 		lang: 'de',
 		quantity: '1000'
 	}
