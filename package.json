@@ -2,30 +2,12 @@
   "name": "store",
   "version": "0.0.1",
   "description": "store",
-  "main": "dist",
+  "main": "src",
   "scripts": {
-    "dev": "nodemon -w src --exec \"babel-node src\"",
-    "build": "babel src -s -D -d dist",
-    "start": "node dist",
+    "dev": "ts-node-dev src",
+    "build": "tsc",
+    "start": "ts-node src",
     "test": "set NODE_ENV=test&& mocha src --recursive --timeout 10000 --compilers js:babel-register --require babel-polyfill"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 7,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "experimentalObjectRestSpread": true
-      }
-    },
-    "env": {
-      "node": true,
-      "mocha": true
-    },
-    "rules": {
-      "no-console": 0,
-      "no-unused-vars": 0
-    }
   },
   "repository": "",
   "author": "huhn <huhn.dev@gmail.com>",
@@ -33,16 +15,18 @@
   "dependencies": {
     "@iota/wallet": "0.3.6",
     "@paypal/checkout-server-sdk": "^1.0.2",
+    "@types/express": "^4.17.11",
+    "@types/morgan": "^1.9.2",
     "axios": "^0.21.1",
-    "bcrypt-nodejs": "0.0.3",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "core-js": "^3.10.0",
     "cors": "^2.7.1",
-    "dotenv": "^4.0.0",
-    "dynamic-html-pdf": "^1.0.1",
+    "dotenv": "^9.0.2",
+    "dynamic-html-pdf": "^1.0.4",
     "express": "^4.17.1",
-    "iota-payment": "0.0.67",
+    "express-session": "^1.17.1",
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^5.12.2",
     "morgan": "^1.8.0",
@@ -55,17 +39,18 @@
     "socket.io": "^4.0.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.9.0",
-    "babel-core": "^6.9.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.4.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "babel-register": "^6.24.1",
-    "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
-    "eslint": "^4.18.2",
-    "mocha": "^3.2.0",
-    "nodemon": "^1.9.2"
+    "@paypal/paypal-js": "^3.1.10",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/bcrypt": "^5.0.0",
+    "@types/mocha": "^8.2.2",
+    "@types/passport-jwt": "^3.0.5",
+    "@types/paypal-rest-sdk": "^1.7.5",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.26.0",
+    "mongodb-memory-server": "^6.9.6",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.4"
   }
 }
