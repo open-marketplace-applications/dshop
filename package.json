@@ -43,7 +43,7 @@
     "dynamic-html-pdf": "^1.0.1",
     "express": "^4.17.1",
     "iota-payment": "0.0.67",
-    "jsonwebtoken": "^7.3.0",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.12.2",
     "morgan": "^1.8.0",
     "nodemailer": "^6.3.1",
